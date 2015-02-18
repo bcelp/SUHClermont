@@ -1,0 +1,50 @@
+<!-- Spoiler informations Etudiant -->
+{{ render(controller('SUHGestionBundle:Affichage:Spoiler', {
+                    'nomSpoiler':'spoilerEtudiant',
+                    'texteBouton': 'etudiant', 
+                    'informations': 
+                    '
+<table class="table table-bordered table-striped table-condensed">
+    <tbody>
+          <tr>
+            <td>numéro etudiant</td>
+            <td>'~informationsEtudiant[0].id~'</td>
+          </tr>
+          
+    </tbody>
+</table>
+                    '
+                })) }}    
+<!-- Fin spoiler informations Etudiant -->              
+
+<!-- Spoiler informations handicap -->
+{{ render(controller('SUHGestionBundle:Affichage:Spoiler', {
+                    'nomSpoiler':'spoilerHandicap',
+                    'texteBouton': 'handicap', 
+                    'informations':'informations handicap' 
+                })) }}    
+<!-- Fin spoiler informations handicap -->
+
+<!-- Spoiler informations mdph -->
+{{ render(controller('SUHGestionBundle:Affichage:Spoiler', {
+                    'nomSpoiler':'spoilerMdph',
+                    'texteBouton': 'mdph', 
+                    'informations':'informations mdph' 
+                })) }}    
+<!-- Fin spoiler informations mdph -->
+
+<!-- Spoiler informations formation -->
+{{ render(controller('SUHGestionBundle:Affichage:Spoiler', {
+                    'nomSpoiler':'spoilerFormation',
+                    'texteBouton': 'formation', 
+                    'informations':'informations formation' 
+                })) }}    
+<!-- Fin spoiler informations formation -->
+
+<!-- Spoiler informations etablissement -->
+{{ render(controller('SUHGestionBundle:Affichage:Spoiler', {
+                    'nomSpoiler':'spoilerEtablissement',
+                    'texteBouton': 'etablissement', 
+                    'informations':'informations etablissement' 
+                })) }}    
+<!-- Fin spoiler informations etablissement -->

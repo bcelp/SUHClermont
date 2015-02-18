@@ -1,0 +1,8 @@
+suh_gestion_homepage:
+    path:     /
+    defaults: { _controller: SUHGestionBundle:Affichage:AfficherAccueil }
+
+suh_get_etudiant:
+    path:   /get/{id}
+    defaults: { _controller: SUHGestionBundle:Affichage:AfficherAccueilEtudiant }
+    

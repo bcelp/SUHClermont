@@ -1,0 +1,21 @@
+suh_gestion:
+    resource: "@SUHGestionBundle/Resources/config/routing.yml"
+    prefix:   /
+
+suh_connexion:
+    resource: "@SUHConnexionBundle/Resources/config/routing.yml"
+    prefix:   /
+
+suh_gestion:
+    resource: "@SUHGestionBundle/Resources/config/routing.yml"
+    prefix:   /
+
+login:
+    pattern: /login
+    defaults: { _controller: SUHConnexionBundle:Connexion:login }
+
+login_check:
+    pattern: /login_check
+
+logout:
+    pattern: /logout

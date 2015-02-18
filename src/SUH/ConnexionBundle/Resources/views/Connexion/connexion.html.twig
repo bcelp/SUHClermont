@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="{{asset('bundles/suhconnexion/css/bootstrap.min.css')}}" type="text/css"/>
+    <link rel="stylesheet" href="{{asset('bundles/suhconnexion/css/connexion.css')}}" type="text/css"/>    
+  </head>
+  <body>
+      <div class="container">
+        <div class="row">
+            <div id="blocConnexion">
+                <div class="row">
+                    <img id="logo" alt="SUH" src="{{asset('bundles/suhconnexion/images/logo_suh.png')}}">
+                </div>
+                <div class="row">
+                    <form action="{{path('login_check')}}" method="POST">
+                        <div class="form-group">
+                            <label class="control-label" for="username">Identifiant :</label>
+                            <input class="form-control" id="username" name="_username" type="text"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="password">Mot de passe :</label>
+                            <input class="form-control" id="password" name="_password" type="password"/>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg">Connexion</button>
+                    </form>    
+                </div>
+                        
+                {% if error is not empty %}
+                    <div id="errorDiv" class="alert alert-danger">                        
+                        Identifiants invalides                       
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+      </div>
+      
+  </body>
+</html>
+
