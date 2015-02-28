@@ -30,10 +30,38 @@
                     </div>
                 </div>  
                 <div id="affichage" class="col-md-10">
-                {% if informationsEtudiant is defined and informationsEtudiant is not empty %}
+                {#{% if informationsEtudiant is defined and informationsEtudiant is not empty %}
                     {% include 'SUHGestionBundle:Default:spoiler.html.twig' with {'informationsEtudiant': informationsEtudiant} %}
-                {% endif %}
+                {% endif %}#}
                 </div>
+                <script type="text/javascript">
+                //dernier etudiant selectionne dans la liste
+                var last;
+                //couleur de fond dans la liste de l'étudiant(permet de passer du rouge à la couleur d'avance)
+                var lastColor;
+                $(document).ready(function() {
+                //pour tous les liens de la liste
+                  $("#liste ul li a").on('click',function(event) {
+                    //l'url est celui du lien
+                    var url = $(this).prop('href');
+                    //on stocke la couleur de base avant de la passer au rouge(afin de la remettre en état
+                    //au prochain clic
+                    lastColor=$(this).css("background-color");
+                    //le lien sélectionné devient rouge
+                    $(this).css({'background-color':'red'});
+                    //si il y a déjà eu un étudiant selectionné sa couleur redevient celle d'origine
+                    if (!(typeof last === "undefined")) {
+                        $(last).css({'background-color':lastColor});
+                    }      
+                    //le dernier étudiant sélectionné devient l'étudiant courant
+                    last=this;
+                    //on charge la div d'affichage d'un etudiant
+                    $("#affichage").load(url);
+                    //on évite la redirection
+                    event.preventDefault();
+                  });
+                });
+                </script>
             </div>
         </section>      
         <br/><br/>

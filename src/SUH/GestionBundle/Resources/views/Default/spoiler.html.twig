@@ -1,7 +1,13 @@
 <div class="spoiler">
+    <p id="etudiantNomPrenom">
+    {{informationsEtudiant[0].etudiant.nomEtudiant}}
+    {{informationsEtudiant[0].etudiant.prenomEtudiant}}
+    </p>
+
+
     <button class="btn btn-info form-control" title="informations etudiant handicape" type="button" 
             onclick="
-                    if (document.getElementById('etudiantHandicape').style.display == 'none')
+                    if (document.getElementById('etudiantHandicape').style.display === 'none')
                     {
                         document.getElementById('etudiantHandicape').style.display = ''
                     }
@@ -43,7 +49,7 @@
 <div class="spoiler">
     <button class="btn btn-info form-control" title="informations etudiant formation" type="button" 
             onclick="
-                    if (document.getElementById('etudiantFormation').style.display == 'none')
+                    if (document.getElementById('etudiantFormation').style.display === 'none')
                     {
                         document.getElementById('etudiantFormation').style.display = ''
                     }
@@ -72,7 +78,7 @@
 <div class="spoiler">
     <button class="btn btn-info form-control" title="informations etudiant aides examens" type="button" 
             onclick="
-                    if (document.getElementById('etudiantAidesExamens').style.display == 'none')
+                    if (document.getElementById('etudiantAidesExamens').style.display === 'none')
                     {
                         document.getElementById('etudiantAidesExamens').style.display = ''
                     }

@@ -83,16 +83,36 @@ class __TwigTemplate_6793929960127e83bea634f55b7268ea875bd6f0ffde18a88c51146e39d
                 </div>  
                 <div id=\"affichage\" class=\"col-md-10\">
                 ";
-        // line 33
-        if ((array_key_exists("informationsEtudiant", $context) &&  !twig_test_empty((isset($context["informationsEtudiant"]) ? $context["informationsEtudiant"] : $this->getContext($context, "informationsEtudiant"))))) {
-            // line 34
-            echo "                    ";
-            $this->env->loadTemplate("SUHGestionBundle:Default:spoiler.html.twig")->display(array_merge($context, array("informationsEtudiant" => (isset($context["informationsEtudiant"]) ? $context["informationsEtudiant"] : $this->getContext($context, "informationsEtudiant")))));
-            // line 35
-            echo "                ";
-        }
         // line 36
         echo "                </div>
+                <script type=\"text/javascript\">
+                //dernier etudiant selectionne dans la liste
+                var last;
+                //couleur de fond dans la liste de l'étudiant(permet de passer du rouge à la couleur d'avance)
+                var lastColor;
+                \$(document).ready(function() {
+                //pour tous les liens de la liste
+                  \$(\"#liste ul li a\").on('click',function(event) {
+                    //l'url est celui du lien
+                    var url = \$(this).prop('href');
+                    //on stocke la couleur de base avant de la passer au rouge(afin de la remettre en état
+                    //au prochain clic
+                    lastColor=\$(this).css(\"background-color\");
+                    //le lien sélectionné devient rouge
+                    \$(this).css({'background-color':'red'});
+                    //si il y a déjà eu un étudiant selectionné sa couleur redevient celle d'origine
+                    if (!(typeof last === \"undefined\")) {
+                        \$(last).css({'background-color':lastColor});
+                    }      
+                    //le dernier étudiant sélectionné devient l'étudiant courant
+                    last=this;
+                    //on charge la div d'affichage d'un etudiant
+                    \$(\"#affichage\").load(url);
+                    //on évite la redirection
+                    event.preventDefault();
+                  });
+                });
+                </script>
             </div>
         </section>      
         <br/><br/>
@@ -112,6 +132,6 @@ class __TwigTemplate_6793929960127e83bea634f55b7268ea875bd6f0ffde18a88c51146e39d
 
     public function getDebugInfo()
     {
-        return array (  95 => 36,  92 => 35,  89 => 34,  87 => 33,  78 => 26,  75 => 25,  72 => 24,  70 => 23,  56 => 12,  48 => 6,  45 => 5,  37 => 3,  11 => 1,);
+        return array (  87 => 36,  78 => 26,  75 => 25,  72 => 24,  70 => 23,  56 => 12,  48 => 6,  45 => 5,  37 => 3,  11 => 1,);
     }
 }

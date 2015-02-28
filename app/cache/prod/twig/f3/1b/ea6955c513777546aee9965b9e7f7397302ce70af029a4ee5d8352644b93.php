@@ -31,50 +31,54 @@ class __TwigTemplate_f31bea6955c513777546aee9965b9e7f7397302ce70af029a4ee5d83526
         // line 6
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/suhGestion/css/accueil.css"), "html", null, true);
         echo "\" type=\"text/css\"/>
-    <link rel=\"stylesheet\" href=\"";
+    <!--<link rel=\"stylesheet\" href=\"";
         // line 7
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/suhGestion/js/bootstrap.min.js"), "html", null, true);
-        echo "\"/>
-    <title>";
+        echo "\"/>-->
+    <script type=\"text/javascript\" src=\"";
         // line 8
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/suhGestion/js/jquery.min.js"), "html", null, true);
+        echo "\"/></script> 
+    <title>";
+        // line 9
         $this->displayBlock('title', $context, $blocks);
         echo "</title>
   </head>
   <!-- HEADER : logo SUH + navbar (accueil, statistiques, deconnexion -->
   ";
-        // line 11
+        // line 12
         $this->displayBlock('header', $context, $blocks);
-        // line 38
+        // line 39
         echo "  <!-- FIN HEADER -->
   
   ";
-        // line 40
+        // line 41
         $this->displayBlock('body', $context, $blocks);
-        // line 43
+        // line 44
         echo "</html>
 ";
     }
 
-    // line 8
+    // line 9
     public function block_title($context, array $blocks = array())
     {
         echo " Header ";
     }
 
-    // line 11
+    // line 12
     public function block_header($context, array $blocks = array())
     {
-        // line 12
+        // line 13
         echo "  <header>
       <div class=\"container-fluid\">
           <div class=\"row\">
               <div class=\"col-md-3\">
                 <a href=\"";
-        // line 16
+        // line 17
         echo $this->env->getExtension('routing')->getPath("suh_gestion_homepage");
         echo "\">
                     <img id=\"logo\" alt=\"SUH\" src=\"";
-        // line 17
+        // line 18
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/suhGestion/images/logo_suh.png"), "html", null, true);
         echo "\">
                 </a>
@@ -84,21 +88,21 @@ class __TwigTemplate_f31bea6955c513777546aee9965b9e7f7397302ce70af029a4ee5d83526
                     <div class=\"container-fluid\">
                         <ul class=\"nav navbar-nav\">
                             <li class=\"liensNavbar\"><a href=\"";
-        // line 24
+        // line 25
         echo $this->env->getExtension('routing')->getPath("suh_gestion_homepage");
         echo "\">Accueil</a></li>
                             <li class=\"liensNavbar\"><a href=\"";
-        // line 25
+        // line 26
         echo $this->env->getExtension('routing')->getPath("suh_gestion_homepage");
         echo "\">Statistiques</a></li>
                             <li class=\"liensNavbar\"><a href=\"";
-        // line 26
+        // line 27
         echo $this->env->getExtension('routing')->getPath("suh_gestion_homepage");
         echo "\">Importer Excel</a></li>
                         </ul>
                         <ul class=\"nav navbar-nav navbar-right\">
                             <li id=\"deconnexion\"><a href=\"";
-        // line 29
+        // line 30
         echo $this->env->getExtension('routing')->getPath("logout");
         echo "\">Deconnexion</a></li>
                         </ul>
@@ -111,10 +115,10 @@ class __TwigTemplate_f31bea6955c513777546aee9965b9e7f7397302ce70af029a4ee5d83526
   ";
     }
 
-    // line 40
+    // line 41
     public function block_body($context, array $blocks = array())
     {
-        // line 41
+        // line 42
         echo "      
   ";
     }
@@ -131,6 +135,6 @@ class __TwigTemplate_f31bea6955c513777546aee9965b9e7f7397302ce70af029a4ee5d83526
 
     public function getDebugInfo()
     {
-        return array (  118 => 41,  115 => 40,  102 => 29,  96 => 26,  92 => 25,  88 => 24,  78 => 17,  74 => 16,  68 => 12,  65 => 11,  59 => 8,  54 => 43,  52 => 40,  48 => 38,  46 => 11,  40 => 8,  36 => 7,  32 => 6,  28 => 5,  22 => 1,);
+        return array (  122 => 42,  119 => 41,  106 => 30,  100 => 27,  96 => 26,  92 => 25,  82 => 18,  78 => 17,  72 => 13,  69 => 12,  63 => 9,  58 => 44,  56 => 41,  52 => 39,  50 => 12,  44 => 9,  40 => 8,  36 => 7,  32 => 6,  28 => 5,  22 => 1,);
     }
 }

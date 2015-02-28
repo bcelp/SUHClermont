@@ -45,6 +45,7 @@ header
 
 /* BODY */
 
+/* PARTIE GAUCHE */
 #containerFluidBody
 {
     /*margin: 20px;*/
@@ -64,7 +65,7 @@ header
 {   
     height: 100%;
     background-color: whitesmoke;  
-   // width:85%;
+    // width:85%;
     //border-right: 6px solid #707070;
 }
 
@@ -95,11 +96,6 @@ header
     text-decoration: none;
 }
 
-.pair
-{
-    background-color: #ffffff;
-    
-}
 
 .impair
 {
@@ -109,6 +105,11 @@ header
 .pair:hover, .impair:hover
 {
     background-color: #bcc6d9;
+}
+
+.pair:active, .impair:active
+{
+    background-color: red;
 }
 
 #nbResultats
@@ -122,6 +123,16 @@ header
     max-height: 7%;
     padding: 15px;
     
+}
+
+/* PARTIE DROITE */
+
+#etudiantNomPrenom
+{
+    font-style: italic;
+    font-size: 25px;
+    font-family: Verdana, sans-serif;
+    text-align: center;
 }
 
 #affichage

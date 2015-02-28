@@ -1,7 +1,36 @@
 # SUHClermontSymfony Standard Edition
 
-========================
+==============================================================================
 
+Installation (php défini en temps que variable d'environnement) :
+
+1)
+C:\wamp\www\suhSymfony>php app/console doctrine:schema:update --force
+-->crée les tables dans la base de données "suh1"
+
+"Updating database schema...
+Database schema updated successfully! "19" queries were executed"
+
+
+2)
+Mettre dans la table "datesAideExamen" le champs "dateFin" à null par défaut
+Mettre dans la table "etudiant" le champs "etudiantSpecialise_id" à null par défaut
+
+
+3)
+C:\wamp\www\suhSymfony>php app/console doctrine:schema:update --force
+-->remplit la base de données
+
+
+4)
+Connection avec :
+soit identifiant=user/mdp=pass
+soit identifiant=admin/mdp=pass
+
+
+
+
+==============================================================================
 Welcome to the Symfony Standard Edition - a fully-functional Symfony2
 application that you can use as the skeleton for your new applications.
 

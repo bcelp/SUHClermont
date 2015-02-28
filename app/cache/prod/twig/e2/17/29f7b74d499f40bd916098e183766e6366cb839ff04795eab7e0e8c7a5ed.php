@@ -17,9 +17,21 @@ class __TwigTemplate_e21729f7b74d499f40bd916098e183766e6366cb839ff04795eab7e0e8c
     {
         // line 1
         echo "<div class=\"spoiler\">
+    <p id=\"etudiantNomPrenom\">
+    ";
+        // line 3
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute((isset($context["informationsEtudiant"]) ? $context["informationsEtudiant"] : $this->getContext($context, "informationsEtudiant")), 0, array(), "array"), "etudiant", array()), "nomEtudiant", array()), "html", null, true);
+        echo "
+    ";
+        // line 4
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute((isset($context["informationsEtudiant"]) ? $context["informationsEtudiant"] : $this->getContext($context, "informationsEtudiant")), 0, array(), "array"), "etudiant", array()), "prenomEtudiant", array()), "html", null, true);
+        echo "
+    </p>
+
+
     <button class=\"btn btn-info form-control\" title=\"informations etudiant handicape\" type=\"button\" 
             onclick=\"
-                    if (document.getElementById('etudiantHandicape').style.display == 'none')
+                    if (document.getElementById('etudiantHandicape').style.display === 'none')
                     {
                         document.getElementById('etudiantHandicape').style.display = ''
                     }
@@ -33,42 +45,42 @@ class __TwigTemplate_e21729f7b74d499f40bd916098e183766e6366cb839ff04795eab7e0e8c
         <table class=\"table table-bordered table-striped table-condensed\">
         <tbody>
               <tr><td>numéro etudiant</td><td>";
-        // line 17
+        // line 23
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["informationsEtudiant"]) ? $context["informationsEtudiant"] : $this->getContext($context, "informationsEtudiant")), 0, array(), "array"), "id", array()), "html", null, true);
         echo "</td></tr>
               <tr><td>nom</td><td>";
-        // line 18
+        // line 24
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute((isset($context["informationsEtudiant"]) ? $context["informationsEtudiant"] : $this->getContext($context, "informationsEtudiant")), 0, array(), "array"), "etudiant", array()), "nomEtudiant", array()), "html", null, true);
         echo "</td></tr>
               <tr><td>prenom</td><td>";
-        // line 19
+        // line 25
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute((isset($context["informationsEtudiant"]) ? $context["informationsEtudiant"] : $this->getContext($context, "informationsEtudiant")), 0, array(), "array"), "etudiant", array()), "prenomEtudiant", array()), "html", null, true);
         echo "</td></tr>
               <tr><td>date de naissance</td><td>";
-        // line 20
+        // line 26
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute((isset($context["informationsEtudiant"]) ? $context["informationsEtudiant"] : $this->getContext($context, "informationsEtudiant")), 0, array(), "array"), "etudiant", array()), "dateNaissance", array()), "d-m-Y"), "html", null, true);
         echo "</td></tr>
               <tr><td>âge</td><td>calcul ici</td></tr>
               <tr><td>mail</td><td>";
-        // line 22
+        // line 28
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute((isset($context["informationsEtudiant"]) ? $context["informationsEtudiant"] : $this->getContext($context, "informationsEtudiant")), 0, array(), "array"), "etudiant", array()), "mail", array()), "html", null, true);
         echo "</td></tr>
               <tr><td>adresse étudiante</td><td>";
-        // line 23
+        // line 29
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute((isset($context["informationsEtudiant"]) ? $context["informationsEtudiant"] : $this->getContext($context, "informationsEtudiant")), 0, array(), "array"), "etudiant", array()), "adresseEtudiante", array()), "html", null, true);
         echo "</td></tr>
               <tr><td>adresse familiale</td><td>";
-        // line 24
+        // line 30
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute((isset($context["informationsEtudiant"]) ? $context["informationsEtudiant"] : $this->getContext($context, "informationsEtudiant")), 0, array(), "array"), "etudiant", array()), "adresseFamiliale", array()), "html", null, true);
         echo "</td></tr>
               ";
-        // line 25
+        // line 31
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute((isset($context["informationsEtudiant"]) ? $context["informationsEtudiant"] : $this->getContext($context, "informationsEtudiant")), 0, array(), "array"), "handicap", array()));
         foreach ($context['_seq'] as $context["_key"] => $context["handicap"]) {
             echo "                  
                   <tr><td>handicap</td><td>";
-            // line 26
+            // line 32
             echo twig_escape_filter($this->env, $this->getAttribute($context["handicap"], "nomHandicap", array()), "html", null, true);
             echo "</td></tr>
               ";
@@ -76,42 +88,42 @@ class __TwigTemplate_e21729f7b74d499f40bd916098e183766e6366cb839ff04795eab7e0e8c
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['handicap'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 27
+        // line 33
         echo "                          
               <tr><td>reconnaissance mdph</td><td>";
-        // line 28
+        // line 34
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute((isset($context["informationsEtudiant"]) ? $context["informationsEtudiant"] : $this->getContext($context, "informationsEtudiant")), 0, array(), "array"), "mdph", array()), "reconnaissanceMdph", array()), "html", null, true);
         echo "</td></tr>
               <tr><td>département mdph</td><td>";
-        // line 29
+        // line 35
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute((isset($context["informationsEtudiant"]) ? $context["informationsEtudiant"] : $this->getContext($context, "informationsEtudiant")), 0, array(), "array"), "mdph", array()), "departementMdph", array()), "html", null, true);
         echo "</td></tr>  
               <tr><td>qhandi</td><td>";
-        // line 30
+        // line 36
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["informationsEtudiant"]) ? $context["informationsEtudiant"] : $this->getContext($context, "informationsEtudiant")), 0, array(), "array"), "qhandi", array()), "html", null, true);
         echo "</td></tr>
               <tr><td>rqth</td><td>";
-        // line 31
+        // line 37
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["informationsEtudiant"]) ? $context["informationsEtudiant"] : $this->getContext($context, "informationsEtudiant")), 0, array(), "array"), "rqth", array()), "html", null, true);
         echo "</td></tr>
               <tr><td>notification savs</td><td>";
-        // line 32
+        // line 38
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["informationsEtudiant"]) ? $context["informationsEtudiant"] : $this->getContext($context, "informationsEtudiant")), 0, array(), "array"), "notificationSavs", array()), "html", null, true);
         echo "</td></tr>
               <tr><td>amenagement etudes</td><td>";
-        // line 33
+        // line 39
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["informationsEtudiant"]) ? $context["informationsEtudiant"] : $this->getContext($context, "informationsEtudiant")), 0, array(), "array"), "amenagementEtude", array()), "html", null, true);
         echo "</td></tr>
               <tr><td>suvi</td><td>";
-        // line 34
+        // line 40
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["informationsEtudiant"]) ? $context["informationsEtudiant"] : $this->getContext($context, "informationsEtudiant")), 0, array(), "array"), "suivi", array()), "html", null, true);
         echo "</td></tr>
               <tr><td>date dernière mise à jour</td><td>";
-        // line 35
+        // line 41
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["informationsEtudiant"]) ? $context["informationsEtudiant"] : $this->getContext($context, "informationsEtudiant")), 0, array(), "array"), "dateMaj", array()), "d-m-Y"), "html", null, true);
         echo "</td></tr>
               <tr><td>descriptif complémentaire</td><td>";
-        // line 36
+        // line 42
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["informationsEtudiant"]) ? $context["informationsEtudiant"] : $this->getContext($context, "informationsEtudiant")), 0, array(), "array"), "descriptifComplementaire", array()), "html", null, true);
         echo "</td></tr>
         </tbody>
@@ -123,7 +135,7 @@ class __TwigTemplate_e21729f7b74d499f40bd916098e183766e6366cb839ff04795eab7e0e8c
 <div class=\"spoiler\">
     <button class=\"btn btn-info form-control\" title=\"informations etudiant formation\" type=\"button\" 
             onclick=\"
-                    if (document.getElementById('etudiantFormation').style.display == 'none')
+                    if (document.getElementById('etudiantFormation').style.display === 'none')
                     {
                         document.getElementById('etudiantFormation').style.display = ''
                     }
@@ -137,33 +149,33 @@ class __TwigTemplate_e21729f7b74d499f40bd916098e183766e6366cb839ff04795eab7e0e8c
         <table class=\"table table-bordered table-striped table-condensed\">
         <tbody>
             ";
-        // line 59
+        // line 65
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["informationsEtudiant"]) ? $context["informationsEtudiant"] : $this->getContext($context, "informationsEtudiant")), 0, array(), "array"), "etudiant", array()), "listEtudiantFormation", array()));
         foreach ($context['_seq'] as $context["_key"] => $context["etudiantFormation"]) {
             echo "                
               <tr><td>année</td><td>";
-            // line 60
+            // line 66
             echo twig_escape_filter($this->env, $this->getAttribute($context["etudiantFormation"], "annee", array()), "html", null, true);
             echo "</td></tr>
               <tr><td>diplome</td><td>";
-            // line 61
+            // line 67
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["etudiantFormation"], "formation", array()), "diplome", array()), "html", null, true);
             echo "</td></tr>
               <tr><td>composante</td><td>";
-            // line 62
+            // line 68
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["etudiantFormation"], "formation", array()), "composante", array()), "html", null, true);
             echo "</td></tr>
               <tr><td>filiere</td><td>";
-            // line 63
+            // line 69
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["etudiantFormation"], "formation", array()), "filiere", array()), "html", null, true);
             echo "</td></tr>
               <tr><td>cycle</td><td>";
-            // line 64
+            // line 70
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["etudiantFormation"], "formation", array()), "cycle", array()), "html", null, true);
             echo "</td></tr>
               <tr><td>nom de l'établissement</td><td>";
-            // line 65
+            // line 71
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["etudiantFormation"], "formation", array()), "etablissement", array()), "html", null, true);
             echo "</td></tr>
             ";
@@ -171,7 +183,7 @@ class __TwigTemplate_e21729f7b74d499f40bd916098e183766e6366cb839ff04795eab7e0e8c
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['etudiantFormation'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 66
+        // line 72
         echo " 
         </tbody>
     </table>
@@ -181,7 +193,7 @@ class __TwigTemplate_e21729f7b74d499f40bd916098e183766e6366cb839ff04795eab7e0e8c
 <div class=\"spoiler\">
     <button class=\"btn btn-info form-control\" title=\"informations etudiant aides examens\" type=\"button\" 
             onclick=\"
-                    if (document.getElementById('etudiantAidesExamens').style.display == 'none')
+                    if (document.getElementById('etudiantAidesExamens').style.display === 'none')
                     {
                         document.getElementById('etudiantAidesExamens').style.display = ''
                     }
@@ -195,17 +207,17 @@ class __TwigTemplate_e21729f7b74d499f40bd916098e183766e6366cb839ff04795eab7e0e8c
         <table class=\"table table-bordered table-striped table-condensed\">
         <tbody>
             ";
-        // line 88
+        // line 94
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute((isset($context["informationsEtudiant"]) ? $context["informationsEtudiant"] : $this->getContext($context, "informationsEtudiant")), 0, array(), "array"), "datesAideExamen", array()));
         foreach ($context['_seq'] as $context["_key"] => $context["dateAideExamen"]) {
             echo "                
               <tr><td>date début</td><td>";
-            // line 89
+            // line 95
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["dateAideExamen"], "dateDebut", array()), "d-m-Y"), "html", null, true);
             echo "</td></tr>
               <tr><td>date fin</td><td>";
-            // line 90
+            // line 96
             if (twig_test_empty($this->getAttribute($context["dateAideExamen"], "dateFin", array()))) {
                 echo " - ";
             } else {
@@ -213,27 +225,27 @@ class __TwigTemplate_e21729f7b74d499f40bd916098e183766e6366cb839ff04795eab7e0e8c
             }
             echo "</td></tr>
               <tr><td>amenagement examen</td><td>";
-            // line 91
+            // line 97
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["dateAideExamen"], "aideExamen", array()), "amenagementExamens", array()), "html", null, true);
             echo "</td></tr>
               <tr><td>temps majoré</td><td>";
-            // line 92
+            // line 98
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["dateAideExamen"], "aideExamen", array()), "tempsMajore", array()), "html", null, true);
             echo "</td></tr>
               <tr><td>autres mesures</td><td>";
-            // line 93
+            // line 99
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["dateAideExamen"], "aideExamen", array()), "autresMesures", array()), "html", null, true);
             echo "</td></tr>
               <tr><td>délocalisation examen</td><td>";
-            // line 94
+            // line 100
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["dateAideExamen"], "aideExamen", array()), "delocalisationExamen", array()), "html", null, true);
             echo "</td></tr>
               <tr><td>date validité</td><td>";
-            // line 95
+            // line 101
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($this->getAttribute($context["dateAideExamen"], "aideExamen", array()), "dateValidite", array()), "d-m-Y"), "html", null, true);
             echo "</td></tr>
               <tr><td>durée avis médical</td><td>";
-            // line 96
+            // line 102
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["dateAideExamen"], "aideExamen", array()), "dureeAvisMedical", array()), "html", null, true);
             echo "</td></tr>
             ";
@@ -241,7 +253,7 @@ class __TwigTemplate_e21729f7b74d499f40bd916098e183766e6366cb839ff04795eab7e0e8c
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['dateAideExamen'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 97
+        // line 103
         echo " 
         </tbody>
     </table>
@@ -261,6 +273,6 @@ class __TwigTemplate_e21729f7b74d499f40bd916098e183766e6366cb839ff04795eab7e0e8c
 
     public function getDebugInfo()
     {
-        return array (  245 => 97,  237 => 96,  233 => 95,  229 => 94,  225 => 93,  221 => 92,  217 => 91,  209 => 90,  205 => 89,  199 => 88,  175 => 66,  167 => 65,  163 => 64,  159 => 63,  155 => 62,  151 => 61,  147 => 60,  141 => 59,  115 => 36,  111 => 35,  107 => 34,  103 => 33,  99 => 32,  95 => 31,  91 => 30,  87 => 29,  83 => 28,  80 => 27,  72 => 26,  66 => 25,  62 => 24,  58 => 23,  54 => 22,  49 => 20,  45 => 19,  41 => 18,  37 => 17,  19 => 1,);
+        return array (  257 => 103,  249 => 102,  245 => 101,  241 => 100,  237 => 99,  233 => 98,  229 => 97,  221 => 96,  217 => 95,  211 => 94,  187 => 72,  179 => 71,  175 => 70,  171 => 69,  167 => 68,  163 => 67,  159 => 66,  153 => 65,  127 => 42,  123 => 41,  119 => 40,  115 => 39,  111 => 38,  107 => 37,  103 => 36,  99 => 35,  95 => 34,  92 => 33,  84 => 32,  78 => 31,  74 => 30,  70 => 29,  66 => 28,  61 => 26,  57 => 25,  53 => 24,  49 => 23,  27 => 4,  23 => 3,  19 => 1,);
     }
 }

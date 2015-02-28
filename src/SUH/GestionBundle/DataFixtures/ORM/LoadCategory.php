@@ -21,33 +21,33 @@ class LoadCategory implements FixtureInterface
     $arrayHandicap = array();
     $arrayAideExamen = array();
     
-    for($i=0;$i<40;$i++)
+    for($i=0;$i<400;$i++)
     {
         $etudiant=new Entity\Etudiant('nom'.$i,'prenom'.$i,'01/01/2015','mail'.$i,
                 'adresseFamiliale'.$i,'adresseEtudiante'.$i,'0606060606');
         $arrayEtudiant[]=$etudiant;
         $manager->persist($etudiant);
     }
-    for($i=0;$i<40;$i++)
+    for($i=0;$i<400;$i++)
     {
         $mdph=new Entity\Formation('diplome'.$i,'composante'.$i,'filiere'.$i,
                 1,'etablissement'.$i);
         $arrayFormation[]=$mdph;
         $manager->persist($mdph);
     }
-    for($i=0;$i<40;$i++)
+    for($i=0;$i<400;$i++)
     {
         $mdph=new Entity\Mdph($i%2,$i+2);
         $arrayMdph[]=$mdph;
         $manager->persist($mdph);
     }
-    for($i=0;$i<40;$i++)
+    for($i=0;$i<400;$i++)
     {
         $handicap=new Entity\Handicap('handicap '.$i);
         $arrayHandicap[]=$handicap;
         $manager->persist($handicap);
     }
-    for($i=0;$i<40;$i++)
+    for($i=0;$i<400;$i++)
     {
         $aideExamen=new Entity\AideExamen('$amenagement examen '.$i, $i%2, ($i.$i)%2,
                 'delocalisaiton examen '.$i,'01/01/2012','duree avis medical '.$i);
@@ -62,7 +62,7 @@ class LoadCategory implements FixtureInterface
     $arrayDatesAideExamen = array();
     $arrayEtudiantFormation = array();
    
-    for($i=0;$i<40;$i++)
+    for($i=0;$i<400;$i++)
     {
         $etudiantHandicape=new Entity\EtudiantHandicape($arrayEtudiant[$i],'qhandi '.$i,($i*3)%2,$i%2,
                 'amenagement etude '.$i,'taux invalidite '.$i,'suivi '.$i,'01/01/2016',
@@ -73,7 +73,7 @@ class LoadCategory implements FixtureInterface
     
     $manager->flush();
     
-    for($i=0;$i<40;$i++)
+    for($i=0;$i<400;$i++)
     {
         $datesAideExamen=new Entity\DatesAideExamen(
         $arrayEtudiantHandicape[$i],$arrayAideExamen[$i],null,null);
@@ -81,7 +81,7 @@ class LoadCategory implements FixtureInterface
         $manager->persist($datesAideExamen);
     }
     
-    for($i=0;$i<40;$i++)
+    for($i=0;$i<400;$i++)
     {
         $etudiantFormation=new Entity\EtudiantFormation(
                 $arrayEtudiant[$i],'2015',$arrayFormation[$i]);

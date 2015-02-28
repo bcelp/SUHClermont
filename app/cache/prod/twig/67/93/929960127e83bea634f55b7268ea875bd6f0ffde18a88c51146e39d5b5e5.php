@@ -51,8 +51,11 @@ class __TwigTemplate_6793929960127e83bea634f55b7268ea875bd6f0ffde18a88c51146e39d
                 <div id=\"divListe\" class=\"col-md-2\">
                     <div id=\"recherche\" class=\"row\">
                         <div class=\"form-group\">
-                            <form class=\"input-group\">
-                                <input class=\"form-control\" type=\"text\" placeholder=\"Rechercher...\">
+                            <form class=\"input-group\" action=\"";
+        // line 12
+        echo $this->env->getExtension('routing')->getPath("suh_get_etudiant_nomEtPrenom");
+        echo "\" method=\"GET\">
+                                <input name=\"chaine\" class=\"form-control\" type=\"text\" placeholder=\"Rechercher...\">
                                 <span class=\"input-group-btn\">
                                     <button type=\"submit\" href=\"#\" class=\"btn btn-md btn-primary\"> <span class=\"glyphicon glyphicon-zoom-in\"></span></button>
                                 </span>
@@ -61,13 +64,18 @@ class __TwigTemplate_6793929960127e83bea634f55b7268ea875bd6f0ffde18a88c51146e39d
                     </div>
                     
                     <!-- Affiche la liste : <div id=\"liste\"> </div>
-                        + le nombre de résultats : <div id=\"nbResultats> </div> -->
-                    ";
+                        + le nombre de résultats : <div id=\"nbResultats> </div> -->                   
+                ";
         // line 23
-        echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("SUHGestionBundle:Affichage:getListe"));
-        echo "                     
-                    
-                    <div id=\"gestionEtudiants\" class=\"row\">
+        if ((array_key_exists("listeEtudiantsHandicapes", $context) &&  !twig_test_empty((isset($context["listeEtudiantsHandicapes"]) ? $context["listeEtudiantsHandicapes"] : $this->getContext($context, "listeEtudiantsHandicapes"))))) {
+            // line 24
+            echo "                    ";
+            $this->env->loadTemplate("SUHGestionBundle:Default:liste.html.twig")->display(array_merge($context, array("listeEtudiantsHandicapes" => (isset($context["listeEtudiantsHandicapes"]) ? $context["listeEtudiantsHandicapes"] : $this->getContext($context, "listeEtudiantsHandicapes")))));
+            // line 25
+            echo "                ";
+        }
+        // line 26
+        echo "                    <div id=\"gestionEtudiants\" class=\"row\">
                         <button href=\"#\" class=\"btn btn-md btn-primary col-md-4\"> <span class=\"glyphicon glyphicon-plus\"></span></button>
                         <button href=\"#\" class=\"btn btn-md btn-primary col-md-4\"> <span class=\"glyphicon glyphicon-refresh\"></span></button>
                         <button href=\"#\" class=\"btn btn-md btn-primary col-md-4\"> <span class=\"glyphicon glyphicon-remove\"></span></button>
@@ -75,16 +83,36 @@ class __TwigTemplate_6793929960127e83bea634f55b7268ea875bd6f0ffde18a88c51146e39d
                 </div>  
                 <div id=\"affichage\" class=\"col-md-10\">
                 ";
-        // line 32
-        if ((array_key_exists("informationsEtudiant", $context) &&  !twig_test_empty((isset($context["informationsEtudiant"]) ? $context["informationsEtudiant"] : $this->getContext($context, "informationsEtudiant"))))) {
-            // line 33
-            echo "                    ";
-            $this->env->loadTemplate("SUHGestionBundle:Default:spoiler.html.twig")->display(array_merge($context, array("informationsEtudiant" => (isset($context["informationsEtudiant"]) ? $context["informationsEtudiant"] : $this->getContext($context, "informationsEtudiant")))));
-            // line 34
-            echo "                ";
-        }
-        // line 35
+        // line 36
         echo "                </div>
+                <script type=\"text/javascript\">
+                //dernier etudiant selectionne dans la liste
+                var last;
+                //couleur de fond dans la liste de l'étudiant(permet de passer du rouge à la couleur d'avance)
+                var lastColor;
+                \$(document).ready(function() {
+                //pour tous les liens de la liste
+                  \$(\"#liste ul li a\").on('click',function(event) {
+                    //l'url est celui du lien
+                    var url = \$(this).prop('href');
+                    //on stocke la couleur de base avant de la passer au rouge(afin de la remettre en état
+                    //au prochain clic
+                    lastColor=\$(this).css(\"background-color\");
+                    //le lien sélectionné devient rouge
+                    \$(this).css({'background-color':'red'});
+                    //si il y a déjà eu un étudiant selectionné sa couleur redevient celle d'origine
+                    if (!(typeof last === \"undefined\")) {
+                        \$(last).css({'background-color':lastColor});
+                    }      
+                    //le dernier étudiant sélectionné devient l'étudiant courant
+                    last=this;
+                    //on charge la div d'affichage d'un etudiant
+                    \$(\"#affichage\").load(url);
+                    //on évite la redirection
+                    event.preventDefault();
+                  });
+                });
+                </script>
             </div>
         </section>      
         <br/><br/>
@@ -104,6 +132,6 @@ class __TwigTemplate_6793929960127e83bea634f55b7268ea875bd6f0ffde18a88c51146e39d
 
     public function getDebugInfo()
     {
-        return array (  87 => 35,  84 => 34,  81 => 33,  79 => 32,  67 => 23,  48 => 6,  45 => 5,  37 => 3,  11 => 1,);
+        return array (  87 => 36,  78 => 26,  75 => 25,  72 => 24,  70 => 23,  56 => 12,  48 => 6,  45 => 5,  37 => 3,  11 => 1,);
     }
 }

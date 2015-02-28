@@ -110,7 +110,7 @@ class EtudiantHandicape
     public function __construct($etudiant,$qhandi,$rqth,$notificationSavs,$amenagementEtude,
             $tauxInvalidite,$suivi,$dateMaj,$descriptifComplementaire,$mdph,$handicap)
     {
-        $this->etudiant=$etudiant;
+        $this->setEtudiant($etudiant);
         $this->id=$etudiant->getId();
         $this->qhandi=$qhandi;
         $this->rqth=$rqth;

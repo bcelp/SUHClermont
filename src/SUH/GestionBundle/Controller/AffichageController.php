@@ -24,9 +24,8 @@ class AffichageController extends Controller
         
         $informationsEtudiant = $etudiantHandicapeRepository->getInformationsStudent($id);
         
-        return $this->render('SUHGestionBundle:Default:accueil.html.twig',array(
-            'informationsEtudiant'=>$informationsEtudiant,
-            'listeEtudiantsHandicapes'=>$this->getListeEtudiants(null)
+        return $this->render('SUHGestionBundle:Default:spoiler.html.twig',array(
+            'informationsEtudiant'=>$informationsEtudiant
         ));
     }     
     
