@@ -2,14 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/wamp/www/suhSymfony/src/SUH/GestionBundle/Controller/AffichageController.php</file>
-            <file>file:/C:/wamp/www/suhSymfony/src/SUH/GestionBundle/Entity/EtudiantHandicapeRepository.php</file>
-            <file>file:/C:/wamp/www/suhSymfony/src/SUH/GestionBundle/Entity/EtudiantHandicape.php</file>
-            <file>file:/C:/wamp/www/suhSymfony/src/SUH/GestionBundle/Resources/views/Default/spoiler.html.twig</file>
-            <file>file:/C:/wamp/www/suhSymfony/web/app.php</file>
-            <file>file:/C:/wamp/www/suhSymfony/src/SUH/GestionBundle/Resources/views/Default/affichageEtudiant.html.twig</file>
-            <file>file:/C:/wamp/www/suhSymfony/src/SUH/GestionBundle/Resources/views/Default/accueil.html.twig</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

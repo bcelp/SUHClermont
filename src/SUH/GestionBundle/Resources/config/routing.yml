@@ -6,3 +6,6 @@ suh_get_etudiant:
     path:   /get/{id}
     defaults: { _controller: SUHGestionBundle:Affichage:AfficherAccueilEtudiant }
     
+suh_get_etudiant_nomEtPrenom:
+    path:   /by
+    defaults: { _controller: SUHGestionBundle:Affichage:AfficherAccueilEtudiantRechercheNomOuPrenom }

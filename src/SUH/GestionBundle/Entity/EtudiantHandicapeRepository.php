@@ -22,8 +22,7 @@ class EtudiantHandicapeRepository extends EntityRepository
                 ->orderBy('e.nomEtudiant')
                 ->addOrderBy('e.prenomEtudiant')
                 ->getQuery()
-                ->getResult();
-       
+                ->getResult();       
     }
     
     public function getInformationsStudent($id)

@@ -22,6 +22,13 @@ class Etudiant
     private $id;
 
     /**
+     * 
+     * @ORM\OneToOne(targetEntity="SUH\GestionBundle\Entity\EtudiantHandicape",mappedBy="etudiant",cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $etudiantSpecialise;
+    
+    /**
      * @var string
      *
      * @ORM\Column(name="nomEtudiant", type="string", length=30)
@@ -68,10 +75,7 @@ class Etudiant
      *
      * @ORM\Column(name="telephone", type="string", length=20)
      */
-    private $telephone;
-
-    
-    
+    private $telephone;        
     
      /**
      * @ORM\OneToMany(targetEntity="SUH\GestionBundle\Entity\EtudiantFormation",mappedBy="etudiant",cascade={"persist"})
@@ -96,7 +100,21 @@ class Etudiant
         $this->adresseEtudiante=$adresseEtudiante;
         $this->telephone=$telephone;
         $this->listEtudiantFormation=new ArrayCollection();
+        $this->etudiantSpecialise=null;
     }
+    
+    public function setEtudiantSpecialise($etudiantSpecialise)
+    {
+        $this->etudiantSpecialise = $etudiantSpecialise;
+        
+        return $this;
+    }
+    
+    public function getEtudaintSpecialise()
+    {
+        return $this->etudiantSpecialise;
+    }
+    
     public function addListEtudiantFormation($listEtudiantFormation)
     {
         $this->listEtudiantFormation[] = $listEtudiantFormation;

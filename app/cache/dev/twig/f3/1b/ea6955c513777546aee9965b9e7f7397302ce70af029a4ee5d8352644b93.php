@@ -31,10 +31,10 @@ class __TwigTemplate_f31bea6955c513777546aee9965b9e7f7397302ce70af029a4ee5d83526
         // line 6
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/suhGestion/css/accueil.css"), "html", null, true);
         echo "\" type=\"text/css\"/>
-    <link rel=\"stylesheet\" href=\"";
+    <!--<link rel=\"stylesheet\" href=\"";
         // line 7
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/suhGestion/js/bootstrap.min.js"), "html", null, true);
-        echo "\"/>
+        echo "\"/>-->
     <title>";
         // line 8
         $this->displayBlock('title', $context, $blocks);

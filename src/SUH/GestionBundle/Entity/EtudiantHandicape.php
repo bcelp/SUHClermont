@@ -23,7 +23,7 @@ class EtudiantHandicape
     
     /**
      * 
-     * @ORM\OneToOne(targetEntity="SUH\GestionBundle\Entity\Etudiant",cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="SUH\GestionBundle\Entity\Etudiant",inversedBy="etudiantSpecialise",cascade={"persist"})
      * @ORM\JoinColumn(nullable=false,name="id",referencedColumnName="id")
      */
     private $etudiant;
@@ -172,7 +172,7 @@ class EtudiantHandicape
     public function setEtudiant($etudiant)
     {
         $this->etudiant = $etudiant;
-        
+        $this->etudiant->setEtudiantSpecialise($this);
         return $this;
     }
     

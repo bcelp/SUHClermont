@@ -51,8 +51,11 @@ class __TwigTemplate_6793929960127e83bea634f55b7268ea875bd6f0ffde18a88c51146e39d
                 <div id=\"divListe\" class=\"col-md-2\">
                     <div id=\"recherche\" class=\"row\">
                         <div class=\"form-group\">
-                            <form class=\"input-group\">
-                                <input class=\"form-control\" type=\"text\" placeholder=\"Rechercher...\">
+                            <form class=\"input-group\" action=\"";
+        // line 12
+        echo $this->env->getExtension('routing')->getPath("suh_get_etudiant_nomEtPrenom");
+        echo "\" method=\"GET\">
+                                <input name=\"chaine\" class=\"form-control\" type=\"text\" placeholder=\"Rechercher...\">
                                 <span class=\"input-group-btn\">
                                     <button type=\"submit\" href=\"#\" class=\"btn btn-md btn-primary\"> <span class=\"glyphicon glyphicon-zoom-in\"></span></button>
                                 </span>
@@ -61,13 +64,18 @@ class __TwigTemplate_6793929960127e83bea634f55b7268ea875bd6f0ffde18a88c51146e39d
                     </div>
                     
                     <!-- Affiche la liste : <div id=\"liste\"> </div>
-                        + le nombre de résultats : <div id=\"nbResultats> </div> -->
-                    ";
+                        + le nombre de résultats : <div id=\"nbResultats> </div> -->                   
+                ";
         // line 23
-        echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("SUHGestionBundle:Affichage:getListe"));
-        echo "                     
-                    
-                    <div id=\"gestionEtudiants\" class=\"row\">
+        if ((array_key_exists("listeEtudiantsHandicapes", $context) &&  !twig_test_empty((isset($context["listeEtudiantsHandicapes"]) ? $context["listeEtudiantsHandicapes"] : $this->getContext($context, "listeEtudiantsHandicapes"))))) {
+            // line 24
+            echo "                    ";
+            $this->env->loadTemplate("SUHGestionBundle:Default:liste.html.twig")->display(array_merge($context, array("listeEtudiantsHandicapes" => (isset($context["listeEtudiantsHandicapes"]) ? $context["listeEtudiantsHandicapes"] : $this->getContext($context, "listeEtudiantsHandicapes")))));
+            // line 25
+            echo "                ";
+        }
+        // line 26
+        echo "                    <div id=\"gestionEtudiants\" class=\"row\">
                         <button href=\"#\" class=\"btn btn-md btn-primary col-md-4\"> <span class=\"glyphicon glyphicon-plus\"></span></button>
                         <button href=\"#\" class=\"btn btn-md btn-primary col-md-4\"> <span class=\"glyphicon glyphicon-refresh\"></span></button>
                         <button href=\"#\" class=\"btn btn-md btn-primary col-md-4\"> <span class=\"glyphicon glyphicon-remove\"></span></button>
@@ -75,15 +83,15 @@ class __TwigTemplate_6793929960127e83bea634f55b7268ea875bd6f0ffde18a88c51146e39d
                 </div>  
                 <div id=\"affichage\" class=\"col-md-10\">
                 ";
-        // line 32
+        // line 33
         if ((array_key_exists("informationsEtudiant", $context) &&  !twig_test_empty((isset($context["informationsEtudiant"]) ? $context["informationsEtudiant"] : $this->getContext($context, "informationsEtudiant"))))) {
-            // line 33
+            // line 34
             echo "                    ";
             $this->env->loadTemplate("SUHGestionBundle:Default:spoiler.html.twig")->display(array_merge($context, array("informationsEtudiant" => (isset($context["informationsEtudiant"]) ? $context["informationsEtudiant"] : $this->getContext($context, "informationsEtudiant")))));
-            // line 34
+            // line 35
             echo "                ";
         }
-        // line 35
+        // line 36
         echo "                </div>
             </div>
         </section>      
@@ -104,6 +112,6 @@ class __TwigTemplate_6793929960127e83bea634f55b7268ea875bd6f0ffde18a88c51146e39d
 
     public function getDebugInfo()
     {
-        return array (  87 => 35,  84 => 34,  81 => 33,  79 => 32,  67 => 23,  48 => 6,  45 => 5,  37 => 3,  11 => 1,);
+        return array (  95 => 36,  92 => 35,  89 => 34,  87 => 33,  78 => 26,  75 => 25,  72 => 24,  70 => 23,  56 => 12,  48 => 6,  45 => 5,  37 => 3,  11 => 1,);
     }
 }

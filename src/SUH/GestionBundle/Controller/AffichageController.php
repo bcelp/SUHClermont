@@ -4,13 +4,17 @@ namespace SUH\GestionBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 
 class AffichageController extends Controller
 {
     public function AfficherAccueilAction()
     {
-        return $this->render('SUHGestionBundle:Default:accueil.html.twig',array());
-    }
+        
+        return $this->render('SUHGestionBundle:Default:accueil.html.twig',array(
+            'listeEtudiantsHandicapes'=>$this->getListeEtudiants(null)
+        ));
+    }  
     
     public function AfficherAccueilEtudiantAction($id)
     {
@@ -21,23 +25,34 @@ class AffichageController extends Controller
         $informationsEtudiant = $etudiantHandicapeRepository->getInformationsStudent($id);
         
         return $this->render('SUHGestionBundle:Default:accueil.html.twig',array(
-            'informationsEtudiant'=>$informationsEtudiant
+            'informationsEtudiant'=>$informationsEtudiant,
+            'listeEtudiantsHandicapes'=>$this->getListeEtudiants(null)
         ));
-    }
+    }     
     
-    
-    
-    public function getListeAction()
+    public function AfficherAccueilEtudiantRechercheNomOuPrenomAction(Request $request)
     {
-        $etudiantHandicapeRepository = $this->getDoctrine()
+        return $this->render('SUHGestionBundle:Default:accueil.html.twig',array(
+            'listeEtudiantsHandicapes'=>$this->getListeEtudiants($request->query->get('chaine'))
+        ));
+    }     
+    
+    public function getListeEtudiants($chaine)
+    {        
+        if(empty($chaine))
+        {
+            $etudiantHandicapeRepository = $this->getDoctrine()
                 ->getManager()
                 ->getRepository('SUHGestionBundle:EtudiantHandicape');
-        
-        $listeEtudiantsHandicapes = $etudiantHandicapeRepository->getAllIdNameSurname();
-  
-        return $this->render('SUHGestionBundle:Default:liste.html.twig',array(
-            'listeEtudiantsHandicapes'=>$listeEtudiantsHandicapes
-        ));
+            return $etudiantHandicapeRepository->getAllIdNameSurname();
+        }
+        else
+        {
+            $etudiantRepository = $this->getDoctrine()
+                ->getManager()
+                ->getRepository('SUHGestionBundle:Etudiant');
+            return $etudiantRepository->getListeEtudiantsParNomOuPrenom($chaine);
+        }        
     }
     
 }
