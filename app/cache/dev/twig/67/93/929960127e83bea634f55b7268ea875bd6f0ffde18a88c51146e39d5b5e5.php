@@ -99,7 +99,7 @@ class __TwigTemplate_6793929960127e83bea634f55b7268ea875bd6f0ffde18a88c51146e39d
                     //au prochain clic
                     lastColor=\$(this).css(\"background-color\");
                     //le lien sélectionné devient rouge
-                    \$(this).css({'background-color':'red'});
+                    \$(this).css({'background-color':'#FF866A'});
                     //si il y a déjà eu un étudiant selectionné sa couleur redevient celle d'origine
                     if (!(typeof last === \"undefined\")) {
                         \$(last).css({'background-color':lastColor});

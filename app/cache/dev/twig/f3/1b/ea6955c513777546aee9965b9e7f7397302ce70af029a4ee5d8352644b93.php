@@ -98,7 +98,7 @@ class __TwigTemplate_f31bea6955c513777546aee9965b9e7f7397302ce70af029a4ee5d83526
                             <li class=\"liensNavbar\"><a href=\"";
         // line 27
         echo $this->env->getExtension('routing')->getPath("suh_gestion_homepage");
-        echo "\">Importer Excel</a></li>
+        echo "\">Import/Export Excel</a></li>
                         </ul>
                         <ul class=\"nav navbar-nav navbar-right\">
                             <li id=\"deconnexion\"><a href=\"";

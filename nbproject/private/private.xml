@@ -4,7 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/wamp/www/suhSymfony/src/SUH/GestionBundle/Resources/views/Default/spoiler.html.twig</file>
+            <file>file:/C:/wamp/www/suhSymfony/src/SUH/GestionBundle/Resources/views/Default/base.html.twig</file>
             <file>file:/C:/wamp/www/suhSymfony/web/bundles/suhgestion/css/accueil.css</file>
+            <file>file:/C:/wamp/www/suhSymfony/src/SUH/GestionBundle/Entity/Etudiant.php</file>
         </group>
     </open-files>
 </project-private>

@@ -103,6 +103,17 @@ class Etudiant
         $this->etudiantSpecialise=null;
     }
     
+    public function getAge()
+    {
+        $dna = $this->dateNaissance->getTimestamp();
+        $now = time();
+
+        $age = date('Y',$now)-date('Y',$dna);
+        if(strcmp(date('md', $dna),date('md', $now))>0) $age--;
+
+        return $age;
+    }
+    
     public function setEtudiantSpecialise($etudiantSpecialise)
     {
         $this->etudiantSpecialise = $etudiantSpecialise;
