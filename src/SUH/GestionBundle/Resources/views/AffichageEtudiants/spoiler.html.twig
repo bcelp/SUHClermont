@@ -1,0 +1,129 @@
+<div class="spoiler">
+    <p id="etudiantNomPrenom">
+    {{informationsEtudiant[0].etudiant.nomEtudiant}}
+    {{informationsEtudiant[0].etudiant.prenomEtudiant}}
+    <hr/>
+    </p>
+    
+
+    <button class="btn btn-info form-control" title="informations etudiant handicape" type="button" 
+            onclick="
+                    if (document.getElementById('etudiantHandicape').style.display === 'none')
+                    {
+                        document.getElementById('etudiantHandicape').style.display = ''
+                    }
+                    else
+                    {
+                        document.getElementById('etudiantHandicape').style.display = 'none'
+                    }">
+        Etudiant en situation de handicap
+    </button>
+    <div id="etudiantHandicape" class="spoiler" style="display:none"> 
+        <table class="table table-bordered table-condensed">
+        <tbody>
+              <tr><td>numéro etudiant</td><td>{{informationsEtudiant[0].id}}</td></tr>
+              <tr><td>nom</td><td>{{informationsEtudiant[0].etudiant.nomEtudiant}}</td></tr>
+              <tr><td>prenom</td><td>{{informationsEtudiant[0].etudiant.prenomEtudiant}}</td></tr>
+              <tr><td>date de naissance</td><td>{{informationsEtudiant[0].etudiant.dateNaissance|date('d-m-Y')}}</td></tr>
+              <tr><td>âge</td><td>{{informationsEtudiant[0].etudiant.getAge()}} ans</td></tr>
+              <tr><td>mail</td><td>{{informationsEtudiant[0].etudiant.mail}}</td></tr>
+              <tr><td>adresse étudiante</td><td>{{informationsEtudiant[0].etudiant.adresseEtudiante}}</td></tr>
+              <tr><td>adresse familiale</td><td>{{informationsEtudiant[0].etudiant.adresseFamiliale}}</td></tr>
+              {% for handicap in informationsEtudiant[0].handicap %}                  
+                  <tr><td>handicap</td><td>{{handicap.nomHandicap}}</td></tr>
+              {% endfor %}                          
+              <tr><td>reconnaissance mdph</td><td>
+                      {% if informationsEtudiant[0].mdph.reconnaissanceMdph %} 
+                        <img id="logo" width="30" height="30" alt="SUH" src="{{asset('bundles/suhGestion/images/cocheVerte.png')}}"> 
+                      {% else %} 
+                        <img id="logo" width="30" height="30" alt="SUH" src="{{asset('bundles/suhGestion/images/cocheRouge.png')}}"> 
+                      {% endif %}</td></tr>
+              <tr><td>département mdph</td><td>{{informationsEtudiant[0].mdph.departementMdph}}</td></tr>  
+              <tr><td>qhandi</td><td>{{informationsEtudiant[0].qhandi}}</td></tr>
+              <tr><td>rqth</td><td>{% if informationsEtudiant[0].rqth %} 
+                        <img id="logo" width="30" height="30" alt="SUH" src="{{asset('bundles/suhGestion/images/cocheVerte.png')}}"> 
+                      {% else %} 
+                        <img id="logo" width="30" height="30" alt="SUH" src="{{asset('bundles/suhGestion/images/cocheRouge.png')}}"> 
+                      {% endif %}</td></tr>
+              <tr><td>notification savs</td><td>{% if informationsEtudiant[0].notificationSavs %} 
+                        <img id="logo" width="30" height="30" alt="SUH" src="{{asset('bundles/suhGestion/images/cocheVerte.png')}}"> 
+                      {% else %} 
+                        <img id="logo" width="30" height="30" alt="SUH" src="{{asset('bundles/suhGestion/images/cocheRouge.png')}}"> 
+                      {% endif %}</td></tr>
+              <tr><td>amenagement etudes</td><td>{{informationsEtudiant[0].amenagementEtude}}</td></tr>
+              <tr><td>suvi</td><td>{{informationsEtudiant[0].suivi}}</td></tr>
+              <tr><td>date dernière mise à jour</td><td>{{informationsEtudiant[0].dateMaj|date('d-m-Y')}}</td></tr>
+              <tr><td>descriptif complémentaire</td><td>{{informationsEtudiant[0].descriptifComplementaire}}</td></tr>
+        </tbody>
+    </table>
+    </div> 
+</div>
+
+
+<div class="spoiler">
+    <button class="btn btn-info form-control" title="informations etudiant formation" type="button" 
+            onclick="
+                    if (document.getElementById('etudiantFormation').style.display === 'none')
+                    {
+                        document.getElementById('etudiantFormation').style.display = ''
+                    }
+                    else
+                    {
+                        document.getElementById('etudiantFormation').style.display = 'none'
+                    }">
+        Formation de l'étudiant
+    </button>
+    <div id="etudiantFormation" class="spoiler" style="display:none"> 
+        <table class="table table-bordered table-condensed">
+        <tbody>
+            {% for etudiantFormation in informationsEtudiant[0].etudiant.listEtudiantFormation %}                
+              <tr><td>année</td><td>{{etudiantFormation.annee}}</td></tr>
+              <tr><td>diplome</td><td>{{etudiantFormation.formation.diplome}}</td></tr>
+              <tr><td>composante</td><td>{{etudiantFormation.formation.composante}}</td></tr>
+              <tr><td>filiere</td><td>{{etudiantFormation.formation.filiere}}</td></tr>
+              <tr><td>cycle</td><td>{{etudiantFormation.formation.cycle}}</td></tr>
+              <tr><td>nom de l'établissement</td><td>{{etudiantFormation.formation.etablissement}}</td></tr>
+            {% endfor %} 
+        </tbody>
+    </table>
+    </div> 
+</div>
+        
+<div class="spoiler">
+    <button class="btn btn-info form-control" title="informations etudiant aides examens" type="button" 
+            onclick="
+                    if (document.getElementById('etudiantAidesExamens').style.display === 'none')
+                    {
+                        document.getElementById('etudiantAidesExamens').style.display = ''
+                    }
+                    else
+                    {
+                        document.getElementById('etudiantAidesExamens').style.display = 'none'
+                    }">
+        Aides aux examens
+    </button>
+    <div id="etudiantAidesExamens" class="spoiler" style="display:none"> 
+        <table class="table table-bordered table-condensed">
+        <tbody>
+            {% for dateAideExamen in informationsEtudiant[0].datesAideExamen %}                
+              <tr><td>date début</td><td>{{dateAideExamen.dateDebut|date('d-m-Y')}}</td></tr>
+              <tr><td>date fin</td><td>{%if dateAideExamen.dateFin is empty %} - {% else %}{{dateAideExamen.dateFin|date('d-m-Y')}}{% endif %}</td></tr>
+              <tr><td>amenagement examen</td><td>{{dateAideExamen.aideExamen.amenagementExamens}}</td></tr>
+              <tr><td>temps majoré</td><td>{% if dateAideExamen.aideExamen.tempsMajore %} 
+                        <img id="logo" width="30" height="30" alt="SUH" src="{{asset('bundles/suhGestion/images/cocheVerte.png')}}"> 
+                      {% else %} 
+                        <img id="logo" width="30" height="30" alt="SUH" src="{{asset('bundles/suhGestion/images/cocheRouge.png')}}"> 
+                      {% endif %}</td></tr>
+              <tr><td>autres mesures</td><td>{% if dateAideExamen.aideExamen.autresMesures %} 
+                        <img id="logo" width="30" height="30" alt="SUH" src="{{asset('bundles/suhGestion/images/cocheVerte.png')}}"> 
+                      {% else %} 
+                        <img id="logo" width="30" height="30" alt="SUH" src="{{asset('bundles/suhGestion/images/cocheRouge.png')}}"> 
+                      {% endif %}</td></tr>
+              <tr><td>délocalisation examen</td><td>{{dateAideExamen.aideExamen.delocalisationExamen}}</td></tr>
+              <tr><td>date validité</td><td>{{dateAideExamen.aideExamen.dateValidite|date('d-m-Y')}}</td></tr>
+              <tr><td>durée avis médical</td><td>{{dateAideExamen.aideExamen.dureeAvisMedical}}</td></tr>
+            {% endfor %} 
+        </tbody>
+    </table>
+    </div> 
+</div>

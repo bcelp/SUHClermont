@@ -1,0 +1,74 @@
+<div class="spoiler">   
+    <button class="btn btn-warning form-control" title="Importation excel" type="button" 
+            onclick="
+                    if (document.getElementById('importExcel').style.display === 'none')
+                    {
+                        document.getElementById('importExcel').style.display = ''
+                    }
+                    else
+                    {
+                        document.getElementById('importExcel').style.display = 'none'
+                    }">
+        Importation Excel
+    </button>    
+    <div id="importExcel" class="spoiler" style="display:none"> 
+        Vous pouvez importer un fichier excel de 1Mo maximum<br/>
+        Dans le champs "nombre de ligne" doit être indiqué le nombre de lignes à insérer(ex: 300 étudiants = 300 lignes)<br/>
+        <p class="alert-danger">
+             /\ Attention /\ <br/>
+            1) Le fichier excel doit comporter les 32 colonnes suivantes dans l'ordre :
+                //colonnes ici
+            <br/>
+            2) L'importation effacera l'ancienne BDD, exportez l'ancienne si vous souhaitez la garder
+        </p>
+        <form method="POST" action="{{path('suh_import_export_excel')}}" enctype="multipart/form-data" 
+              onsubmit="return confirmation();">
+            <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
+            <input type="file" name="fichierExcel"/><br/>
+            <input id="nbLignes" name="nbLignes" type="number" placeholder="Nombre de ligne"/><br/>   
+            <button type="submit" class="btn btn-danger">Importer</button>
+        </form>
+    </div> 
+    
+              <script type="text/JavaScript">
+                function confirmation()
+                {
+                        var check1=confirm("###Voulez vous remplacer votre base de données par votre fichier Excel ?###");
+                        if (check1)
+                        {
+                                var check2=confirm("###Etes-vous sûr ? La base de données sera effacée !###");
+                                if (check2)
+                                {
+                                        return true;
+                                }
+                                else
+                                {
+                                        return false;
+                                }
+                        }
+                        else
+                        {
+                                return false;
+                        }
+                }
+                </script>
+    <button class="btn btn-warning form-control" title="Exportation excel" type="button" 
+            onclick="
+                    if (document.getElementById('exportExcel').style.display === 'none')
+                    {
+                        document.getElementById('exportExcel').style.display = ''
+                    }
+                    else
+                    {
+                        document.getElementById('exportExcel').style.display = 'none'
+                    }">
+        Exportation Excel
+    </button>
+    <div id="exportExcel" class="spoiler" style="display:none"> 
+        Vous pouvez exporter un fichier excel <br/>
+        Le fichier sera situé dans le répertoire "web" de l'application<br/>
+        <form method="POST" action="ok">
+            <button class="btn btn-danger" type="submit">Exporter la base de données</button>
+        </form>
+    </div> 
+</div>
