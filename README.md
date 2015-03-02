@@ -2,7 +2,7 @@
 
 ==============================================================================
 
-Installation (php défini en temps que variable d'environnement) :
+Installation (php défini en tant que variable d'environnement) :
 
 1)
 C:\wamp\www\suhSymfony>php app/console doctrine:schema:update --force
@@ -18,7 +18,7 @@ Mettre dans la table "etudiant" le champs "etudiantSpecialise_id" à null par d�
 
 
 3)
-C:\wamp\www\suhSymfony>php app/console doctrine:schema:update --force
+C:\wamp\www\suhSymfony>php app/console doctrine:fixtures:load
 -->remplit la base de données
 
 
