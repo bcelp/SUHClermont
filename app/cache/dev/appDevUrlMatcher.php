@@ -146,6 +146,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'SUH\\GestionBundle\\Controller\\AffichageController::AfficherAccueilEtudiantRechercheNomOuPrenomAction',  '_route' => 'suh_get_etudiant_nomEtPrenom',);
         }
 
+        // suh_import_export_excel
+        if ($pathinfo === '/importExportExcel') {
+            return array (  '_controller' => 'SUH\\GestionBundle\\Controller\\AffichageController::afficheImportExportExcelAction',  '_route' => 'suh_import_export_excel',);
+        }
+
         if (0 === strpos($pathinfo, '/log')) {
             if (0 === strpos($pathinfo, '/login')) {
                 // login

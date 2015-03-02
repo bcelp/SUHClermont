@@ -48,13 +48,13 @@ class __TwigTemplate_f31bea6955c513777546aee9965b9e7f7397302ce70af029a4ee5d83526
   ";
         // line 12
         $this->displayBlock('header', $context, $blocks);
-        // line 39
+        // line 40
         echo "  <!-- FIN HEADER -->
   
   ";
-        // line 41
+        // line 42
         $this->displayBlock('body', $context, $blocks);
-        // line 44
+        // line 45
         echo "</html>
 ";
     }
@@ -95,14 +95,18 @@ class __TwigTemplate_f31bea6955c513777546aee9965b9e7f7397302ce70af029a4ee5d83526
         // line 26
         echo $this->env->getExtension('routing')->getPath("suh_gestion_homepage");
         echo "\">Statistiques</a></li>
-                            <li class=\"liensNavbar\"><a href=\"";
+                            <li id=\"rechercheAvancee\" class=\"liensNavbar\"><a href=\"";
         // line 27
+        echo $this->env->getExtension('routing')->getPath("suh_gestion_homepage");
+        echo "\">Recherche avancée</a></li>
+                            <li class=\"liensNavbar\"><a href=\"";
+        // line 28
         echo $this->env->getExtension('routing')->getPath("suh_gestion_homepage");
         echo "\">Import/Export Excel</a></li>
                         </ul>
                         <ul class=\"nav navbar-nav navbar-right\">
                             <li id=\"deconnexion\"><a href=\"";
-        // line 30
+        // line 31
         echo $this->env->getExtension('routing')->getPath("logout");
         echo "\">Deconnexion</a></li>
                         </ul>
@@ -115,10 +119,10 @@ class __TwigTemplate_f31bea6955c513777546aee9965b9e7f7397302ce70af029a4ee5d83526
   ";
     }
 
-    // line 41
+    // line 42
     public function block_body($context, array $blocks = array())
     {
-        // line 42
+        // line 43
         echo "      
   ";
     }
@@ -135,6 +139,6 @@ class __TwigTemplate_f31bea6955c513777546aee9965b9e7f7397302ce70af029a4ee5d83526
 
     public function getDebugInfo()
     {
-        return array (  122 => 42,  119 => 41,  106 => 30,  100 => 27,  96 => 26,  92 => 25,  82 => 18,  78 => 17,  72 => 13,  69 => 12,  63 => 9,  58 => 44,  56 => 41,  52 => 39,  50 => 12,  44 => 9,  40 => 8,  36 => 7,  32 => 6,  28 => 5,  22 => 1,);
+        return array (  126 => 43,  123 => 42,  110 => 31,  104 => 28,  100 => 27,  96 => 26,  92 => 25,  82 => 18,  78 => 17,  72 => 13,  69 => 12,  63 => 9,  58 => 45,  56 => 42,  52 => 40,  50 => 12,  44 => 9,  40 => 8,  36 => 7,  32 => 6,  28 => 5,  22 => 1,);
     }
 }

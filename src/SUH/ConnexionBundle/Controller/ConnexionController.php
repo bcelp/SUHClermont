@@ -9,7 +9,7 @@ use Symfony\Component\Security\Core\SecurityContext;
 class ConnexionController extends Controller
 {
     /**
-     * 
+     * gère l'authentification
      * @param Request $request
      */
     public function loginAction(Request $request)

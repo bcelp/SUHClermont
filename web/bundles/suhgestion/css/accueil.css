@@ -33,6 +33,11 @@ header
     font-size: 18px;
 }
 
+#rechercheAvancee:hover
+{
+    background-color: #BFC34E;
+}
+
 #deconnexion
 {
     font-size: 18px;
@@ -151,4 +156,10 @@ header
 .spoiler table tbody tr:nth-child(odd) {background: #d8d8d8}
 
 
+/* IMPORT EXPORT EXCEL VUE */
 
+#importExcel, #exportExcel
+{
+    text-align: center;
+    font-size:16px;
+}

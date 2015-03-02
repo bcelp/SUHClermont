@@ -9,3 +9,7 @@ suh_get_etudiant:
 suh_get_etudiant_nomEtPrenom:
     path:   /by
     defaults: { _controller: SUHGestionBundle:Affichage:AfficherAccueilEtudiantRechercheNomOuPrenom }
+
+suh_import_export_excel:
+    path: /importExportExcel
+    defaults: { _controller: SUHGestionBundle:Affichage:afficheImportExportExcel }
