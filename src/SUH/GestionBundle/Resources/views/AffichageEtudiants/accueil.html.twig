@@ -66,4 +66,7 @@
         </section>      
         <br/><br/>
     </body>
+    {% if tab is defined %}
+       {{dump(tab)}}
+    {% endif %}
 {% endblock %}

@@ -77,10 +77,11 @@
         <table class="table table-bordered table-condensed">
         <tbody>
             {% for etudiantFormation in informationsEtudiant[0].etudiant.listEtudiantFormation %}                
-              <tr><td>année</td><td>{{etudiantFormation.annee}}</td></tr>
+              <tr><td>année scolaire</td><td>{{etudiantFormation.anneeScolaire}}</td></tr>
               <tr><td>diplome</td><td>{{etudiantFormation.formation.diplome}}</td></tr>
               <tr><td>composante</td><td>{{etudiantFormation.formation.composante}}</td></tr>
               <tr><td>filiere</td><td>{{etudiantFormation.formation.filiere}}</td></tr>
+              <tr><td>année d'étude</td><td>{{etudiantFormation.formation.anneeEtude}}</td></tr>
               <tr><td>cycle</td><td>{{etudiantFormation.formation.cycle}}</td></tr>
               <tr><td>nom de l'établissement</td><td>{{etudiantFormation.formation.etablissement}}</td></tr>
             {% endfor %} 

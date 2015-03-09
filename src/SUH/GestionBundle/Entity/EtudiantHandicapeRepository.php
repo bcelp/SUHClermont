@@ -48,4 +48,24 @@ class EtudiantHandicapeRepository extends EntityRepository
                 ->getResult();
     }
     
+    public function getAllStudentsInformations()
+    {        
+        return $this->createQueryBuilder('eh')
+                ->join('eh.etudiant','etudiant')
+                ->addSelect('etudiant')
+                ->join('etudiant.listEtudiantFormation','lef')
+                ->addSelect('lef')
+                ->join('lef.formation','formation')
+                ->addSelect('formation')
+                ->join('eh.mdph','mdph')
+                ->addSelect('mdph')
+                ->join('eh.handicap','handicap')
+                ->addSelect('handicap')
+                ->join('eh.datesAideExamen','dae')
+                ->addSelect('dae')
+                ->join('dae.aideExamen','aideExamen')
+                ->addSelect('aideExamen')
+                ->getQuery()
+                ->getResult();
+    }
 }

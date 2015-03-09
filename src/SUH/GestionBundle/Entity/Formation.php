@@ -56,19 +56,27 @@ class Formation
      */
     private $etablissement;
     
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="anneeEtude", type="smallint")
+     */
+    private $anneeEtude;
+    
     
     
     /* ====================================================================== */
     /* ====================================================================== */
     /* ====================================================================== */
 
-    public function __construct($diplome,$composante,$filiere,$cycle,$etablissement)
+    public function __construct($diplome,$composante,$filiere,$cycle,$etablissement,$anneeEtude)
     {
         $this->diplome=$diplome;
         $this->composante=$composante;
         $this->filiere=$filiere;
         $this->cycle=$cycle;
         $this->etablissement=$etablissement;
+        $this->anneeEtude = $anneeEtude;
     }
     
 
@@ -195,6 +203,29 @@ class Formation
     public function getEtablissement()
     {
         return $this->etablissement;
+    }
+    
+    /**
+     * Set cycle
+     *
+     * @param integer $cycle
+     * @return Formation
+     */
+    public function setAnneeEtude($anneeEtude)
+    {
+        $this->anneeEtude = $anneeEtude;
+
+        return $this;
+    }
+
+    /**
+     * Get cycle
+     *
+     * @return integer 
+     */
+    public function getAnneeEtude()
+    {
+        return $this->anneeEtude;
     }
     
 }

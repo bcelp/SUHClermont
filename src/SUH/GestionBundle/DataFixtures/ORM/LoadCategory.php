@@ -30,10 +30,10 @@ class LoadCategory implements FixtureInterface
     }
     for($i=0;$i<400;$i++)
     {
-        $mdph=new Entity\Formation('diplome'.$i,'composante'.$i,'filiere'.$i,
-                1,'etablissement'.$i);
-        $arrayFormation[]=$mdph;
-        $manager->persist($mdph);
+        $formation=new Entity\Formation('diplome'.$i,'composante'.$i,'filiere'.$i,
+                1,'etablissement'.$i,1);
+        $arrayFormation[]=$formation;
+        $manager->persist($formation);
     }
     for($i=0;$i<400;$i++)
     {

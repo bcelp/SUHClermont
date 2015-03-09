@@ -81,7 +81,7 @@ class AffichageController extends Controller
      * @param Request $request
      * @return type
      */
-    public function afficheImportExportExcelAction(Request $request)
+    public function afficheImportExportPageAction(Request $request)
     {
         return $this->render('SUHGestionBundle:AffichageEtudiants:accueil.html.twig',array(
             'listeEtudiantsHandicapes'=>$this->getListeEtudiants($request->query->get('chaine')),

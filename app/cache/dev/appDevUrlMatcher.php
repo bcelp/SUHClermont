@@ -146,9 +146,22 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'SUH\\GestionBundle\\Controller\\AffichageController::AfficherAccueilEtudiantRechercheNomOuPrenomAction',  '_route' => 'suh_get_etudiant_nomEtPrenom',);
         }
 
-        // suh_import_export_excel
-        if ($pathinfo === '/importExportExcel') {
-            return array (  '_controller' => 'SUH\\GestionBundle\\Controller\\AffichageController::afficheImportExportExcelAction',  '_route' => 'suh_import_export_excel',);
+        if (0 === strpos($pathinfo, '/importEx')) {
+            // suh_import_export_page
+            if ($pathinfo === '/importExportExcel') {
+                return array (  '_controller' => 'SUH\\GestionBundle\\Controller\\AffichageController::afficheImportExportPageAction',  '_route' => 'suh_import_export_page',);
+            }
+
+            // suh_import_page
+            if ($pathinfo === '/importExcel') {
+                return array (  '_controller' => 'SUH\\GestionBundle\\Controller\\ExcelController::importExcelAction',  '_route' => 'suh_import_page',);
+            }
+
+        }
+
+        // suh_export_page
+        if ($pathinfo === '/exportExcel') {
+            return array (  '_controller' => 'SUH\\GestionBundle\\Controller\\ExcelController::exportExcelAction',  '_route' => 'suh_export_page',);
         }
 
         if (0 === strpos($pathinfo, '/log')) {

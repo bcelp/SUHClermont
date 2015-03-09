@@ -21,9 +21,9 @@ class EtudiantFormation
 
     /**
      * @ORM\Id
-     * @ORM\Column(name="annee", type="string", length=4)
+     * @ORM\Column(name="anneeScolaire", type="string", length=4)
      */
-    private $annee;
+    private $anneeScolaire;
 
     /**
      * @ORM\ManyToOne(targetEntity="SUH\GestionBundle\Entity\Formation",cascade={"persist"})
@@ -35,10 +35,10 @@ class EtudiantFormation
     /* ====================================================================== */
     /* ====================================================================== */
     
-    public function __construct($etudiant,$annee,$formation)
+    public function __construct($etudiant,$anneeScolaire,$formation)
     {
         $this->setEtudiant($etudiant);
-        $this->annee=$annee;
+        $this->anneeScolaire=$anneeScolaire;
         $this->setFormation($formation);
     }
     
@@ -68,15 +68,15 @@ class EtudiantFormation
     
     
 
-    public function setAnnee($annee)
+    public function setAnneeScolaire($anneeScolaire)
     {
-        $this->annee = $annee;
+        $this->anneeScolaire = $anneeScolaire;
 
         return $this;
     }
 
-    public function getAnnee()
+    public function getAnneeScolaire()
     {
-        return $this->annee;
+        return $this->anneeScolaire;
     }
 }

@@ -1,4 +1,8 @@
-<div class="spoiler">   
+<div class="spoiler"> 
+    
+     <!--  ================== IMPORTATION EXCEL ================== -->
+     
+     
     <button class="btn btn-warning form-control" title="Importation excel" type="button" 
             onclick="
                     if (document.getElementById('importExcel').style.display === 'none')
@@ -21,37 +25,15 @@
             <br/>
             2) L'importation effacera l'ancienne BDD, exportez l'ancienne si vous souhaitez la garder
         </p>
-        <form method="POST" action="{{path('suh_import_export_excel')}}" enctype="multipart/form-data" 
-              onsubmit="return confirmation();">
+        <form method="POST" action="{{path('suh_import_export_page')}}" enctype="multipart/form-data" 
+              onsubmit="return confirmationImport();">
             <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
             <input type="file" name="fichierExcel"/><br/>
             <input id="nbLignes" name="nbLignes" type="number" placeholder="Nombre de ligne"/><br/>   
             <button type="submit" class="btn btn-danger">Importer</button>
         </form>
-    </div> 
-    
-              <script type="text/JavaScript">
-                function confirmation()
-                {
-                        var check1=confirm("###Voulez vous remplacer votre base de données par votre fichier Excel ?###");
-                        if (check1)
-                        {
-                                var check2=confirm("###Etes-vous sûr ? La base de données sera effacée !###");
-                                if (check2)
-                                {
-                                        return true;
-                                }
-                                else
-                                {
-                                        return false;
-                                }
-                        }
-                        else
-                        {
-                                return false;
-                        }
-                }
-                </script>
+    </div>     
+              
     <button class="btn btn-warning form-control" title="Exportation excel" type="button" 
             onclick="
                     if (document.getElementById('exportExcel').style.display === 'none')
@@ -64,11 +46,59 @@
                     }">
         Exportation Excel
     </button>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <!--  ================== EXPORTATION EXCEL ================== -->
     <div id="exportExcel" class="spoiler" style="display:none"> 
         Vous pouvez exporter un fichier excel <br/>
         Le fichier sera situé dans le répertoire "web" de l'application<br/>
-        <form method="POST" action="ok">
+        <form method="POST" action="{{path('suh_export_page')}}" enctype="multipart/form-data" 
+              onsubmit="return confirmationExport();">
             <button class="btn btn-danger" type="submit">Exporter la base de données</button>
         </form>
+       
     </div> 
 </div>
+              
+<script type="text/JavaScript">
+    function confirmationImport()
+    {
+        var check1=confirm("###Voulez vous remplacer votre base de données par votre fichier Excel ?###");
+        if (check1)
+        {
+            var check2=confirm("###Etes-vous sûr ? La base de données sera effacée !###");
+            if (check2)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
+    function confirmationExport()
+    {
+        if(confirm("###Voulez vous exporter votre base de données ? le fichier excel se situera dans le dossier \"web\" de l'application###"))
+        {
+            return true;
+        }
+        return false;
+    }
+</script>              
+              
+              
