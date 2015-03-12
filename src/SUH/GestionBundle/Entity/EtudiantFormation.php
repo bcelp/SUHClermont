@@ -14,8 +14,8 @@ class EtudiantFormation
 {
     /**
      * @ORM\Id
-     * @ORM\ManyToOne(targetEntity="SUH\GestionBundle\Entity\Etudiant",inversedBy="listEtudiantFormation")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="SUH\GestionBundle\Entity\Etudiant",inversedBy="listEtudiantFormation",cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false,onDelete="CASCADE")
      */
     private $etudiant;
 
@@ -27,7 +27,7 @@ class EtudiantFormation
 
     /**
      * @ORM\ManyToOne(targetEntity="SUH\GestionBundle\Entity\Formation",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false,onDelete="CASCADE")
      */
     private $formation;
 

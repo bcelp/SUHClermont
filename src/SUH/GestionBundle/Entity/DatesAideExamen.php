@@ -15,13 +15,14 @@ class DatesAideExamen
     /**
      * @ORM\Id
      * @ORM\ManyToOne(targetEntity="SUH\GestionBundle\Entity\EtudiantHandicape",inversedBy="datesAideExamen",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false,onDelete="CASCADE")
      */
     private $etudiantHandicape;
 
     /**
      * @ORM\Id
      * @ORM\ManyToOne(targetEntity="SUH\GestionBundle\Entity\AideExamen",cascade={"persist"})
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $aideExamen;
 

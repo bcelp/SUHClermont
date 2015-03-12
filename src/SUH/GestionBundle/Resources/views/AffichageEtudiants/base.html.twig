@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="{{asset('bundles/suhGestion/css/accueil.css')}}" type="text/css"/>
     <!--<link rel="stylesheet" href="{{asset('bundles/suhGestion/js/bootstrap.min.js')}}"/>-->
     <script type="text/javascript" src="{{asset('bundles/suhGestion/js/jquery.min.js')}}"/></script> 
+    <script type="text/javascript" src="{{asset('bundles/suhGestion/js/boutonsGestionEtudiant.js')}}"></script>
+    <script type="text/javascript" src="{{asset('bundles/suhGestion/js/confirmations.js')}}"></script>
     <title>{% block title %} Header {% endblock %}</title>
   </head>
   <!-- HEADER : logo SUH + navbar (accueil, statistiques, deconnexion -->
@@ -22,7 +24,7 @@
                   <nav class="navbar navbar-default">
                     <div class="container-fluid">
                         <ul class="nav navbar-nav">
-                            <li class="liensNavbar"><a href="{{path('suh_gestion_homepage')}}">Accueil</a></li>
+                            <li class="liensNavbar"><a id="accueil" href="{{path('suh_gestion_homepage')}}">Accueil</a></li>
                             <li class="liensNavbar"><a href="{{path('suh_gestion_homepage')}}">Statistiques</a></li>
                             <li id="rechercheAvancee" class="liensNavbar"><a href="{{path('suh_gestion_homepage')}}">Recherche avancée</a></li>
                             <li class="liensNavbar"><a href="{{path('suh_import_export_page')}}">Import/Export Excel</a></li>

@@ -12,6 +12,11 @@ use Doctrine\ORM\EntityRepository;
  */
 class EtudiantHandicapeRepository extends EntityRepository
 {
+    /**
+     * retourne tous les id, noms et prénoms des étudiants handicapés de la BDD 
+     * (utilisé pour l'affichage de la liste
+     * @return type
+     */
     public function getAllIdNameSurname()
     {
         return $this->_em->createQueryBuilder()
@@ -25,6 +30,12 @@ class EtudiantHandicapeRepository extends EntityRepository
                 ->getResult();       
     }
     
+    /**
+     * retourne toutes les informations relatives à un étudiant handicapé identifié par son id
+     * (utilisé pour l'affichage d'un étudiant)
+     * @param type $id
+     * @return type
+     */
     public function getInformationsStudent($id)
     {
         return $this->createQueryBuilder('eh')
@@ -48,6 +59,11 @@ class EtudiantHandicapeRepository extends EntityRepository
                 ->getResult();
     }
     
+    /**
+     * Retourne toutes les informations de tous les étudiants handicapés de la BDD
+     * (utilisé pour l'exportation Excel)
+     * @return type
+     */
     public function getAllStudentsInformations()
     {        
         return $this->createQueryBuilder('eh')
@@ -67,5 +83,21 @@ class EtudiantHandicapeRepository extends EntityRepository
                 ->addSelect('aideExamen')
                 ->getQuery()
                 ->getResult();
+    }
+    
+    /**
+     * Permet de supprimer un étudiant handicapé identifié par son $id
+     * @param type $id
+     */
+    public function supprimerEtudiantHandicape($id)
+    {
+        $qb = $this->_em->createQueryBuilder();
+        $qb->delete('EtudiantFormation','ef')
+            ->where('ef.etudiant.id',':id')
+            ->setParamete('id', $id);
+        /*$qb->delete('Etudiant','e')
+            ->where('e.id',':id')
+            ->setParamete('id', $id)*/
+            
     }
 }

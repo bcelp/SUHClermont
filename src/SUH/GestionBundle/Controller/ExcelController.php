@@ -4,8 +4,6 @@ namespace SUH\GestionBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Request;
-use PHPExcelClasses\PHPExcel;
 
 class ExcelController extends Controller
 {    
@@ -34,11 +32,21 @@ class ExcelController extends Controller
     }
     
     public function exportExcelAction()
-    {
+    {        
+        
+        //nombre d'étudiants
+        $j=1;
+        //vérifie si l'étudiant a plus d'une formation/handicap/aideExamen (si la boucle foreach de chaque a déjà eu lieu
+        //à la fin de la première itération le boolean passe à true
+        //si une nouvelle boucle a lieu, une condition vérifiant le booleen à true incrémente j
+        $bool=false;   
+        
         //Récupération de tous les étudiants et de leurs informations
         $etudiantHandicapeRepository = $this->getDoctrine()
                 ->getManager()
                 ->getRepository('SUHGestionBundle:EtudiantHandicape');
+        
+        
         $listeEtudiants = $etudiantHandicapeRepository->getAllStudentsInformations();
         
         
@@ -53,108 +61,127 @@ class ExcelController extends Controller
                 ->setKeywords("office 2005 openxml php")
                 ->setCategory("Test result file");
         
-        $phpExcelObject->setActiveSheetIndex(0);
-        //nombre d'étudiants
-        $i=1;
-        //compteur formation/mdph/autres par étudiant
-        $j=1;
-        for($nbEtudiants=0;$nbEtudiants<count($listeEtudiants);$nbEtudiants++)
+        
+        
+        for($indexEtudiantCourant=0;$indexEtudiantCourant<count($listeEtudiants);$indexEtudiantCourant++)
         {
             //Informations étudiant
             $phpExcelObject
-                ->setCellValue('A'+$i, $listeEtudiants[$i]->getNomEtudiant())
-                ->setCellValue('B'+$i, $listeEtudiants[$i]->getPrenomEtudiant())
-                ->setCellValue('C'+$i, $listeEtudiants[$i]->getId())
-                ->setCellValue('D'+$i, $listeEtudiants[$i]->getEtudiant()->getDateNaissance())
-                ->setCellValue('E'+$i, $listeEtudiants[$i]->getEtudiant()->getAge())                      
-                ->setCellValue('G'+$i, $listeEtudiants[$i]->getEtudiant()->getAdresseMail())
-                ->setCellValue('H'+$i, $listeEtudiants[$i]->getEtudiant()->getTelephone())
-                ->setCellValue('I'+$i, $listeEtudiants[$i]->getEtudiant()->getAdresseFamiliale())
-                ->setCellValue('J'+$i, $listeEtudiants[$i]->getEtudiant()->getAdresseEtudiante());
+                ->setActiveSheetIndex(0)
+                ->setCellValue('A'.$j, $listeEtudiants[$indexEtudiantCourant]->getEtudiant()->getNomEtudiant())
+                ->setCellValue('B'.$j, $listeEtudiants[$indexEtudiantCourant]->getEtudiant()->getPrenomEtudiant())
+                ->setCellValue('C'.$j, $listeEtudiants[$indexEtudiantCourant]->getEtudiant()->getId())
+                ->setCellValue('D'.$j, $listeEtudiants[$indexEtudiantCourant]->getEtudiant()->getDateNaissance()->format('d/m/Y'))
+                ->setCellValue('E'.$j, $listeEtudiants[$indexEtudiantCourant]->getEtudiant()->getAge())                      
+                ->setCellValue('G'.$j, $listeEtudiants[$indexEtudiantCourant]->getEtudiant()->getMail())
+                ->setCellValue('H'.$j, 'n°'.$listeEtudiants[$indexEtudiantCourant]->getEtudiant()->getTelephone())
+                ->setCellValue('I'.$j, $listeEtudiants[$indexEtudiantCourant]->getEtudiant()->getAdresseFamiliale())
+                ->setCellValue('J'.$j, $listeEtudiants[$indexEtudiantCourant]->getEtudiant()->getAdresseEtudiante());
             
             //informations étudiant en situation de handicap
             $phpExcelObject
-                ->setCellValue('K'+$i, $listeEtudiants[$i]->getNomEtudiant())
-                ->setCellValue('L'+$i, $listeEtudiants[$i]->getPrenomEtudiant())
-                ->setCellValue('M'+$i, $listeEtudiants[$i]->getId())
-                ->setCellValue('N'+$i, $listeEtudiants[$i]->getEtudiant()->getDateNaissance())
-                ->setCellValue('O'+$i, $listeEtudiants[$i]->getEtudiant()->getAge())                      
-                ->setCellValue('P'+$i, $listeEtudiants[$i]->getEtudiant()->getAdresseMail())
-                ->setCellValue('Q'+$i, $listeEtudiants[$i]->getEtudiant()->getTelephone())
-                ->setCellValue('R'+$i, $listeEtudiants[$i]->getEtudiant()->getAdresseFamiliale())
-                ->setCellValue('S'+$i, $listeEtudiants[$i]->getEtudiant()->getAdresseEtudiante());
+                ->setActiveSheetIndex(0)
+                ->setCellValue('K'.$j, $listeEtudiants[$indexEtudiantCourant]->getQhandi())
+                ->setCellValue('L'.$j, $listeEtudiants[$indexEtudiantCourant]->getRqth())
+                ->setCellValue('M'.$j, $listeEtudiants[$indexEtudiantCourant]->getNotificationSavs())
+                ->setCellValue('N'.$j, $listeEtudiants[$indexEtudiantCourant]->getAmenagementEtude())
+                ->setCellValue('O'.$j, $listeEtudiants[$indexEtudiantCourant]->getTauxInvalidite())
+                ->setCellValue('P'.$j, $listeEtudiants[$indexEtudiantCourant]->getSuivi())
+                ->setCellValue('Q'.$j, $listeEtudiants[$indexEtudiantCourant]->getDateMaj()->format('d/m/Y'))
+                ->setCellValue('R'.$j, $listeEtudiants[$indexEtudiantCourant]->getDescriptifComplementaire());
             
-                $j = $i;
-                foreach($listeEtudiants[$i]->getEtudiant()->getListEtudiant() as $etudiantFormation)
-                {
-                    $phpExcelObject
-                        ->setCellValue('K'+$j, $etudiantFormation->getFormation()->getEtablissement())
-                        ->setCellValue('L'+$j, $etudiantFormation->getFormation()->getComposante())
-                        ->setCellValue('M'+$j, $etudiantFormation->getFormation()->getDiplome())
-                        ->setCellValue('N'+$j, $etudiantFormation->getFormation()->getAnneeEtude())
-                        ->setCellValue('O'+$j, $etudiantFormation->getFormation()->getFiliere())  
-                        ->setCellValue('O'+$j, $etudiantFormation->getFormation()->getCycle());
-                    $j++;
-                }
-                foreach($listeEtudiants[$i]->getHandicap() as $handicap)
-                {
-                    $phpExcelObject
-                        ->setCellValue('K'+$j, $handicap->getNom());
-                    $j++;
-                }
-                foreach($listeEtudiants[$i]->getHandicap() as $handicap)
-                {
-                    $phpExcelObject
-                        ->setCellValue('K'+$j, $handicap->getNom());
-                    $j++;
-                }
-                
-                
-                
-                $i = $j;
-        }
-        
-        
-        /*for($i=0;$i<count($listeEtudiants);$i++)
-        {
+            //informations mdph
             $phpExcelObject
-                ->setCellValue('A'+$i, $listeEtudiants[$i]->getNomEtudiant())
-                ->setCellValue('B'+$i, $listeEtudiants[$i]->getPrenomEtudiant())
-                ->setCellValue('C'+$i, $listeEtudiants[$i]->getId())
-                ->setCellValue('D'+$i, $listeEtudiants[$i]->getEtudiant()->getDateNaissance())
-                ->setCellValue('E'+$i, $listeEtudiants[$i]->getEtudiant()->getAge())
-                ->setCellValue('F'+$i, $listeEtudiants[$i]->getMdph()->getQhandi())      
-                ->setCellValue('G'+$i, $listeEtudiants[$i]->getEtudiant()->getAdresseMail())
-                ->setCellValue('H'+$i, $listeEtudiants[$i]->getEtudiant()->getTelephone())
-                ->setCellValue('I'+$i, $listeEtudiants[$i]->getEtudiant()->getAdresseFamiliale())
-                ->setCellValue('J'+$i, $listeEtudiants[$i]->getEtudiant()->getAdresseEtudiante());
-                for($j=0;$j<count($listeEtudiants[$i]->getEtudiant()->getListEtudiant());$j++)
+                ->setActiveSheetIndex(0)
+                ->setCellValue('S'.$j, $listeEtudiants[$indexEtudiantCourant]->getMdph()->getReconnaissanceMdph())
+                ->setCellValue('T'.$j, $listeEtudiants[$indexEtudiantCourant]->getMdph()->getDepartementMdph());
+            
+            //informations formation étudiant        
+            foreach($listeEtudiants[$indexEtudiantCourant]->getEtudiant()->getListEtudiantFormation() as $etudiantFormation)
+            {
+                //est ce que la boucle a déjà eu lieu ? si oui il faut écrire une ligne plus bas pour ne pas effacer
+                //les informations déjà présentes
+                if($bool==true)
+                   {
+                       $j++;
+                   }
+                   else
+                   {
+                       $bool=true;
+                   }
+                   
+                    $phpExcelObject
+                        ->setActiveSheetIndex(0)
+                        ->setCellValue('U'.$j, $etudiantFormation->getAnneeScolaire())
+                        ->setCellValue('V'.$j, $etudiantFormation->getFormation()->getEtablissement())
+                        ->setCellValue('W'.$j, $etudiantFormation->getFormation()->getComposante())
+                        ->setCellValue('X'.$j, $etudiantFormation->getFormation()->getDiplome())
+                        ->setCellValue('Y'.$j, $etudiantFormation->getFormation()->getAnneeEtude())
+                        ->setCellValue('Z'.$j, $etudiantFormation->getFormation()->getFiliere())  
+                        ->setCellValue('AA'.$j, $etudiantFormation->getFormation()->getCycle());
+                   
+            }
+            $bool=false;
+            
+            //informations handicap   
+            foreach($listeEtudiants[$indexEtudiantCourant]->getHandicap() as $handicap)
+            {
+                //est ce que la boucle a déjà eu lieu ? si oui il faut écrire une ligne plus bas pour ne pas effacer
+                //les informations déjà présentes
+                if($bool==true)
+                   {
+                       $j++;
+                   }
+                   else
+                   {
+                       $bool=true;
+                   }
+                   
+                    $phpExcelObject
+                        ->setActiveSheetIndex(0)
+                        ->setCellValue('AB'.$j, $handicap->getNomHandicap());
+            }
+            $bool=false;
+            
+            //informations aide examen
+            foreach($listeEtudiants[$indexEtudiantCourant]->getDatesAideExamen() as $datesAideExamen)
+            {
+                //est ce que la boucle a déjà eu lieu ? si oui il faut écrire une ligne plus bas pour ne pas effacer
+                //les informations déjà présentes
+                if($bool==true)
+                   {
+                       $j++;
+                   }
+                   else
+                   {
+                       $bool=true;
+                   }
+                   
+                if(!empty($datesAideExamen->getDateFin()))
                 {
-                    
+                    $dateFin = $datesAideExamen->getDateFin()->format('d/m/Y');
                 }
-                $phpExcelObject->setCellValue('K'+$i, $listeEtudiants[$i]->getEtudiant()->getListEtudiant())
-                ->setCellValue('L'+$i, $listeEtudiants[$i]->)
-                ->setCellValue('M'+$i, $listeEtudiants[$i]->)
-                ->setCellValue('N'+$i, $listeEtudiants[$i]->)
-                ->setCellValue('O'+$i, $listeEtudiants[$i]->)    
-                ->setCellValue('P'+$i, $listeEtudiants[$i]->)
-                ->setCellValue('Q'+$i, $listeEtudiants[$i]->)
-                ->setCellValue('R'+$i, $listeEtudiants[$i]->)
-                ->setCellValue('S'+$i, $listeEtudiants[$i]->)
-                ->setCellValue('T'+$i, $listeEtudiants[$i]->)
-                ->setCellValue('U'+$i, $listeEtudiants[$i]->)
-                ->setCellValue('V'+$i, $listeEtudiants[$i]->)
-                ->setCellValue('W'+$i, $listeEtudiants[$i]->)
-                ->setCellValue('X'+$i, $listeEtudiants[$i]->)        
-                ->setCellValue('Y'+$i, $listeEtudiants[$i]->)
-                ->setCellValue('Z'+$i, $listeEtudiants[$i]->)
-                ->setCellValue('AA'+$i, $listeEtudiants[$i]->)       
-                ->setCellValue('AB'+$i, $listeEtudiants[$i]->)
-                ->setCellValue('AC'+$i, $listeEtudiants[$i]->)       
-                ->setCellValue('AD'+$i, $listeEtudiants[$i]->)        
-                ->setCellValue('AE'+$i, $listeEtudiants[$i]->)      
-                ->setCellValue('AF'+$i, $listeEtudiants[$i]->);      
-        }  */
+                else
+                {
+                    $dateFin = "";
+                }
+                    $phpExcelObject
+                        ->setActiveSheetIndex(0)
+                        ->setCellValue('AC'.$j, $datesAideExamen->getDateDebut()->format('d/m/Y'))
+                        ->setCellValue('AD'.$j, $dateFin)
+                        ->setCellValue('AE'.$j, $datesAideExamen->getAideExamen()->getAmenagementExamens())
+                        ->setCellValue('AF'.$j, $datesAideExamen->getAideExamen()->getTempsMajore())
+                        ->setCellValue('AG'.$j, $datesAideExamen->getAideExamen()->getAutresMesures())
+                        ->setCellValue('AH'.$j, $datesAideExamen->getAideExamen()->getDelocalisationExamen())
+                        ->setCellValue('AI'.$j, $datesAideExamen->getAideExamen()->getDateValidite()->format('d/m/Y'))
+                        ->setCellValue('AJ'.$j, $datesAideExamen->getAideExamen()->getDureeAvisMedical());
+                   
+            }
+            $bool=false;
+            
+            $j++;
+            $i = $j;
+        }
         
         $phpExcelObject->getActiveSheet()->setTitle('Simple');
             // Set active sheet index to the first sheet, so Excel opens this as the first sheet
@@ -169,13 +196,7 @@ class ExcelController extends Controller
         $response->headers->set('Pragma', 'public');
         $response->headers->set('Cache-Control', 'maxage=1');
         
+        return $response;
         
-        $affichageController = new AffichageController();
-        $affichageController->afficheImportExportPageAction();
-        /*return $this->render('SUHGestionBundle:AffichageEtudiants:accueil.html.twig',array(
-            'listeEtudiantsHandicapes'=>null,
-            'afficheExcelVue' => true,
-            'tab'=>$listeEtudiants,
-        ));*/
     }
 }

@@ -62,7 +62,7 @@ class __TwigTemplate_971018605f1a91d1c9cee27d4cf4605f8acbab20848f2f792b424569778
                             </form>
                         </div>
                     </div>
-                    
+                           
                     <!-- Affiche la liste : <div id=\"liste\"> </div>
                         + le nombre de résultats : <div id=\"nbResultats> </div> -->                   
                 ";
@@ -76,59 +76,33 @@ class __TwigTemplate_971018605f1a91d1c9cee27d4cf4605f8acbab20848f2f792b424569778
         }
         // line 26
         echo "                    <div id=\"gestionEtudiants\" class=\"row\">
-                        <button href=\"#\" class=\"btn btn-md btn-primary col-md-4\"> <span class=\"glyphicon glyphicon-plus\"></span></button>
-                        <button href=\"#\" class=\"btn btn-md btn-primary col-md-4\"> <span class=\"glyphicon glyphicon-refresh\"></span></button>
-                        <button href=\"#\" class=\"btn btn-md btn-primary col-md-4\"> <span class=\"glyphicon glyphicon-remove\"></span></button>
+                        <a id=\"ajout\" class=\"btn btn-md btn-primary col-md-4\" > <span class=\"glyphicon glyphicon-plus\"></span></a>
+                        <a id=\"modification\" class=\"btn btn-md btn-primary col-md-4\" onclick=\"return ConfirmationModification();\"> <span class=\"glyphicon glyphicon-refresh\"></span></a>
+                        <a id=\"suppression\" class=\"btn btn-md btn-primary col-md-4\" onclick=\"return ConfirmationSuppression();\"> <span class=\"glyphicon glyphicon-remove\"></span></a>
                     </div>
                 </div>  
+                   
                 <div id=\"affichage\" class=\"col-md-10\">
                 ";
-        // line 33
+        // line 34
         if ((array_key_exists("afficheExcelVue", $context) && ((isset($context["afficheExcelVue"]) ? $context["afficheExcelVue"] : $this->getContext($context, "afficheExcelVue")) == true))) {
-            // line 34
+            // line 35
             echo "                    ";
             $this->env->loadTemplate("SUHGestionBundle:Excel:ExcelVue.html.twig")->display($context);
-            // line 35
+            // line 36
             echo "                ";
         }
-        // line 36
+        // line 37
         echo "                </div>
-                <script type=\"text/javascript\">
-                //dernier etudiant selectionne dans la liste
-                var last;
-                //couleur de fond dans la liste de l'étudiant(permet de passer du rouge à la couleur d'avance)
-                var lastColor;
-                \$(document).ready(function() {
-                //pour tous les liens de la liste
-                  \$(\"#liste ul li a\").on('click',function(event) {
-                    //l'url est celui du lien
-                    var url = \$(this).prop('href');
-                    //on stocke la couleur de base avant de la passer au rouge(afin de la remettre en état
-                    //au prochain clic
-                    lastColor=\$(this).css(\"background-color\");
-                    //le lien sélectionné devient rouge
-                    \$(this).css({'background-color':'#FF866A'});
-                    //si il y a déjà eu un étudiant selectionné sa couleur redevient celle d'origine
-                    if (!(typeof last === \"undefined\")) {
-                        \$(last).css({'background-color':lastColor});
-                    }      
-                    //le dernier étudiant sélectionné devient l'étudiant courant
-                    last=this;
-                    //on charge la div d'affichage d'un etudiant
-                    \$(\"#affichage\").load(url);
-                    //on évite la redirection
-                    event.preventDefault();
-                  });
-                });
-                </script>
+                
             </div>
         </section>      
         <br/><br/>
     </body>
     ";
-        // line 69
+        // line 43
         if (array_key_exists("tab", $context)) {
-            // line 70
+            // line 44
             echo "       ";
             echo $this->env->getExtension('dump')->dump($this->env, $context, (isset($context["tab"]) ? $context["tab"] : $this->getContext($context, "tab")));
             echo "
@@ -148,6 +122,6 @@ class __TwigTemplate_971018605f1a91d1c9cee27d4cf4605f8acbab20848f2f792b424569778
 
     public function getDebugInfo()
     {
-        return array (  132 => 70,  130 => 69,  95 => 36,  92 => 35,  89 => 34,  87 => 33,  78 => 26,  75 => 25,  72 => 24,  70 => 23,  56 => 12,  48 => 6,  45 => 5,  37 => 3,  11 => 1,);
+        return array (  106 => 44,  104 => 43,  96 => 37,  93 => 36,  90 => 35,  88 => 34,  78 => 26,  75 => 25,  72 => 24,  70 => 23,  56 => 12,  48 => 6,  45 => 5,  37 => 3,  11 => 1,);
     }
 }

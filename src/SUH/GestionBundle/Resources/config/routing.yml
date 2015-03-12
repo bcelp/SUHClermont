@@ -5,6 +5,8 @@ suh_gestion_homepage:
 suh_get_etudiant:
     path:   /get/{id}
     defaults: { _controller: SUHGestionBundle:Affichage:AfficherAccueilEtudiant }
+    requirements:
+        id:   "^[0-9]+$"
     
 suh_get_etudiant_nomEtPrenom:
     path:   /by
@@ -21,3 +23,21 @@ suh_import_page:
 suh_export_page:
     path: /exportExcel
     defaults: { _controller: SUHGestionBundle:Excel:exportExcel }
+   
+suh_ajout_etudiant:
+    path: /ajouter/{id}
+    defaults: { _controller: SUHGestionBundle:GestionEtudiant:ajoutEtudiant }
+    requirements:
+        id:   "^[0-9]+$"
+        
+suh_modification_etudiant:
+    path: /modifier/{id}
+    defaults: { _controller: SUHGestionBundle:GestionEtudiant:modificationEtudiant }
+    requirements:
+        id:   "^[0-9]+$"
+        
+suh_suppression_etudiant:
+    path: /supprimer/{id}
+    defaults: { _controller: SUHGestionBundle:GestionEtudiant:suppressionEtudiant }
+    requirements:
+        id:   "^[0-9]+$"

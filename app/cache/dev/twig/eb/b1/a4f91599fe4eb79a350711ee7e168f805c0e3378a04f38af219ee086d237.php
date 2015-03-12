@@ -68,22 +68,12 @@ class __TwigTemplate_ebb1a4f91599fe4eb79a350711ee7e168f805c0e3378a04f38af219ee08
         Exportation Excel
     </button>
                 
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
+              
                 <!--  ================== EXPORTATION EXCEL ================== -->
     <div id=\"exportExcel\" class=\"spoiler\" style=\"display:none\"> 
-        Vous pouvez exporter un fichier excel <br/>
-        Le fichier sera situé dans le répertoire \"web\" de l'application<br/>
+        Vous pouvez exporter un fichier excel <br/><br/>
         <form method=\"POST\" action=\"";
-        // line 64
+        // line 54
         echo $this->env->getExtension('routing')->getPath("suh_export_page");
         echo "\" enctype=\"multipart/form-data\" 
               onsubmit=\"return confirmationExport();\">
@@ -92,40 +82,6 @@ class __TwigTemplate_ebb1a4f91599fe4eb79a350711ee7e168f805c0e3378a04f38af219ee08
        
     </div> 
 </div>
-              
-<script type=\"text/JavaScript\">
-    function confirmationImport()
-    {
-        var check1=confirm(\"###Voulez vous remplacer votre base de données par votre fichier Excel ?###\");
-        if (check1)
-        {
-            var check2=confirm(\"###Etes-vous sûr ? La base de données sera effacée !###\");
-            if (check2)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        else
-        {
-            return false;
-        }
-    }
-    
-    function confirmationExport()
-    {
-        if(confirm(\"###Voulez vous exporter votre base de données ? le fichier excel se situera dans le dossier \\\"web\\\" de l'application###\"))
-        {
-            return true;
-        }
-        return false;
-    }
-</script>              
-              
-              
 ";
     }
 
@@ -141,6 +97,6 @@ class __TwigTemplate_ebb1a4f91599fe4eb79a350711ee7e168f805c0e3378a04f38af219ee08
 
     public function getDebugInfo()
     {
-        return array (  87 => 64,  48 => 28,  19 => 1,);
+        return array (  77 => 54,  48 => 28,  19 => 1,);
     }
 }

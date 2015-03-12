@@ -13,15 +13,14 @@ class AffichageController extends Controller
      * @return type
      */
     public function AfficherAccueilAction()
-    {
-        
+    {        
         return $this->render('SUHGestionBundle:AffichageEtudiants:accueil.html.twig',array(
             'listeEtudiantsHandicapes'=>$this->getListeEtudiants(null)
         ));
     }  
     
     /**
-     * récupère les données d'un étudiant recherché avec son id
+     * récupère les données d'un étudiant recherché avec son id et les envoie à la page d'affichage
      * @param type $id
      * @return type
      */
@@ -34,7 +33,7 @@ class AffichageController extends Controller
         $informationsEtudiant = $etudiantHandicapeRepository->getInformationsStudent($id);
         
         return $this->render('SUHGestionBundle:AffichageEtudiants:spoiler.html.twig',array(
-            'informationsEtudiant'=>$informationsEtudiant
+            'informationsEtudiant'=>$informationsEtudiant,
         ));
     }     
     
@@ -81,10 +80,9 @@ class AffichageController extends Controller
      * @param Request $request
      * @return type
      */
-    public function afficheImportExportPageAction(Request $request)
+    public function afficheImportExportPageAction()
     {
         return $this->render('SUHGestionBundle:AffichageEtudiants:accueil.html.twig',array(
-            'listeEtudiantsHandicapes'=>$this->getListeEtudiants($request->query->get('chaine')),
             'afficheExcelVue' => true,
         ));
     }  

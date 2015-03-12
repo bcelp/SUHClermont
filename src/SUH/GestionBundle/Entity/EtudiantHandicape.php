@@ -24,7 +24,7 @@ class EtudiantHandicape
     /**
      * 
      * @ORM\OneToOne(targetEntity="SUH\GestionBundle\Entity\Etudiant",inversedBy="etudiantSpecialise",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false,name="id",referencedColumnName="id")
+     * @ORM\JoinColumn(nullable=false,name="id",referencedColumnName="id",onDelete="CASCADE")
      */
     private $etudiant;
 
@@ -86,20 +86,20 @@ class EtudiantHandicape
 
     /**
      * @ORM\ManyToOne(targetEntity="SUH\GestionBundle\Entity\Mdph",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false,onDelete="CASCADE")
      */
     private $mdph;
    
     /**
      * 
      * @ORM\ManyToMany(targetEntity="SUH\GestionBundle\Entity\Handicap",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false,onDelete="CASCADE")
      */
     private $handicap;
 
     /**
      * @ORM\OneToMany(targetEntity="SUH\GestionBundle\Entity\DatesAideExamen",mappedBy="etudiantHandicape",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false,onDelete="CASCADE")
      */
     private $datesAideExamen;
 

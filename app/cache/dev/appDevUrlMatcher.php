@@ -137,7 +137,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         // suh_get_etudiant
-        if (0 === strpos($pathinfo, '/get') && preg_match('#^/get/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+        if (0 === strpos($pathinfo, '/get') && preg_match('#^/get/(?P<id>[0-9]+)$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'suh_get_etudiant')), array (  '_controller' => 'SUH\\GestionBundle\\Controller\\AffichageController::AfficherAccueilEtudiantAction',));
         }
 
@@ -162,6 +162,21 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         // suh_export_page
         if ($pathinfo === '/exportExcel') {
             return array (  '_controller' => 'SUH\\GestionBundle\\Controller\\ExcelController::exportExcelAction',  '_route' => 'suh_export_page',);
+        }
+
+        // suh_ajout_etudiant
+        if (0 === strpos($pathinfo, '/ajouter') && preg_match('#^/ajouter/(?P<id>[0-9]+)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'suh_ajout_etudiant')), array (  '_controller' => 'SUH\\GestionBundle\\Controller\\GestionEtudiantController::ajoutEtudiantAction',));
+        }
+
+        // suh_modification_etudiant
+        if (0 === strpos($pathinfo, '/modifier') && preg_match('#^/modifier/(?P<id>[0-9]+)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'suh_modification_etudiant')), array (  '_controller' => 'SUH\\GestionBundle\\Controller\\GestionEtudiantController::modificationEtudiantAction',));
+        }
+
+        // suh_suppression_etudiant
+        if (0 === strpos($pathinfo, '/supprimer') && preg_match('#^/supprimer/(?P<id>[0-9]+)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'suh_suppression_etudiant')), array (  '_controller' => 'SUH\\GestionBundle\\Controller\\GestionEtudiantController::suppressionEtudiantAction',));
         }
 
         if (0 === strpos($pathinfo, '/log')) {

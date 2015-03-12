@@ -39,46 +39,54 @@ class __TwigTemplate_323cfc19b296aaeb1f9d98132f53c7820f0ff08ac9c1ebcf5db7b44e0d7
         // line 8
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/suhGestion/js/jquery.min.js"), "html", null, true);
         echo "\"/></script> 
-    <title>";
+    <script type=\"text/javascript\" src=\"";
         // line 9
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/suhGestion/js/boutonsGestionEtudiant.js"), "html", null, true);
+        echo "\"></script>
+    <script type=\"text/javascript\" src=\"";
+        // line 10
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/suhGestion/js/confirmations.js"), "html", null, true);
+        echo "\"></script>
+    <title>";
+        // line 11
         $this->displayBlock('title', $context, $blocks);
         echo "</title>
   </head>
   <!-- HEADER : logo SUH + navbar (accueil, statistiques, deconnexion -->
   ";
-        // line 12
+        // line 14
         $this->displayBlock('header', $context, $blocks);
-        // line 40
+        // line 42
         echo "  <!-- FIN HEADER -->
   
   ";
-        // line 42
+        // line 44
         $this->displayBlock('body', $context, $blocks);
-        // line 45
+        // line 47
         echo "</html>
 ";
     }
 
-    // line 9
+    // line 11
     public function block_title($context, array $blocks = array())
     {
         echo " Header ";
     }
 
-    // line 12
+    // line 14
     public function block_header($context, array $blocks = array())
     {
-        // line 13
+        // line 15
         echo "  <header>
       <div class=\"container-fluid\">
           <div class=\"row\">
               <div class=\"col-md-3\">
                 <a href=\"";
-        // line 17
+        // line 19
         echo $this->env->getExtension('routing')->getPath("suh_gestion_homepage");
         echo "\">
                     <img id=\"logo\" alt=\"SUH\" src=\"";
-        // line 18
+        // line 20
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/suhGestion/images/logo_suh.png"), "html", null, true);
         echo "\">
                 </a>
@@ -87,26 +95,26 @@ class __TwigTemplate_323cfc19b296aaeb1f9d98132f53c7820f0ff08ac9c1ebcf5db7b44e0d7
                   <nav class=\"navbar navbar-default\">
                     <div class=\"container-fluid\">
                         <ul class=\"nav navbar-nav\">
-                            <li class=\"liensNavbar\"><a href=\"";
-        // line 25
+                            <li class=\"liensNavbar\"><a id=\"accueil\" href=\"";
+        // line 27
         echo $this->env->getExtension('routing')->getPath("suh_gestion_homepage");
         echo "\">Accueil</a></li>
                             <li class=\"liensNavbar\"><a href=\"";
-        // line 26
+        // line 28
         echo $this->env->getExtension('routing')->getPath("suh_gestion_homepage");
         echo "\">Statistiques</a></li>
                             <li id=\"rechercheAvancee\" class=\"liensNavbar\"><a href=\"";
-        // line 27
+        // line 29
         echo $this->env->getExtension('routing')->getPath("suh_gestion_homepage");
         echo "\">Recherche avancée</a></li>
                             <li class=\"liensNavbar\"><a href=\"";
-        // line 28
+        // line 30
         echo $this->env->getExtension('routing')->getPath("suh_import_export_page");
         echo "\">Import/Export Excel</a></li>
                         </ul>
                         <ul class=\"nav navbar-nav navbar-right\">
                             <li id=\"deconnexion\"><a href=\"";
-        // line 31
+        // line 33
         echo $this->env->getExtension('routing')->getPath("logout");
         echo "\">Deconnexion</a></li>
                         </ul>
@@ -119,10 +127,10 @@ class __TwigTemplate_323cfc19b296aaeb1f9d98132f53c7820f0ff08ac9c1ebcf5db7b44e0d7
   ";
     }
 
-    // line 42
+    // line 44
     public function block_body($context, array $blocks = array())
     {
-        // line 43
+        // line 45
         echo "      
   ";
     }
@@ -139,6 +147,6 @@ class __TwigTemplate_323cfc19b296aaeb1f9d98132f53c7820f0ff08ac9c1ebcf5db7b44e0d7
 
     public function getDebugInfo()
     {
-        return array (  126 => 43,  123 => 42,  110 => 31,  104 => 28,  100 => 27,  96 => 26,  92 => 25,  82 => 18,  78 => 17,  72 => 13,  69 => 12,  63 => 9,  58 => 45,  56 => 42,  52 => 40,  50 => 12,  44 => 9,  40 => 8,  36 => 7,  32 => 6,  28 => 5,  22 => 1,);
+        return array (  134 => 45,  131 => 44,  118 => 33,  112 => 30,  108 => 29,  104 => 28,  100 => 27,  90 => 20,  86 => 19,  80 => 15,  77 => 14,  71 => 11,  66 => 47,  64 => 44,  60 => 42,  58 => 14,  52 => 11,  48 => 10,  44 => 9,  40 => 8,  36 => 7,  32 => 6,  28 => 5,  22 => 1,);
     }
 }

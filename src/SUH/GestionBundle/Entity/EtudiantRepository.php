@@ -12,6 +12,12 @@ use Doctrine\ORM\EntityRepository;
  */
 class EtudiantRepository extends EntityRepository
 {
+    /**
+     * Récupère la liste des étudiants par nom ou prenom
+     * (utilisé lors de la recherche)
+     * @param type $chaine
+     * @return type
+     */
     public function getListeEtudiantsParNomOuPrenom($chaine)
     {
         return $this->_em->createQueryBuilder()
@@ -27,4 +33,5 @@ class EtudiantRepository extends EntityRepository
                 ->getQuery()
                 ->getResult();       
     }
+    
 }

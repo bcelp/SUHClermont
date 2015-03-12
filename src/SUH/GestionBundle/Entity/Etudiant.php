@@ -24,7 +24,7 @@ class Etudiant
     /**
      * 
      * @ORM\OneToOne(targetEntity="SUH\GestionBundle\Entity\EtudiantHandicape",mappedBy="etudiant",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $etudiantSpecialise;
     
