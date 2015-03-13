@@ -11,18 +11,12 @@ C:\wamp\www\suhSymfony>php app/console doctrine:schema:update --force
 "Updating database schema...
 Database schema updated successfully! "19" queries were executed"
 
-
 2)
-Mettre dans la table "datesAideExamen" le champs "dateFin" à null par défaut
-Mettre dans la table "etudiant" le champs "etudiantSpecialise_id" à null par défaut
-
-
-3)
 C:\wamp\www\suhSymfony>php app/console doctrine:fixtures:load
 -->remplit la base de données
 
 
-4)
+3)
 Connection avec :
 soit identifiant=user/mdp=pass
 soit identifiant=admin/mdp=pass
