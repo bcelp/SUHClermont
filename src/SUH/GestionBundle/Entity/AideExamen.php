@@ -24,42 +24,42 @@ class AideExamen
     /**
      * @var string
      *
-     * @ORM\Column(name="amenagementExamens", type="text")
+     * @ORM\Column(name="amenagementExamens", type="text",nullable=true)
      */
     private $amenagementExamens;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="tempsMajore", type="boolean")
+     * @ORM\Column(name="tempsMajore", type="boolean",nullable=true)
      */
     private $tempsMajore;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="autresMesures", type="boolean")
+     * @ORM\Column(name="autresMesures", type="boolean",nullable=true)
      */
     private $autresMesures;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="delocalisationExamen", type="text")
+     * @ORM\Column(name="delocalisationExamen", type="text",nullable=true)
      */
     private $delocalisationExamen;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateValidite", type="date")
+     * @ORM\Column(name="dateValidite", type="date",nullable=true)
      */
     private $dateValidite;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="dureeAvisMedical", type="text")
+     * @ORM\Column(name="dureeAvisMedical", type="text",nullable=true)
      */
     private $dureeAvisMedical;
 
@@ -75,7 +75,7 @@ class AideExamen
         $this->tempsMajore=$tempsMajore;
         $this->autresMesures=$autresMesures;
         $this->delocalisationExamen=$delocalisationExamen;
-        $this->dateValidite=new \DateTime('01/01/2012');
+        $this->dateValidite= $dateValidite;
         $this->dureeAvisMedical=$dureeAvisMedical;
     }
 

@@ -24,7 +24,7 @@ class Handicap
     /**
      * @var string
      *
-     * @ORM\Column(name="nomHandicap", type="string", length=100)
+     * @ORM\Column(name="nomHandicap", type="string", length=100,nullable=true)
      */
     private $nomHandicap;
 

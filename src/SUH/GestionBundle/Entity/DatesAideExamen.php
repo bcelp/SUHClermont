@@ -29,14 +29,14 @@ class DatesAideExamen
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateDebut", type="date")
+     * @ORM\Column(name="dateDebut", type="date",nullable=true)
      */
     private $dateDebut;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateFin", type="date")
+     * @ORM\Column(name="dateFin", type="date",nullable=true)
      */
     private $dateFin;
 
@@ -48,8 +48,8 @@ class DatesAideExamen
     {
         $this->setEtudiantHandicape($etudiantHandicape);
         $this->aideExamen=$aideExamen;
-        $this->dateDebut=new \DateTime('01/01/2010');
-        $this->dateFin=null;
+        $this->dateDebut=$dateDebut;
+        $this->dateFin=$dateFin;
     }
 
     /**

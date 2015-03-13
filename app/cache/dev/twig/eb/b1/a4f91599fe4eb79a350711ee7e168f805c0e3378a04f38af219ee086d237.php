@@ -45,9 +45,9 @@ class __TwigTemplate_ebb1a4f91599fe4eb79a350711ee7e168f805c0e3378a04f38af219ee08
         </p>
         <form method=\"POST\" action=\"";
         // line 28
-        echo $this->env->getExtension('routing')->getPath("suh_import_export_page");
+        echo $this->env->getExtension('routing')->getPath("suh_import_page");
         echo "\" enctype=\"multipart/form-data\" 
-              onsubmit=\"return confirmationImport();\">
+              >
             <input type=\"hidden\" name=\"MAX_FILE_SIZE\" value=\"1048576\" />
             <input type=\"file\" name=\"fichierExcel\"/><br/>
             <input id=\"nbLignes\" name=\"nbLignes\" type=\"number\" placeholder=\"Nombre de ligne\"/><br/>   
@@ -69,11 +69,14 @@ class __TwigTemplate_ebb1a4f91599fe4eb79a350711ee7e168f805c0e3378a04f38af219ee08
     </button>
                 
               
+              
+              
+              
                 <!--  ================== EXPORTATION EXCEL ================== -->
     <div id=\"exportExcel\" class=\"spoiler\" style=\"display:none\"> 
-        Vous pouvez exporter un fichier excel <br/><br/>
+        <br/>Vous pouvez exporter un fichier excel <br/>
         <form method=\"POST\" action=\"";
-        // line 54
+        // line 57
         echo $this->env->getExtension('routing')->getPath("suh_export_page");
         echo "\" enctype=\"multipart/form-data\" 
               onsubmit=\"return confirmationExport();\">
@@ -97,6 +100,6 @@ class __TwigTemplate_ebb1a4f91599fe4eb79a350711ee7e168f805c0e3378a04f38af219ee08
 
     public function getDebugInfo()
     {
-        return array (  77 => 54,  48 => 28,  19 => 1,);
+        return array (  80 => 57,  48 => 28,  19 => 1,);
     }
 }

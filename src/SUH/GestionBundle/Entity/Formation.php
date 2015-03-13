@@ -24,42 +24,42 @@ class Formation
     /**
      * @var string
      *
-     * @ORM\Column(name="diplome", type="string", length=50)
+     * @ORM\Column(name="diplome", type="string", length=50,nullable=true)
      */
     private $diplome;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="composante", type="string", length=255)
+     * @ORM\Column(name="composante", type="string", length=255,nullable=true)
      */
     private $composante;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="filiere", type="string", length=255)
+     * @ORM\Column(name="filiere", type="string", length=255,nullable=true)
      */
     private $filiere;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="cycle", type="smallint")
+     * @ORM\Column(name="cycle", type="smallint",nullable=true)
      */
     private $cycle;
 
     /**
      * @var string
      * 
-     * @ORM\Column(name="etablissement", type="string", length=100)
+     * @ORM\Column(name="etablissement", type="string", length=100,nullable=true)
      */
     private $etablissement;
     
     /**
      * @var integer
      *
-     * @ORM\Column(name="anneeEtude", type="smallint")
+     * @ORM\Column(name="anneeEtude", type="smallint",nullable=true)
      */
     private $anneeEtude;
     

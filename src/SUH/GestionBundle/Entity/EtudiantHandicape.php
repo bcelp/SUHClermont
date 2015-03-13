@@ -31,56 +31,56 @@ class EtudiantHandicape
     /**
      * @var string
      *
-     * @ORM\Column(name="qhandi", type="string", length=30)
+     * @ORM\Column(name="qhandi", type="string", length=30,nullable=true)
      */
     private $qhandi;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="rqth", type="boolean")
+     * @ORM\Column(name="rqth", type="boolean",nullable=true)
      */
     private $rqth;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="notificationSavs", type="boolean")
+     * @ORM\Column(name="notificationSavs", type="boolean",nullable=true)
      */
     private $notificationSavs;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="amenagementEtude", type="text")
+     * @ORM\Column(name="amenagementEtude", type="text",nullable=true)
      */
     private $amenagementEtude;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="tauxInvalidite", type="text")
+     * @ORM\Column(name="tauxInvalidite", type="text",nullable=true)
      */
     private $tauxInvalidite;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="suivi", type="string", length=30)
+     * @ORM\Column(name="suivi", type="string", length=30,nullable=true)
      */
     private $suivi;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateMaj", type="date")
+     * @ORM\Column(name="dateMaj", type="date",nullable=true)
      */
     private $dateMaj;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="descriptifComplementaire", type="text")
+     * @ORM\Column(name="descriptifComplementaire", type="text",nullable=true)
      */
     private $descriptifComplementaire;
 

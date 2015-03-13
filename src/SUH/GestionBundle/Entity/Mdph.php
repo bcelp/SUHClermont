@@ -24,14 +24,14 @@ class Mdph
     /**
      * @var boolean
      *
-     * @ORM\Column(name="reconnaissanceMdph", type="boolean")
+     * @ORM\Column(name="reconnaissanceMdph", type="boolean",nullable=true)
      */
     private $reconnaissanceMdph;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="departementMdph", type="string", length=3)
+     * @ORM\Column(name="departementMdph", type="string", length=3,nullable=true)
      */
     private $departementMdph;
 

@@ -25,8 +25,8 @@
             <br/>
             2) L'importation effacera l'ancienne BDD, exportez l'ancienne si vous souhaitez la garder
         </p>
-        <form method="POST" action="{{path('suh_import_export_page')}}" enctype="multipart/form-data" 
-              onsubmit="return confirmationImport();">
+        <form method="POST" action="{{path('suh_import_page')}}" enctype="multipart/form-data" 
+              >
             <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
             <input type="file" name="fichierExcel"/><br/>
             <input id="nbLignes" name="nbLignes" type="number" placeholder="Nombre de ligne"/><br/>   
@@ -48,9 +48,12 @@
     </button>
                 
               
+              
+              
+              
                 <!--  ================== EXPORTATION EXCEL ================== -->
     <div id="exportExcel" class="spoiler" style="display:none"> 
-        Vous pouvez exporter un fichier excel <br/><br/>
+        <br/>Vous pouvez exporter un fichier excel <br/>
         <form method="POST" action="{{path('suh_export_page')}}" enctype="multipart/form-data" 
               onsubmit="return confirmationExport();">
             <button class="btn btn-danger" type="submit">Exporter la base de données</button>

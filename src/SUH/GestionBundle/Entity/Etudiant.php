@@ -24,56 +24,56 @@ class Etudiant
     /**
      * 
      * @ORM\OneToOne(targetEntity="SUH\GestionBundle\Entity\EtudiantHandicape",mappedBy="etudiant",cascade={"persist"})
-     * @ORM\JoinColumn(onDelete="CASCADE")
+     * @ORM\JoinColumn(onDelete="CASCADE",nullable=true)
      */
     private $etudiantSpecialise;
     
     /**
      * @var string
      *
-     * @ORM\Column(name="nomEtudiant", type="string", length=30)
+     * @ORM\Column(name="nomEtudiant", type="string", length=30,nullable=true)
      */
     private $nomEtudiant;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="prenomEtudiant", type="string", length=30)
+     * @ORM\Column(name="prenomEtudiant", type="string", length=30,nullable=true)
      */
     private $prenomEtudiant;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateNaissance", type="date")
+     * @ORM\Column(name="dateNaissance", type="date",nullable=true)
      */
     private $dateNaissance;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="mail", type="string", length=100)
+     * @ORM\Column(name="mail", type="string", length=100,nullable=true)
      */
     private $mail;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="adresseEtudiante", type="text")
+     * @ORM\Column(name="adresseEtudiante", type="text",nullable=true)
      */
     private $adresseEtudiante;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="adresseFamiliale", type="text")
+     * @ORM\Column(name="adresseFamiliale", type="text",nullable=true)
      */
     private $adresseFamiliale;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="telephone", type="string", length=20)
+     * @ORM\Column(name="telephone", type="string", length=20,nullable=true)
      */
     private $telephone;        
     
@@ -94,7 +94,7 @@ class Etudiant
     {
         $this->nomEtudiant=$nom;
         $this->prenomEtudiant=$prenom;
-        $this->dateNaissance=new \DateTime('01/01/2015');
+        $this->dateNaissance=$dateNaissance;
         $this->mail=$mail;
         $this->adresseFamiliale=$adresseFamiliale;
         $this->adresseEtudiante=$adresseEtudiante;
@@ -102,6 +102,7 @@ class Etudiant
         $this->listEtudiantFormation=new ArrayCollection();
         $this->etudiantSpecialise=null;
     }
+    
     
     public function getAge()
     {
