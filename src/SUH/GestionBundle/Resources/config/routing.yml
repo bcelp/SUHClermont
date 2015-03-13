@@ -1,0 +1,43 @@
+suh_gestion_homepage:
+    path:     /
+    defaults: { _controller: SUHGestionBundle:Affichage:AfficherAccueil }
+
+suh_get_etudiant:
+    path:   /get/{id}
+    defaults: { _controller: SUHGestionBundle:Affichage:AfficherAccueilEtudiant }
+    requirements:
+        id:   "^[0-9]+$"
+    
+suh_get_etudiant_nomEtPrenom:
+    path:   /by
+    defaults: { _controller: SUHGestionBundle:Affichage:AfficherAccueilEtudiantRechercheNomOuPrenom }
+
+suh_import_export_page:
+    path: /importExportExcel
+    defaults: { _controller: SUHGestionBundle:Affichage:afficheImportExportPage }
+    
+suh_import_page:
+    path: /importExcel
+    defaults: { _controller: SUHGestionBundle:Excel:importExcel }
+    
+suh_export_page:
+    path: /exportExcel
+    defaults: { _controller: SUHGestionBundle:Excel:exportExcel }
+   
+suh_ajout_etudiant:
+    path: /ajouter/{id}
+    defaults: { _controller: SUHGestionBundle:GestionEtudiant:ajoutEtudiant }
+    requirements:
+        id:   "^[0-9]+$"
+        
+suh_modification_etudiant:
+    path: /modifier/{id}
+    defaults: { _controller: SUHGestionBundle:GestionEtudiant:modificationEtudiant }
+    requirements:
+        id:   "^[0-9]+$"
+        
+suh_suppression_etudiant:
+    path: /supprimer/{id}
+    defaults: { _controller: SUHGestionBundle:GestionEtudiant:suppressionEtudiant }
+    requirements:
+        id:   "^[0-9]+$"

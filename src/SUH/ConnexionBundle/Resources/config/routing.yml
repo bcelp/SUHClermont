@@ -1,0 +1,3 @@
+#suh_connexion_homepage:
+#    path:     /login
+#    defaults: { _controller: SUHConnexionBundle:Connexion:login }
