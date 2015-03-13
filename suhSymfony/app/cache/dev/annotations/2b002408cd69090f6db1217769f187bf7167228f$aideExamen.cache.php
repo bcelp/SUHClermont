@@ -1,1 +1,0 @@
-<?php return unserialize('a:2:{i:0;O:23:"Doctrine\\ORM\\Mapping\\Id":0:{}i:1;O:30:"Doctrine\\ORM\\Mapping\\ManyToOne":4:{s:12:"targetEntity";s:35:"SUH\\GestionBundle\\Entity\\AideExamen";s:7:"cascade";a:1:{i:0;s:7:"persist";}s:5:"fetch";s:4:"LAZY";s:10:"inversedBy";N;}}');
