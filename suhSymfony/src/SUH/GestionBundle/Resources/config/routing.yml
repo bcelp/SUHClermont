@@ -1,0 +1,4 @@
+suh_gestion_homepage:
+    path:     /
+    defaults: { _controller: SUHGestionBundle:Affichage:AfficherAccueil }
+    

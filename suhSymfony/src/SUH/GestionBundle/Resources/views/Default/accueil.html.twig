@@ -1,0 +1,102 @@
+{% extends "SUHGestionBundle:Default:base.html.twig" %}
+
+{% block title %} {{parent()}} - Accueil {% endblock %}
+
+{% block body %}
+    <body>
+        <section id="containerFluidBody" class="container-fluid">
+            <div class="row">
+                <div id="divListe" class="col-md-2">
+                    <div id="recherche" class="row">
+                        <div class="form-group">
+                            <form class="input-group">
+                                <input class="form-control" type="text" placeholder="Rechercher...">
+                                <span class="input-group-btn">
+                                    <button type="submit" href="#" class="btn btn-md btn-primary"> <span class="glyphicon glyphicon-zoom-in"></span></button>
+                                </span>
+                            </form>
+                        </div>
+                    </div>
+                    <div id="liste" class="row">
+                        <ul class="col-md-12">
+                            {% for i in 0..40 %}
+                                {% if loop.index is even %}
+                                    <li class="pair">
+                                        <a href="#">ok</a>
+                                    </li>
+                                {% else %}
+                                    <li class="impair">
+                                        <a href="#">ok</a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div id="nbResultats" class="row">
+                        <p class="help-block"> Nombre de résultats : 40 <span class="badge">40</span></p>
+
+                    </div>
+                    <div id="gestionEtudiants" class="row">
+                        <button href="#" class="btn btn-md btn-primary col-md-4"> <span class="glyphicon glyphicon-plus"></span></button>
+                        <button href="#" class="btn btn-md btn-primary col-md-4"> <span class="glyphicon glyphicon-refresh"></span></button>
+                        <button href="#" class="btn btn-md btn-primary col-md-4"> <span class="glyphicon glyphicon-remove"></span></button>
+                    </div>
+                </div>  
+                <div id="affichage" class="col-md-10">
+                   
+                <!-- Spoiler informations Etudiant -->
+                {{ render(controller('SUHGestionBundle:Affichage:Spoiler', {
+                    'nomSpoiler':'spoilerEtudiant',
+                    'texteBouton': 'etudiant', 
+                    'informations':'informations etudiant' 
+                })) }}    
+                <!-- Fin spoiler informations Etudiant -->              
+                
+                <!-- Spoiler informations handicap -->
+                    {{ render(controller('SUHGestionBundle:Affichage:Spoiler', {
+                    'nomSpoiler':'spoilerHandicap',
+                    'texteBouton': 'handicap', 
+                    'informations':'informations handicap' 
+                })) }}    
+                <!-- Fin spoiler informations handicap -->
+                
+                <!-- Spoiler informations mdph -->
+                    {{ render(controller('SUHGestionBundle:Affichage:Spoiler', {
+                    'nomSpoiler':'spoilerMdph',
+                    'texteBouton': 'mdph', 
+                    'informations':'informations mdph' 
+                })) }}    
+                <!-- Fin spoiler informations mdph -->
+                
+                <!-- Spoiler informations formation -->
+                    {{ render(controller('SUHGestionBundle:Affichage:Spoiler', {
+                    'nomSpoiler':'spoilerFormation',
+                    'texteBouton': 'formation', 
+                    'informations':'informations formation' 
+                })) }}    
+                <!-- Fin spoiler informations formation -->
+                
+                <!-- Spoiler informations etablissement -->
+                    {{ render(controller('SUHGestionBundle:Affichage:Spoiler', {
+                    'nomSpoiler':'spoilerEtablissement',
+                    'texteBouton': 'etablissement', 
+                    'informations':'informations etablissement' 
+                })) }}    
+                <!-- Fin spoiler informations etablissement -->
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+        </section>      
+        <br/><br/>
+    </body>
+{% endblock %}
