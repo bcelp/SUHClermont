@@ -40,11 +40,13 @@ class Mdph
     /* ====================================================================== */
     /* ====================================================================== */
 
-    public function __construct($reconnaissanceMdph,$departementMdph)
+    /*public function __construct($reconnaissanceMdph,$departementMdph)
     {
         $this->reconnaissanceMdph=$reconnaissanceMdph;
         $this->departementMdph=$departementMdph;
-    }
+    }*/
+    
+    public function __construct(){}
     
     /**
      * Get id

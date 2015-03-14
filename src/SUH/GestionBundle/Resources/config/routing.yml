@@ -41,3 +41,41 @@ suh_suppression_etudiant:
     defaults: { _controller: SUHGestionBundle:GestionEtudiant:suppressionEtudiant }
     requirements:
         id:   "^[0-9]+$"
+        
+        
+#routes pour les ajouts        
+suh_gestion_addEtudiant:
+    path: /add
+    defaults: { _controller: SUHGestionBundle:GestionEtudiant:addInfosEtudiant }
+ 
+suh_gestion_addEtudiant_Etape2:
+    path: /add2
+    defaults: { _controller: SUHGestionBundle:GestionEtudiant:addInfosEtudiantEtape2 }
+    
+suh_gestion_addEtudiant_Etape3:
+    path: /add3
+    defaults: { _controller: SUHGestionBundle:GestionEtudiant:addInfosEtudiantEtape3 }
+
+suh_gestion_addEtudiant_Etape4:
+    path: /add4
+    defaults: { _controller: SUHGestionBundle:GestionEtudiant:addInfosEtudiantEtape4 }
+    
+suh_gestion_addEtudiant_Etape5:
+    path: /add5
+    defaults: { _controller: SUHGestionBundle:GestionEtudiant:addInfosEtudiantEtape5 }
+    
+suh_gestion_addEtudiant_Etape6:
+    path: /add6
+    defaults: { _controller: SUHGestionBundle:GestionEtudiant:addInfosEtudiantEtape6 }
+   
+suh_gestion_addEtudiant_Etape7:
+    path: /add7
+    defaults: { _controller: SUHGestionBundle:GestionEtudiant:addInfosEtudiantEtape7 }
+    
+suh_gestion_BackStep1:
+    path: /backStep1
+    defaults: { _controller: SUHGestionBundle:GestionEtudiant:BackStep1 }
+    
+suh_gestion_BackStep2:
+    path: /backStep2
+    defaults: { _controller: SUHGestionBundle:GestionEtudiant:BackStep2 }

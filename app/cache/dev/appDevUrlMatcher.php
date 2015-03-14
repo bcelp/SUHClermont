@@ -179,6 +179,57 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'suh_suppression_etudiant')), array (  '_controller' => 'SUH\\GestionBundle\\Controller\\GestionEtudiantController::suppressionEtudiantAction',));
         }
 
+        if (0 === strpos($pathinfo, '/add')) {
+            // suh_gestion_addEtudiant
+            if ($pathinfo === '/add') {
+                return array (  '_controller' => 'SUH\\GestionBundle\\Controller\\GestionEtudiantController::addInfosEtudiantAction',  '_route' => 'suh_gestion_addEtudiant',);
+            }
+
+            // suh_gestion_addEtudiant_Etape2
+            if ($pathinfo === '/add2') {
+                return array (  '_controller' => 'SUH\\GestionBundle\\Controller\\GestionEtudiantController::addInfosEtudiantEtape2Action',  '_route' => 'suh_gestion_addEtudiant_Etape2',);
+            }
+
+            // suh_gestion_addEtudiant_Etape3
+            if ($pathinfo === '/add3') {
+                return array (  '_controller' => 'SUH\\GestionBundle\\Controller\\GestionEtudiantController::addInfosEtudiantEtape3Action',  '_route' => 'suh_gestion_addEtudiant_Etape3',);
+            }
+
+            // suh_gestion_addEtudiant_Etape4
+            if ($pathinfo === '/add4') {
+                return array (  '_controller' => 'SUH\\GestionBundle\\Controller\\GestionEtudiantController::addInfosEtudiantEtape4Action',  '_route' => 'suh_gestion_addEtudiant_Etape4',);
+            }
+
+            // suh_gestion_addEtudiant_Etape5
+            if ($pathinfo === '/add5') {
+                return array (  '_controller' => 'SUH\\GestionBundle\\Controller\\GestionEtudiantController::addInfosEtudiantEtape5Action',  '_route' => 'suh_gestion_addEtudiant_Etape5',);
+            }
+
+            // suh_gestion_addEtudiant_Etape6
+            if ($pathinfo === '/add6') {
+                return array (  '_controller' => 'SUH\\GestionBundle\\Controller\\GestionEtudiantController::addInfosEtudiantEtape6Action',  '_route' => 'suh_gestion_addEtudiant_Etape6',);
+            }
+
+            // suh_gestion_addEtudiant_Etape7
+            if ($pathinfo === '/add7') {
+                return array (  '_controller' => 'SUH\\GestionBundle\\Controller\\GestionEtudiantController::addInfosEtudiantEtape7Action',  '_route' => 'suh_gestion_addEtudiant_Etape7',);
+            }
+
+        }
+
+        if (0 === strpos($pathinfo, '/backStep')) {
+            // suh_gestion_BackStep1
+            if ($pathinfo === '/backStep1') {
+                return array (  '_controller' => 'SUH\\GestionBundle\\Controller\\GestionEtudiantController::BackStep1Action',  '_route' => 'suh_gestion_BackStep1',);
+            }
+
+            // suh_gestion_BackStep2
+            if ($pathinfo === '/backStep2') {
+                return array (  '_controller' => 'SUH\\GestionBundle\\Controller\\GestionEtudiantController::BackStep2Action',  '_route' => 'suh_gestion_BackStep2',);
+            }
+
+        }
+
         if (0 === strpos($pathinfo, '/log')) {
             if (0 === strpos($pathinfo, '/login')) {
                 // login

@@ -13,7 +13,6 @@ $(document).ready(function () {
         var urlAccueil = document.getElementById('accueil').getAttribute('href');
 
         //on change les liens des boutons d'ajout/modif/suppression
-        document.getElementById('ajout').setAttribute("href", urlAccueil + "ajouter/" + id);
         document.getElementById('modification').setAttribute("href", urlAccueil + "modifier/" + id);
         document.getElementById('suppression').setAttribute("href", urlAccueil + "supprimer/" + id);
 

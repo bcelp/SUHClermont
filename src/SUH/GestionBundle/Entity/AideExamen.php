@@ -68,7 +68,7 @@ class AideExamen
     /* ====================================================================== */
     /* ====================================================================== */
     
-    public function __construct($amenagementExamen,$tempsMajore,$autresMesures,
+    /*public function __construct($amenagementExamen,$tempsMajore,$autresMesures,
             $delocalisationExamen,$dateValidite,$dureeAvisMedical)
     {
         $this->amenagementExamens=$amenagementExamen;
@@ -77,7 +77,9 @@ class AideExamen
         $this->delocalisationExamen=$delocalisationExamen;
         $this->dateValidite= $dateValidite;
         $this->dureeAvisMedical=$dureeAvisMedical;
-    }
+    }*/
+    
+    public function __construct(){}
 
     /**
      * Get id

@@ -107,7 +107,7 @@ class EtudiantHandicape
     /* ====================================================================== */
     /* ====================================================================== */
     
-    public function __construct($etudiant,$qhandi,$rqth,$notificationSavs,$amenagementEtude,
+    /*public function __construct($etudiant,$qhandi,$rqth,$notificationSavs,$amenagementEtude,
             $tauxInvalidite,$suivi,$dateMaj,$descriptifComplementaire,$mdph,$handicap)
     {
         $this->setEtudiant($etudiant);
@@ -124,6 +124,17 @@ class EtudiantHandicape
         $this->handicap=new ArrayCollection();
         $this->datesAideExamen=new ArrayCollection();
         $this->addHandicap($handicap);
+    }*/
+    
+    public function __construct($etudiant,$idMdph,$handicap,$examen)
+    {
+        $this->setEtudiant($etudiant);
+        $this->id=$etudiant->getId();
+        $this->mdph = $idMdph;
+        $this->handicap=new ArrayCollection();
+        $this->datesAideExamen=new ArrayCollection();
+        $this->addHandicap($handicap);
+        $this->addDatesAideExamen($examen);
     }
     
     public function getDatesAideExamen()

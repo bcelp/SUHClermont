@@ -44,13 +44,15 @@ class DatesAideExamen
     /*========================================================================*/
     /*========================================================================*/
 
-    public function __construct($etudiantHandicape,$aideExamen,$dateDebut,$dateFin)
+    /*public function __construct($etudiantHandicape,$aideExamen,$dateDebut,$dateFin)
     {
         $this->setEtudiantHandicape($etudiantHandicape);
         $this->aideExamen=$aideExamen;
         $this->dateDebut=$dateDebut;
         $this->dateFin=$dateFin;
-    }
+    }*/
+    
+    public function __construct(){}
 
     /**
      * Set etudiantHandicape

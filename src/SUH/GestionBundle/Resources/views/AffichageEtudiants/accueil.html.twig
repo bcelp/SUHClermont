@@ -24,7 +24,7 @@
                     {% include 'SUHGestionBundle:AffichageEtudiants:liste.html.twig' with {'listeEtudiantsHandicapes': listeEtudiantsHandicapes} %}
                 {% endif %}
                     <div id="gestionEtudiants" class="row">
-                        <a id="ajout" class="btn btn-md btn-primary col-md-4" > <span class="glyphicon glyphicon-plus"></span></a>
+                        <a id="ajout" href="{{path('suh_gestion_addEtudiant')}}" class="btn btn-md btn-primary col-md-4" > <span class="glyphicon glyphicon-plus"></span></a>
                         <a id="modification" class="btn btn-md btn-primary col-md-4" onclick="return ConfirmationModification();"> <span class="glyphicon glyphicon-refresh"></span></a>
                         <a id="suppression" class="btn btn-md btn-primary col-md-4" onclick="return ConfirmationSuppression();"> <span class="glyphicon glyphicon-remove"></span></a>
                     </div>

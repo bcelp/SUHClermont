@@ -76,7 +76,10 @@ class __TwigTemplate_971018605f1a91d1c9cee27d4cf4605f8acbab20848f2f792b424569778
         }
         // line 26
         echo "                    <div id=\"gestionEtudiants\" class=\"row\">
-                        <a id=\"ajout\" class=\"btn btn-md btn-primary col-md-4\" > <span class=\"glyphicon glyphicon-plus\"></span></a>
+                        <a id=\"ajout\" href=\"";
+        // line 27
+        echo $this->env->getExtension('routing')->getPath("suh_gestion_addEtudiant");
+        echo "\" class=\"btn btn-md btn-primary col-md-4\" > <span class=\"glyphicon glyphicon-plus\"></span></a>
                         <a id=\"modification\" class=\"btn btn-md btn-primary col-md-4\" onclick=\"return ConfirmationModification();\"> <span class=\"glyphicon glyphicon-refresh\"></span></a>
                         <a id=\"suppression\" class=\"btn btn-md btn-primary col-md-4\" onclick=\"return ConfirmationSuppression();\"> <span class=\"glyphicon glyphicon-remove\"></span></a>
                     </div>
@@ -122,6 +125,6 @@ class __TwigTemplate_971018605f1a91d1c9cee27d4cf4605f8acbab20848f2f792b424569778
 
     public function getDebugInfo()
     {
-        return array (  106 => 44,  104 => 43,  96 => 37,  93 => 36,  90 => 35,  88 => 34,  78 => 26,  75 => 25,  72 => 24,  70 => 23,  56 => 12,  48 => 6,  45 => 5,  37 => 3,  11 => 1,);
+        return array (  109 => 44,  107 => 43,  99 => 37,  96 => 36,  93 => 35,  91 => 34,  81 => 27,  78 => 26,  75 => 25,  72 => 24,  70 => 23,  56 => 12,  48 => 6,  45 => 5,  37 => 3,  11 => 1,);
     }
 }

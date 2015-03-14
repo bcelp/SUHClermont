@@ -33,10 +33,12 @@ class Handicap
     /* ====================================================================== */
     /* ====================================================================== */
     
-    public function __construct($nomHandicap)
+    /*public function __construct($nomHandicap)
     {
         $this->nomHandicap=$nomHandicap;
-    }
+    }*/
+    
+    public function __construct(){}
     
     /**
      * Get id
