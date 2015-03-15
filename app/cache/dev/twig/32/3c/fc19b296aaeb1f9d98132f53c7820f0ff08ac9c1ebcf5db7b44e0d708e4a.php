@@ -99,18 +99,18 @@ class __TwigTemplate_323cfc19b296aaeb1f9d98132f53c7820f0ff08ac9c1ebcf5db7b44e0d7
         // line 27
         echo $this->env->getExtension('routing')->getPath("suh_gestion_homepage");
         echo "\">Accueil</a></li>
-                            <li class=\"liensNavbar\"><a href=\"";
-        // line 28
-        echo $this->env->getExtension('routing')->getPath("suh_gestion_homepage");
-        echo "\">Statistiques</a></li>
                             <li id=\"rechercheAvancee\" class=\"liensNavbar\"><a href=\"";
-        // line 29
+        // line 28
         echo $this->env->getExtension('routing')->getPath("suh_gestion_homepage");
         echo "\">Recherche avancée</a></li>
                             <li class=\"liensNavbar\"><a href=\"";
-        // line 30
+        // line 29
         echo $this->env->getExtension('routing')->getPath("suh_import_export_page");
         echo "\">Import/Export Excel</a></li>
+                            <li class=\"liensNavbar\"><a href=\"";
+        // line 30
+        echo $this->env->getExtension('routing')->getPath("suh_gestion_utilisateur_page");
+        echo "\">Gestion des utilisateurs</a></li>
                         </ul>
                         <ul class=\"nav navbar-nav navbar-right\">
                             <li id=\"deconnexion\"><a href=\"";

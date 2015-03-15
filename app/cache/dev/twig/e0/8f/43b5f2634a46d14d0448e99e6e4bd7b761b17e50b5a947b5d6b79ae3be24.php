@@ -23,6 +23,8 @@ class __TwigTemplate_e08f43b5f2634a46d14d0448e99e6e4bd7b761b17e50b5a947b5d6b79ae
             echo "
 ";
         }
+        // line 4
+        echo "ok";
     }
 
     public function getTemplateName()
@@ -37,6 +39,6 @@ class __TwigTemplate_e08f43b5f2634a46d14d0448e99e6e4bd7b761b17e50b5a947b5d6b79ae
 
     public function getDebugInfo()
     {
-        return array (  21 => 2,  19 => 1,);
+        return array (  27 => 4,  21 => 2,  19 => 1,);
     }
 }

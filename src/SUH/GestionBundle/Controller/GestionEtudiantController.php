@@ -36,7 +36,9 @@ class GestionEtudiantController extends Controller
         $form = $this->createFormBuilder($etudiant)
                 ->add('nomEtudiant','text') 
                 ->add('prenomEtudiant','text')
-                ->add('dateNaissance','date')
+                ->add('dateNaissance','date',array(
+                    'years'=>range(1950,date('Y'))
+                ))
                 ->add('mail','text')
                 ->add('adresseEtudiante','text')
                 ->add('adresseFamiliale','text')
@@ -90,19 +92,6 @@ class GestionEtudiantController extends Controller
         }
         
         $formation = new Formation();
-        
-    
-        $date = Date('Y')-2;
-        $date .= "-";
-        $date .= Date('Y')-1;
-        
-        $date2 = Date('Y')-1;
-        $date2 .= "-";
-        $date2 .= Date('Y');
-        
-        $date3 = Date('Y');
-        $date3 .= "-";
-        $date3 .= Date('Y')+1;
 
         $form = $this->createFormBuilder($formation)
                 ->add('etablissement', 'choice', array(
@@ -114,11 +103,17 @@ class GestionEtudiantController extends Controller
                             'ENSCCF' => 'ENSCCF'
                         )))
                 
-                ->add('anneeEtude', 'choice', array(
-                    'choices' => array(
-                            $date => $date,
-                            $date2 => $date2,
-                            $date3 => $date3
+                ->add('anneeEtude','choice', array(
+                        'choices' => array(
+                            '1' => '1ère année',
+                            '2' => '2ème année',
+                            '3' => '3ème année',
+                            '4' => '4ème année',
+                            '5' => '5ème année',
+                            '6' => '6ème année',
+                            '7' => '7ème année',
+                            '8' => '8ème année',
+                            '9' => '9ème année',
                 )))
              
                 ->add('diplome','choice', array(
@@ -154,18 +149,7 @@ class GestionEtudiantController extends Controller
                         ),
                         'empty_value' => 'Choisissez le cycle',
                         'empty_data'  => null))
-                ->add('anneeEtude','choice', array(
-                        'choices' => array(
-                            '1' => '1ère année',
-                            '2' => '2ème année',
-                            '3' => '3ème année',
-                            '4' => '4ème année',
-                            '5' => '5ème année',
-                            '6' => '6ème année',
-                            '7' => '7ème année',
-                            '8' => '8ème année',
-                            '9' => '9ème année',
-                )))
+                
                 ->add('Valider','submit')
                 
                 ->getForm();

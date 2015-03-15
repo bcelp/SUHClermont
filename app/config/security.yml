@@ -4,6 +4,7 @@ security:
     # http://symfony.com/doc/current/book/security.html#encoding-the-user-s-password
     encoders:
         Symfony\Component\Security\Core\User\User: plaintext
+        SUH\ConnexionBundle\Entity\User: sha512
 
     # http://symfony.com/doc/current/book/security.html#hierarchical-roles
     role_hierarchy:
@@ -12,11 +13,13 @@ security:
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory:
-            memory:
-                users:
-                    user:  { password: pass, roles: [ 'ROLE_USER' ] }
-                    admin: { password: pass, roles: [ 'ROLE_ADMIN' ] }
+        #in_memory:
+        #    memory:
+        #        users:
+        #            user:  { password: pass, roles: [ 'ROLE_USER' ] }
+        #            admin: { password: pass, roles: [ 'ROLE_ADMIN' ] }
+        mesUtilisateurs:
+            entity: { class: SUH\ConnexionBundle\Entity\User, property: username }
 
     # the main part of the security, where you can set up firewalls
     # for specific sections of your app
@@ -37,7 +40,7 @@ security:
         parefeuSuh:
             pattern: ^/
             anonymous: false
-            provider: in_memory
+            provider: mesUtilisateurs
             form-login:
                 login_path: login
                 check_path: login_check

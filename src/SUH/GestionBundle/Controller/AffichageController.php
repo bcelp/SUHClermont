@@ -87,6 +87,18 @@ class AffichageController extends Controller
         ));
     }  
     
+    /**
+     * Affiche l'importation et exportation
+     * @param Request $request
+     * @return type
+     */
+    public function afficheGestionUtilisateurPageAction()
+    {
+        return $this->render('SUHGestionBundle:AffichageEtudiants:accueil.html.twig',array(
+            'userVue' => true,
+        ));
+    }  
+    
     
     
 }

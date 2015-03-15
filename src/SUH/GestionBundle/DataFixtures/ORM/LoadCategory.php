@@ -7,15 +7,44 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use SUH\GestionBundle\Entity;
 
-class LoadCategory implements FixtureInterface
+class LoadCategory extends \Symfony\Bundle\FrameworkBundle\Controller\Controller implements FixtureInterface
 {
   public function load(ObjectManager $manager)
   {
+      // Les noms d'utilisateurs à créer
+    $listNames = array('admin', 'user', 'lapin');
+    
+    foreach ($listNames as $name) {
+      // On crée l'utilisateur
+      $user = new \SUH\ConnexionBundle\Entity\User();
+
+      $factory = $this->get('security.encoder_factory'); 
+      $encoder = $factory->getEncoder($user);
       
+      // Le nom d'utilisateur et le mot de passe sont identiques
+      $user->setUsername($name);
+      //$user->setPassword($name);
+      
+      $password = $encoder->encodePassword('pass', $user->getSalt());
+      $user->setPassword($password);
+      
+      
+    
+      // On ne se sert pas du sel pour l'instant
+      $user->setSalt('');
+      // On définit uniquement le role ROLE_USER qui est le role de base
+      $user->setRoles(array('ROLE_USER'));
+
+      // On le persiste
+      $manager->persist($user);
+    }
+
+    // On déclenche l'enregistrement
+    $manager->flush();
     /* ====================================================================== */
     /* Tables sans jointure */
     
-    $arrayEtudiant = array();
+    /*$arrayEtudiant = array();
     $arrayFormation = array();
     $arrayMdph = array();
     $arrayHandicap = array();
@@ -54,11 +83,11 @@ class LoadCategory implements FixtureInterface
         $arrayAideExamen[]=$aideExamen;
         $manager->persist($aideExamen);
     }
-    $manager->flush();
+    $manager->flush();*/
     
     /* ====================================================================== */
     /* Tables avec jointures */
-    $arrayEtudiantHandicape = array();
+   /* $arrayEtudiantHandicape = array();
     $arrayDatesAideExamen = array();
     $arrayEtudiantFormation = array();
    
@@ -89,7 +118,7 @@ class LoadCategory implements FixtureInterface
         $manager->persist($etudiantFormation);
     }
     
-    $manager->flush();
+    $manager->flush();*/
   
     }
 }

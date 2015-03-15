@@ -179,6 +179,21 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'suh_suppression_etudiant')), array (  '_controller' => 'SUH\\GestionBundle\\Controller\\GestionEtudiantController::suppressionEtudiantAction',));
         }
 
+        // suh_gestion_utilisateur_page
+        if ($pathinfo === '/gestionUtilisateurs') {
+            return array (  '_controller' => 'SUH\\GestionBundle\\Controller\\AffichageController::afficheGestionUtilisateurPageAction',  '_route' => 'suh_gestion_utilisateur_page',);
+        }
+
+        // suh_ajouter_utilisateur
+        if ($pathinfo === '/ajouterCompteUtilisateur') {
+            return array (  '_controller' => 'SUH\\GestionBundle\\Controller\\GestionCompteUtilisateurController::ajouterCompteUtilisateurAction',  '_route' => 'suh_ajouter_utilisateur',);
+        }
+
+        // suh_supprimer_utilisateur
+        if ($pathinfo === '/supprimerCompteUtilisateur') {
+            return array (  '_controller' => 'SUH\\GestionBundle\\Controller\\GestionCompteUtilisateurController::supprimerCompteUtilisateurAction',  '_route' => 'suh_supprimer_utilisateur',);
+        }
+
         if (0 === strpos($pathinfo, '/add')) {
             // suh_gestion_addEtudiant
             if ($pathinfo === '/add') {

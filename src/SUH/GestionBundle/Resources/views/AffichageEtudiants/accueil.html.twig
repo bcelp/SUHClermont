@@ -31,8 +31,14 @@
                 </div>  
                    
                 <div id="affichage" class="col-md-10">
+                    <!-- On affiche la vue excel si on a demandé la page avec afficheExcelVue == true -->
                 {% if afficheExcelVue is defined and afficheExcelVue == true %}
                     {% include 'SUHGestionBundle:Excel:ExcelVue.html.twig' %}
+                {% endif %}
+                
+                <!-- On affiche la vue des utilisateurs si on a demandé la page avec userVue == true -->
+                {% if userVue is defined and userVue == true %}
+                    {% include 'SUHGestionBundle:AffichageEtudiants:userVue.html.twig' %}
                 {% endif %}
                 </div>
                 

@@ -57,3 +57,35 @@ function ConfirmationModification()
     }
     return false;
 }
+
+
+function ConfirmationAjoutCompteUtilisateur()
+{
+    if (confirm("###Voulez vous vraiment ajouter un nouveau compte utilisateur ?###"))
+    {
+        return true;
+    }
+    return false;
+}
+
+
+function ConfirmationSuppressionCompteUtilisateur()
+{
+    var check1 = confirm("###Voulez vous vraiment SUPRIMER ce compte utilisateur de votre base de données ?###");
+    if (check1)
+    {
+        var check2 = confirm("###Etes-vous sûr ? Le compte utilisateur sera SUPPRIME définitivement !###");
+        if (check2)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else
+    {
+        return false;
+    }
+}

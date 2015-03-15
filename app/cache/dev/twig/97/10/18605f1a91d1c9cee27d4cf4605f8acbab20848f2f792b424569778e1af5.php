@@ -86,16 +86,29 @@ class __TwigTemplate_971018605f1a91d1c9cee27d4cf4605f8acbab20848f2f792b424569778
                 </div>  
                    
                 <div id=\"affichage\" class=\"col-md-10\">
+                    <!-- On affiche la vue excel si on a demandé la page avec afficheExcelVue == true -->
                 ";
-        // line 34
+        // line 35
         if ((array_key_exists("afficheExcelVue", $context) && ((isset($context["afficheExcelVue"]) ? $context["afficheExcelVue"] : $this->getContext($context, "afficheExcelVue")) == true))) {
-            // line 35
+            // line 36
             echo "                    ";
             $this->env->loadTemplate("SUHGestionBundle:Excel:ExcelVue.html.twig")->display($context);
-            // line 36
+            // line 37
             echo "                ";
         }
-        // line 37
+        // line 38
+        echo "                
+                <!-- On affiche la vue des utilisateurs si on a demandé la page avec userVue == true -->
+                ";
+        // line 40
+        if ((array_key_exists("userVue", $context) && ((isset($context["userVue"]) ? $context["userVue"] : $this->getContext($context, "userVue")) == true))) {
+            // line 41
+            echo "                    ";
+            $this->env->loadTemplate("SUHGestionBundle:AffichageEtudiants:userVue.html.twig")->display($context);
+            // line 42
+            echo "                ";
+        }
+        // line 43
         echo "                </div>
                 
             </div>
@@ -103,9 +116,9 @@ class __TwigTemplate_971018605f1a91d1c9cee27d4cf4605f8acbab20848f2f792b424569778
         <br/><br/>
     </body>
     ";
-        // line 43
+        // line 49
         if (array_key_exists("tab", $context)) {
-            // line 44
+            // line 50
             echo "       ";
             echo $this->env->getExtension('dump')->dump($this->env, $context, (isset($context["tab"]) ? $context["tab"] : $this->getContext($context, "tab")));
             echo "
@@ -125,6 +138,6 @@ class __TwigTemplate_971018605f1a91d1c9cee27d4cf4605f8acbab20848f2f792b424569778
 
     public function getDebugInfo()
     {
-        return array (  109 => 44,  107 => 43,  99 => 37,  96 => 36,  93 => 35,  91 => 34,  81 => 27,  78 => 26,  75 => 25,  72 => 24,  70 => 23,  56 => 12,  48 => 6,  45 => 5,  37 => 3,  11 => 1,);
+        return array (  122 => 50,  120 => 49,  112 => 43,  109 => 42,  106 => 41,  104 => 40,  100 => 38,  97 => 37,  94 => 36,  92 => 35,  81 => 27,  78 => 26,  75 => 25,  72 => 24,  70 => 23,  56 => 12,  48 => 6,  45 => 5,  37 => 3,  11 => 1,);
     }
 }

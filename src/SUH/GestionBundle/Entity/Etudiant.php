@@ -89,7 +89,7 @@ class Etudiant
     /* ====================================================================== */
     /* ====================================================================== */
 
-    /*public function __construct($nom,$prenom,$dateNaissance,$mail,$adresseFamiliale,
+    public function __construct($nom,$prenom,$dateNaissance,$mail,$adresseFamiliale,
             $adresseEtudiante,$telephone)
     {
         $this->nomEtudiant=$nom;
@@ -101,12 +101,12 @@ class Etudiant
         $this->telephone=$telephone;
         $this->listEtudiantFormation=new ArrayCollection();
         $this->etudiantSpecialise=null;
-    }*/
-    
-    public function __construct()
-    {
-        $this->listEtudiantFormation=new ArrayCollection();
     }
+    
+    /*public function __construct()
+    {
+        $this->listEtudiantFormation = new ArrayCollection();
+    }*/
     
     
     public function getAge()

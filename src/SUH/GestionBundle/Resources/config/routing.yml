@@ -12,6 +12,8 @@ suh_get_etudiant_nomEtPrenom:
     path:   /by
     defaults: { _controller: SUHGestionBundle:Affichage:AfficherAccueilEtudiantRechercheNomOuPrenom }
 
+
+#Gestion des importations et exportations excel
 suh_import_export_page:
     path: /importExportExcel
     defaults: { _controller: SUHGestionBundle:Affichage:afficheImportExportPage }
@@ -23,7 +25,10 @@ suh_import_page:
 suh_export_page:
     path: /exportExcel
     defaults: { _controller: SUHGestionBundle:Excel:exportExcel }
-   
+
+
+#Gestion des étudiants
+
 suh_ajout_etudiant:
     path: /ajouter/{id}
     defaults: { _controller: SUHGestionBundle:GestionEtudiant:ajoutEtudiant }
@@ -41,6 +46,21 @@ suh_suppression_etudiant:
     defaults: { _controller: SUHGestionBundle:GestionEtudiant:suppressionEtudiant }
     requirements:
         id:   "^[0-9]+$"
+     
+#gestion comptes utilisateur   
+
+suh_gestion_utilisateur_page:
+    path: /gestionUtilisateurs
+    defaults: { _controller: SUHGestionBundle:Affichage:afficheGestionUtilisateurPage }
+    
+suh_ajouter_utilisateur:
+    path: /ajouterCompteUtilisateur
+    defaults: { _controller: SUHGestionBundle:GestionCompteUtilisateur:ajouterCompteUtilisateur }
+    
+    
+suh_supprimer_utilisateur:
+    path: /supprimerCompteUtilisateur
+    defaults: { _controller: SUHGestionBundle:GestionCompteUtilisateur:supprimerCompteUtilisateur }
         
         
 #routes pour les ajouts        

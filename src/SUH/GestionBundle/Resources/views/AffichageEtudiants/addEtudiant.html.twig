@@ -1,0 +1,71 @@
+{% extends "SUHGestionBundle:AffichageEtudiants:base.html.twig" %}
+
+{% block title %} {{parent()}} - Ajout d'un étudiant {% endblock %}
+
+{% block body %}
+   
+    
+        <center>
+        <p class="liensNavbar">
+            Etape n°{{ etape }}
+        </p>
+        
+        {% if etape == 1 %}
+
+            {{ form(f) }}
+            
+        {% endif %}
+        
+        {% if etape == 2 %}
+          
+            Création du dossier concernant :
+            {{nom }} {{ prenom }}
+            
+           <p> Sa formation : </p>
+            
+            {{ form(f) }}
+           
+           <a href="{{ path('suh_gestion_BackStep1') }}"><input type="button" value="Revenir à l'étape 1"/></a>
+
+        {% endif %}
+           
+        {% if etape == 3 %}
+           
+           Création du dossier concernant :
+           {{nom }} {{ prenom }}
+           
+           <p> Aide examen : </p>
+
+           {{ form(f) }}
+           
+           <a href="{{ path('suh_gestion_BackStep2') }}"><input type="button" value="Revenir à l'étape 2"/></a>
+        {% endif %}
+               
+        {% if etape == 4 %}
+               
+               Est-ce que la personne appartient à une MDPH?
+               
+                    <a href="{{ path('suh_gestion_addEtudiant_Etape5') }}"><input type="button" value="Oui"/></a>
+                    <a href="{{ path('suh_gestion_addEtudiant_Etape5') }}"><input type="button" value="Non"/></a>
+        
+        {% endif %}
+                    
+        {% if etape == 5 %}
+                Informations mdph :
+                
+                {{ form(f) }}
+        {% endif %}
+                
+        {% if etape == 6 %}
+               {{ form(f) }}
+        {% endif %}
+                
+        {% if etape == 7 %}
+               {{ form(f) }}
+        {% endif %}
+                       
+               
+        </center>
+
+{% endblock %}
+

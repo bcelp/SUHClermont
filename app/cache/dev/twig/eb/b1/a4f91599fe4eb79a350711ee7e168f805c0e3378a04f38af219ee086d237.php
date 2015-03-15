@@ -47,13 +47,17 @@ class __TwigTemplate_ebb1a4f91599fe4eb79a350711ee7e168f805c0e3378a04f38af219ee08
         // line 28
         echo $this->env->getExtension('routing')->getPath("suh_import_page");
         echo "\" enctype=\"multipart/form-data\" 
-              >
+              onsubmit=\"return confirmationImport();\">
             <input type=\"hidden\" name=\"MAX_FILE_SIZE\" value=\"1048576\" />
             <input type=\"file\" name=\"fichierExcel\"/><br/>
             <input id=\"nbLignes\" name=\"nbLignes\" type=\"number\" placeholder=\"Nombre de ligne\"/><br/>   
             <button type=\"submit\" class=\"btn btn-danger\">Importer</button>
         </form>
     </div>     
+              
+              
+              <!--  ================== EXPORTATION EXCEL ================== -->
+              
               
     <button class=\"btn btn-warning form-control\" title=\"Exportation excel\" type=\"button\" 
             onclick=\"
@@ -68,11 +72,7 @@ class __TwigTemplate_ebb1a4f91599fe4eb79a350711ee7e168f805c0e3378a04f38af219ee08
         Exportation Excel
     </button>
                 
-              
-              
-              
-              
-                <!--  ================== EXPORTATION EXCEL ================== -->
+                
     <div id=\"exportExcel\" class=\"spoiler\" style=\"display:none\"> 
         <br/>Vous pouvez exporter un fichier excel <br/>
         <form method=\"POST\" action=\"";
