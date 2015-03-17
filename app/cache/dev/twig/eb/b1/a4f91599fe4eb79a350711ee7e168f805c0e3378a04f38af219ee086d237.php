@@ -49,8 +49,8 @@ class __TwigTemplate_ebb1a4f91599fe4eb79a350711ee7e168f805c0e3378a04f38af219ee08
         echo "\" enctype=\"multipart/form-data\" 
               onsubmit=\"return confirmationImport();\">
             <input type=\"hidden\" name=\"MAX_FILE_SIZE\" value=\"1048576\" />
-            <input type=\"file\" name=\"fichierExcel\"/><br/>
-            <input id=\"nbLignes\" name=\"nbLignes\" type=\"number\" placeholder=\"Nombre de ligne\"/><br/>   
+            <input type=\"file\" name=\"fichierExcel\" required=\"required\"/><br/>
+            <input id=\"nbLignes\" name=\"nbLignes\" type=\"number\" placeholder=\"Nombre de ligne\" required=\"required\"/><br/>   
             <button type=\"submit\" class=\"btn btn-danger\">Importer</button>
         </form>
     </div>     

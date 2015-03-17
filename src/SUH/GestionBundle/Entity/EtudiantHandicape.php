@@ -118,7 +118,7 @@ class EtudiantHandicape
         $this->amenagementEtude=$amenagementEtude;
         $this->tauxInvalidite=$tauxInvalidite;
         $this->suivi=$suivi;
-        $this->dateMaj=new \DateTime('01/01/2016');
+        $this->dateMaj=$dateMaj;
         $this->descriptifComplementaire=$descriptifComplementaire;
         $this->mdph=$mdph;
         $this->handicap=new ArrayCollection();

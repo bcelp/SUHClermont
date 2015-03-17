@@ -62,15 +62,19 @@ suh_supprimer_utilisateur:
     path: /supprimerCompteUtilisateur
     defaults: { _controller: SUHGestionBundle:GestionCompteUtilisateur:supprimerCompteUtilisateur }
         
-        
+ 
 #routes pour les ajouts        
 suh_gestion_addEtudiant:
     path: /add
     defaults: { _controller: SUHGestionBundle:GestionEtudiant:addInfosEtudiant }
- 
+
 suh_gestion_addEtudiant_Etape2:
     path: /add2
     defaults: { _controller: SUHGestionBundle:GestionEtudiant:addInfosEtudiantEtape2 }
+    
+suh_gestion_addEtudiant_Etape2bis:
+    path: /add2bis
+    defaults: { _controller: SUHGestionBundle:GestionEtudiant:addInfosEtudiantEtape2bis }
     
 suh_gestion_addEtudiant_Etape3:
     path: /add3
@@ -83,6 +87,10 @@ suh_gestion_addEtudiant_Etape4:
 suh_gestion_addEtudiant_Etape5:
     path: /add5
     defaults: { _controller: SUHGestionBundle:GestionEtudiant:addInfosEtudiantEtape5 }
+ 
+suh_gestion_addEtudiant_Etape5bis:
+    path: /add5bis
+    defaults: { _controller: SUHGestionBundle:GestionEtudiant:addInfosEtudiantEtape5bis }
     
 suh_gestion_addEtudiant_Etape6:
     path: /add6
@@ -99,3 +107,71 @@ suh_gestion_BackStep1:
 suh_gestion_BackStep2:
     path: /backStep2
     defaults: { _controller: SUHGestionBundle:GestionEtudiant:BackStep2 }
+    
+    
+#route pour les modifications
+
+suh_gestion_modifEtudiant_infos:
+    path: /modifInfos
+    defaults: { _controller: SUHGestionBundle:GestionEtudiant:modifInfos }
+
+suh_gestion_modifEtudiant_anneeScolaire:
+    path: /anneeScolaire
+    defaults: { _controller: SUHGestionBundle:GestionEtudiant:modifAnneeScolaire }
+    
+suh_gestion_modifEtudiant_formation:
+    path: /formation
+    defaults: { _controller: SUHGestionBundle:GestionEtudiant:modifFormation }
+    
+suh_gestion_modifEtudiant_DatesAideExamen:
+    path: /DatesAideExamen
+    defaults: { _controller: SUHGestionBundle:GestionEtudiant:modifDatesAideExamen }
+
+suh_gestion_modifEtudiant_AideExamen:
+    path: /AideExamen
+    defaults: { _controller: SUHGestionBundle:GestionEtudiant:modifAideExamen }
+    
+suh_gestion_modifEtudiant_mdph:
+    path: /mdph
+    defaults: { _controller: SUHGestionBundle:GestionEtudiant:modifmdph }
+    
+suh_gestion_modifEtudiant_handicap:
+    path: /handicap
+    defaults: { _controller: SUHGestionBundle:GestionEtudiant:modifhandicap }
+    
+suh_gestion_modifEtudiant_NomHandicap:
+    path: /NomHandicap
+    defaults: { _controller: SUHGestionBundle:GestionEtudiant:modifNomHandicap }
+    
+suh_gestion_modifEtudiant_AddNewhandicap:
+    path: /AddNewHandicap
+    defaults: { _controller: SUHGestionBundle:GestionEtudiant:addNewHandicap }
+    
+suh_gestion_modifEtudiant_AddNewFormation:
+    path: /AddNewFormation
+    defaults: { _controller: SUHGestionBundle:GestionEtudiant:addNewFormation }
+    
+suh_gestion_addNewFormation_Etape2:
+    path: /AddNewFormation2
+    defaults: { _controller: SUHGestionBundle:GestionEtudiant:addNewFormationEtape2 }
+    
+#routes suppression handicap/formation/aideexamen
+
+
+suh_suppression_handicap:
+    path: /supprimerHandicap/{id}
+    defaults: { _controller: SUHGestionBundle:GestionEtudiant:supprimerHandicap }
+    requirements:
+        id:   "^[0-9]+$"
+        
+suh_suppression_etudiantFormation:
+    path: /supprimerFormation/{id}
+    defaults: { _controller: SUHGestionBundle:GestionEtudiant:supprimerFormation }
+    requirements:
+        id:   "^[0-9]+$"
+ 
+suh_suppression_datesAideExamen:
+    path: /supprimerAideExamen/{id}
+    defaults: { _controller: SUHGestionBundle:GestionEtudiant:supprimerAideExamen }
+    requirements:
+        id:   "^[0-9]+$"

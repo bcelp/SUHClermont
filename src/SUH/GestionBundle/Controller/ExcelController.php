@@ -169,6 +169,9 @@ class ExcelController extends Controller
     /* =======================================================================*/
     /* =======================================================================*/
     /* =======================================================================*/
+    /* =======================================================================*/
+    /* =======================================================================*/
+    /* =======================================================================*/
     
     
     /**
@@ -335,7 +338,7 @@ class ExcelController extends Controller
         $manager->persist($formation);
         
          // ===== MDPH
-        if(empty($rowData[0][25])){$reconnaissanceMdph=false;}else{$reconnaissanceMdph=true;}
+        $reconnaissanceMdph = $this->verifierBool($rowData[0][25]);
         $mdph=new \SUH\GestionBundle\Entity\Mdph(
                 $reconnaissanceMdph, //reconnaissance mdph
                 $rowData[0][26] //département mdph
@@ -349,8 +352,8 @@ class ExcelController extends Controller
         $manager->persist($handicap);
         
          // ===== AIDE EXAMEN
-        if(empty($rowData[0][18])){$tempsMajore=false;}else{$tempsMajore=true;}
-        if(empty($rowData[0][19])){$autresMesures=false;}else{$autresMesures=true;}
+        $tempsMajore = $this->verifierBool($rowData[0][18]);
+        $autresMesures = $this->verifierBool($rowData[0][19]);
         $aideExamen=new \SUH\GestionBundle\Entity\AideExamen(
                 $rowData[0][20], //amenagement examen (aménagement épreuve dans le fichier, ce n'est pas le booléen)
                 $tempsMajore, //temps majoré
@@ -367,8 +370,8 @@ class ExcelController extends Controller
     /* Tables avec jointures */
    
      // ===== ETUDIANT HANDICAPE
-    if(empty($rowData[0][28])){$rqth=false;}else{$rqth=true;}
-    if(empty($rowData[0][29])){$notificationSavs=false;}else{$notificationSavs=true;}
+    $rqth = $this->verifierBool($rowData[0][28]);
+    $notificationSavs = $this->verifierBool($rowData[0][29]);
         $etudiantHandicape=new \SUH\GestionBundle\Entity\EtudiantHandicape(
                 $etudiant,
                 $rowData[0][5], //qhandi
@@ -442,6 +445,20 @@ class ExcelController extends Controller
             }   
         }
         return true;
+    }
+    
+    /**
+     * Cette méthode renvoie true si une cellule dans Excel contient "OUI", false sinon
+     * @param type $case
+     * @return boolean
+     */
+    private function verifierBool($cellule)
+    {
+        if(!empty($cellule) && $cellule == "OUI")
+        {
+            return true;
+        }
+        return false;
     }
     
 }

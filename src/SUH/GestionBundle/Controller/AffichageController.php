@@ -30,7 +30,42 @@ class AffichageController extends Controller
                 ->getManager()
                 ->getRepository('SUHGestionBundle:EtudiantHandicape');
         
-        $informationsEtudiant = $etudiantHandicapeRepository->getInformationsStudent($id);
+        $etudiant = $etudiantHandicapeRepository->find($id);  
+        
+        $tabHandicap = array();
+        $tabFormation = array();
+        $tabAideExamen = array();
+        foreach($etudiant->getHandicap() as $val)
+        {
+            $tabHandicap[] = $val;
+        }
+        foreach($etudiant->getEtudiant()->getListEtudiantFormation() as $val)
+        {
+            $tabFormation[] = $val;
+        }
+        foreach($etudiant->getDatesAideExamen() as $val)
+        {
+            $tabAideExamen[] = $val;
+        }
+        
+        $formation = false;
+        $handicap = false;
+        $aideExamen = false;
+        if(!empty($tabHandicap))
+        {
+            $handicap = true;
+        }
+        if(!empty($tabFormation))
+        {
+            $formation = true;
+        }
+        if(!empty($tabAideExamen))
+        {
+            
+            $aideExamen = true;
+        }
+        
+        $informationsEtudiant = $etudiantHandicapeRepository->getInformationsStudent($id,$formation,$handicap,$aideExamen);
         
         return $this->render('SUHGestionBundle:AffichageEtudiants:spoiler.html.twig',array(
             'informationsEtudiant'=>$informationsEtudiant,

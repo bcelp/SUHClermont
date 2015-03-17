@@ -1,9 +1,9 @@
 function confirmationImport()
 {
-    var check1 = confirm("###Voulez vous remplacer votre base de données par votre fichier Excel ?###");
+    var check1 = confirm("###Voulez vous ajouter le contenu de ce fichier excel à votre base de données ?###");
     if (check1)
     {
-        var check2 = confirm("###Etes-vous sûr ? La base de données sera effacée !###");
+        var check2 = confirm("###Etes-vous sûr ?###");
         if (check2)
         {
             return true;
@@ -75,6 +75,27 @@ function ConfirmationSuppressionCompteUtilisateur()
     if (check1)
     {
         var check2 = confirm("###Etes-vous sûr ? Le compte utilisateur sera SUPPRIME définitivement !###");
+        if (check2)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else
+    {
+        return false;
+    }
+}
+
+function confirmationSuppression()
+{
+    var check1 = confirm("###Voulez vous vraiment SUPRIMER ces données de votre base de données ?###");
+    if (check1)
+    {
+        var check2 = confirm("###Etes-vous sûr ? La suppression sera définitive !###");
         if (check2)
         {
             return true;

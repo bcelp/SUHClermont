@@ -5,7 +5,8 @@
     <hr/>
     </p>
     
-
+    <script type="text/javascript">
+    </script>
     <button class="btn btn-info form-control" title="informations etudiant handicape" type="button" 
             onclick="
                     if (document.getElementById('etudiantHandicape').style.display === 'none')
@@ -24,13 +25,24 @@
               <tr><td>numéro etudiant</td><td>{{informationsEtudiant[0].id}}</td></tr>
               <tr><td>nom</td><td>{{informationsEtudiant[0].etudiant.nomEtudiant}}</td></tr>
               <tr><td>prenom</td><td>{{informationsEtudiant[0].etudiant.prenomEtudiant}}</td></tr>
+              {% if informationsEtudiant[0].etudiant.dateNaissance is empty %}
+              <tr><td>date de naissance</td><td> - </td></tr>
+              <tr><td>âge</td><td> - </td></tr>
+              {% else %}
               <tr><td>date de naissance</td><td>{{informationsEtudiant[0].etudiant.dateNaissance|date('d-m-Y')}}</td></tr>
-              <tr><td>âge</td><td>{{informationsEtudiant[0].etudiant.getAge()}} ans</td></tr>
+              <tr><td>âge</td><td>{{informationsEtudiant[0].etudiant.getAge()}} ans</td></tr>  
+              {% endif %}
               <tr><td>mail</td><td>{{informationsEtudiant[0].etudiant.mail}}</td></tr>
               <tr><td>adresse étudiante</td><td>{{informationsEtudiant[0].etudiant.adresseEtudiante}}</td></tr>
               <tr><td>adresse familiale</td><td>{{informationsEtudiant[0].etudiant.adresseFamiliale}}</td></tr>
               {% for handicap in informationsEtudiant[0].handicap %}                  
-                  <tr><td>handicap</td><td>{{handicap.nomHandicap}}</td></tr>
+                  <tr><td>
+                          <!-- Suppression d'un handicap -->
+                          <a onclick="return confirmationSuppression();" href="{{path('suh_suppression_handicap', {'id':handicap.id})}}">
+                          <img id="logo" alt="SUH" width="25" height="25" src="{{asset('bundles/suhGestion/images/delete.png')}}">
+                          </a>
+                   handicap</td><td>{{handicap.nomHandicap}}
+                  </td></tr>
               {% endfor %}                          
               <tr><td>reconnaissance mdph</td><td>
                       {% if informationsEtudiant[0].mdph.reconnaissanceMdph %} 
@@ -54,6 +66,7 @@
               <tr><td>suvi</td><td>{{informationsEtudiant[0].suivi}}</td></tr>
               <tr><td>date dernière mise à jour</td><td>{{informationsEtudiant[0].dateMaj|date('d-m-Y')}}</td></tr>
               <tr><td>descriptif complémentaire</td><td>{{informationsEtudiant[0].descriptifComplementaire}}</td></tr>
+            
         </tbody>
     </table>
     </div> 
@@ -77,7 +90,13 @@
         <table class="table table-bordered table-condensed">
         <tbody>
             {% for etudiantFormation in informationsEtudiant[0].etudiant.listEtudiantFormation %}                
-              <tr><td>année scolaire</td><td>{{etudiantFormation.anneeScolaire}}</td></tr>
+              <tr><td>
+                      <!-- Suppression formation -->
+                 <a onclick="return confirmationSuppression();" href="{{path('suh_suppression_etudiantFormation', {'id': etudiantFormation.formation.id}) }}">
+                <img id="logo" alt="SUH" width="25" height="25" src="{{asset('bundles/suhGestion/images/delete.png')}}">
+                 </a>
+                 année scolaire</td><td>{{etudiantFormation.anneeScolaire}}
+              </td></tr>
               <tr><td>diplome</td><td>{{etudiantFormation.formation.diplome}}</td></tr>
               <tr><td>composante</td><td>{{etudiantFormation.formation.composante}}</td></tr>
               <tr><td>filiere</td><td>{{etudiantFormation.formation.filiere}}</td></tr>
@@ -89,7 +108,8 @@
     </table>
     </div> 
 </div>
-        
+            
+
 <div class="spoiler">
     <button class="btn btn-info form-control" title="informations etudiant aides examens" type="button" 
             onclick="
@@ -103,11 +123,18 @@
                     }">
         Aides aux examens
     </button>
+    
     <div id="etudiantAidesExamens" class="spoiler" style="display:none"> 
         <table class="table table-bordered table-condensed">
         <tbody>
+            
             {% for dateAideExamen in informationsEtudiant[0].datesAideExamen %}                
-              <tr><td>date début</td><td>{{dateAideExamen.dateDebut|date('d-m-Y')}}</td></tr>
+              <tr><td>
+                      <a onclick="return confirmationSuppression();" href="{{path('suh_suppression_datesAideExamen', {'id': dateAideExamen.aideExamen.id}) }}">
+                          <img id="logo" alt="SUH" width="25" height="25" src="{{asset('bundles/suhGestion/images/delete.png')}}">
+                      </a>
+                 date début</td><td>{%if dateAideExamen.dateDebut is empty %} - {% else %}{{dateAideExamen.dateDebut|date('d-m-Y')}}{% endif %}
+              </td></tr>
               <tr><td>date fin</td><td>{%if dateAideExamen.dateFin is empty %} - {% else %}{{dateAideExamen.dateFin|date('d-m-Y')}}{% endif %}</td></tr>
               <tr><td>amenagement examen</td><td>{{dateAideExamen.aideExamen.amenagementExamens}}</td></tr>
               <tr><td>temps majoré</td><td>{% if dateAideExamen.aideExamen.tempsMajore %} 
@@ -121,7 +148,7 @@
                         <img id="logo" width="30" height="30" alt="SUH" src="{{asset('bundles/suhGestion/images/cocheRouge.png')}}"> 
                       {% endif %}</td></tr>
               <tr><td>délocalisation examen</td><td>{{dateAideExamen.aideExamen.delocalisationExamen}}</td></tr>
-              <tr><td>date validité</td><td>{{dateAideExamen.aideExamen.dateValidite|date('d-m-Y')}}</td></tr>
+              <tr><td>date validité</td><td>{%if dateAideExamen.aideExamen.dateValidite is empty %} - {% else %}{{dateAideExamen.aideExamen.dateValidite|date('d-m-Y')}}{% endif %}</td></tr>
               <tr><td>durée avis médical</td><td>{{dateAideExamen.aideExamen.dureeAvisMedical}}</td></tr>
             {% endfor %} 
         </tbody>

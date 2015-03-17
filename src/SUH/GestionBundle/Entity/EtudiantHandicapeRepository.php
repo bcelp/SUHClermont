@@ -34,29 +34,38 @@ class EtudiantHandicapeRepository extends EntityRepository
      * retourne toutes les informations relatives à un étudiant handicapé identifié par son id
      * (utilisé pour l'affichage d'un étudiant)
      * @param type $id
+     * @param type $formation boolean
+     * @param type $handicap boolean
+     * @param type $aideExamen boolean
      * @return type
      */
-    public function getInformationsStudent($id)
+    public function getInformationsStudent($id,$formation,$handicap,$aideExamen)
     {
-        return $this->createQueryBuilder('eh')
+        $qb = $this->createQueryBuilder('eh')
                 ->where('eh.id=:id')
                 ->setParameter('id', $id)
                 ->join('eh.etudiant','etudiant')
                 ->addSelect('etudiant')
-                ->join('etudiant.listEtudiantFormation','lef')
+                ->join('eh.mdph','mdph')
+                ->addSelect('mdph');
+        if($formation)
+        {
+            $qb->join('etudiant.listEtudiantFormation','lef')
                 ->addSelect('lef')
                 ->join('lef.formation','formation')
-                ->addSelect('formation')
-                ->join('eh.mdph','mdph')
-                ->addSelect('mdph')
-                ->join('eh.handicap','handicap')
-                ->addSelect('handicap')
-                ->join('eh.datesAideExamen','dae')
-                ->addSelect('dae')
-                ->join('dae.aideExamen','aideExamen')
-                ->addSelect('aideExamen')
-                ->getQuery()
-                ->getResult();
+                ->addSelect('formation');
+        }
+        if($handicap)
+        {
+           $qb->join('eh.handicap','handicap')
+                ->addSelect('handicap');
+        }
+        if($aideExamen)
+        {
+            $qb->join('eh.datesAideExamen','dae')
+                ->addSelect('dae');
+        }       
+        return $qb->getQuery()->getResult();
     }
     
     /**
