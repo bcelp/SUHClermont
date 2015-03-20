@@ -21,9 +21,16 @@
         <p class="alert-danger">
              /\ Attention /\ <br/>
             1) Le fichier excel doit comporter les 32 colonnes suivantes dans l'ordre :
-                //colonnes ici
             <br/>
-            2) L'importation effacera l'ancienne BDD, exportez l'ancienne si vous souhaitez la garder
+                nom/prenom/n°etudiant/date naissance/age/n°qhandi/mail/n°telephone/adresse familiale/adresse etudiante/
+                universite ou ecole/ufr/diplome/annee/filiere/cycle/handicap/amenagement examen/temps majore/
+                autres mesures/amenagements epreuves/delocalisation examens/date de validite/dureee avis medical/
+                amenagements etudes/reconnaissance mdph/departement mdph/taux invalidite/rqth/
+                notifications savs/suivi/date mise à jour
+                <br/>
+                <br/>
+                Par ailleurs les dates doivent être dans des champs "date" d'Excel, et au format jj/mm/aaaa ou jj-mm-aaaa
+            <br/>
         </p>
         <form method="POST" action="{{path('suh_import_page')}}" enctype="multipart/form-data" 
               onsubmit="return confirmationImport();">

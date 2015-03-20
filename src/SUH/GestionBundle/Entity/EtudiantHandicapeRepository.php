@@ -12,24 +12,7 @@ use Doctrine\ORM\EntityRepository;
  */
 class EtudiantHandicapeRepository extends EntityRepository
 {
-    /**
-     * retourne tous les id, noms et prénoms des étudiants handicapés de la BDD 
-     * (utilisé pour l'affichage de la liste
-     * @return type
-     */
-    public function getAllIdNameSurname()
-    {
-        return $this->_em->createQueryBuilder()
-                ->select('eh.id')
-                ->from($this->_entityName,'eh')
-                ->join('eh.etudiant','e')
-                ->addSelect('e.nomEtudiant','e.prenomEtudiant')
-                ->orderBy('e.nomEtudiant')
-                ->addOrderBy('e.prenomEtudiant')
-                ->getQuery()
-                ->getResult();       
-    }
-    
+        
     /**
      * retourne toutes les informations relatives à un étudiant handicapé identifié par son id
      * (utilisé pour l'affichage d'un étudiant)
@@ -94,19 +77,121 @@ class EtudiantHandicapeRepository extends EntityRepository
                 ->getResult();
     }
     
-    /**
-     * Permet de supprimer un étudiant handicapé identifié par son $id
-     * @param type $id
-     */
-    public function supprimerEtudiantHandicape($id)
-    {
-        $qb = $this->_em->createQueryBuilder();
-        $qb->delete('EtudiantFormation','ef')
-            ->where('ef.etudiant.id',':id')
-            ->setParamete('id', $id);
-        /*$qb->delete('Etudiant','e')
-            ->where('e.id',':id')
-            ->setParamete('id', $id)*/
-            
+    public function getEtudiantwithCondition($array){
+       $qb = $this->createQueryBuilder('eh')
+                ->where('1=1')
+                ->join('eh.etudiant','etudiant')
+                ->addSelect('etudiant')
+                ->join('etudiant.listEtudiantFormation','lef')
+                ->addSelect('lef')
+                ->join('lef.formation','formation')
+                ->addSelect('formation')
+                ->join('eh.mdph','mdph')
+                ->addSelect('mdph')
+                ->join('eh.handicap','handicap')
+                ->addSelect('handicap')
+                ->join('eh.datesAideExamen','dae')
+                ->addSelect('dae')
+                ->join('dae.aideExamen','aideExamen')
+                ->addSelect('aideExamen');
+                
+        foreach($array as $key => $value){
+            switch($key){
+                
+                //ETUDIANT
+                case("nomEtudiant"): $qb->andWhere('etudiant.nomEtudiant=:nom')
+                                        ->setParameter('nom', $value);
+                                        break;
+                case("prenomEtudiant"): $qb->andWhere('etudiant.nomEtudiant=:prenom')
+                                        ->setParameter('prenom', $value);
+                                        break;
+                case("age="):  $date = new \DateTime('now');
+                              $annee= (int)$date->format('Y');
+                              $anneeMax=$annee-$value-1 ."-" .$date->format('m-d');
+                              $anneeMin=$annee-$value ."-" .$date->format('m-d');
+                                        $qb->andWhere('etudiant.dateNaissance>=:dateMax')
+                                        ->setParameter('dateMax', $anneeMax);
+                                        $qb->andWhere('etudiant.dateNaissance<=:dateMin')
+                                        ->setParameter('dateMin', $anneeMin);
+                                        break;
+                case("age<"): $date = new \DateTime('now');
+                              $annee= (int)$date->format('Y');
+                              $anneeMin=$annee-$value ."-" .$date->format('m-d');
+                                        $qb->andWhere('etudiant.dateNaissance>=:dateMin')
+                                        ->setParameter('dateMin', $anneeMin);
+                                        break;
+                case("age>"):  $date = new \DateTime('now');
+                              $annee= (int)$date->format('Y');
+                              $anneeMin=$annee-$value ."-" .$date->format('m-d');
+                                        $qb->andWhere('etudiant.dateNaissance<=:dateMin')
+                                        ->setParameter('dateMin', $anneeMin);
+                                        break;
+                case("mail"): $qb->andWhere('etudiant.mail=:mail')
+                                        ->setParameter('mail', $value);
+                                        break;
+                case("telephone"): $qb->andWhere('etudiant.telephone=:telephone')
+                                        ->setParameter('telephone', $value);
+                                        break;
+                                    
+                //ETUDIANT HANDICAP
+                case("qhandi"): if($value=="oui"|| $value=="Oui"){
+                                    $value=true;
+                                } if($value=="non"|| $value=="Non"){
+                                    $value=false;
+                                }
+                                        $qb->andWhere('eh.qhandi=:date')
+                                        ->setParameter('date', $value);
+                                        break;
+                case("rqth"): if($value=="oui"|| $value=="Oui"){
+                                    $value=true;
+                                } if($value=="non"|| $value=="Non"){
+                                    $value=false;
+                                }
+                                        $qb->andWhere('eh.rqth=:rqth')
+                                        ->setParameter('rqth', $value);
+                                        break;
+                case("tauxInvalidite"): $qb->andWhere('eh.tauxInvalidite=:tauxInvalidite')
+                                        ->setParameter('tauxInvalidite', $value);
+                                        break;
+                // FORMATION
+                case("diplome"): $qb->andWhere('formation.diplome=:diplome')
+                                        ->setParameter('diplome', $value);
+                                        break;
+                case("composante"): $qb->andWhere('formation.composante=:composante')
+                                        ->setParameter('composante', $value);
+                                        break;
+                case("filiere"): $qb->andWhere('formation.filiere=:filiere')
+                                        ->setParameter('filiere', $value);
+                                        break;
+                case("cycle"): $qb->andWhere('formation.cycle=:cycle')
+                                        ->setParameter('cycle', $value);
+                                        break;
+                case("etablissement"): $qb->andWhere('formation.etablissement=:etablissement')
+                                        ->setParameter('etablissement', $value);
+                                        break;
+                // FORMATION ETUDIANT
+                case("annee"): $qb->andWhere('lef.annee=:annee')
+                                        ->setParameter('annee', $value);
+                                        break;
+                // MDPH
+                case("reconnaissanceMdph"):  if($value=="oui"|| $value=="Oui"){
+                                                $value=true;
+                                            } if($value=="non"|| $value=="Non"){
+                                                $value=false;
+                                            }
+                                        $qb->andWhere('mdph.reconnaissanceMdph=:reconnaissanceMdph')
+                                        ->setParameter('reconnaissanceMdph', $value);
+                                        break;
+                case("departementMdph"): $qb->andWhere('mdph.departementMdph=:departementMdph')
+                                        ->setParameter('departementMdph', $value);
+                                        break;
+                // HANDICAP
+                case("nomHandicap"): $qb->andWhere('handicap.nomHandicap=:nomHandicap')
+                                        ->setParameter('nomHandicap', $value);
+                                        break;
+                default: break;                    
+            }
+        }
+        return $qb->getQuery()->getResult();
     }
 }

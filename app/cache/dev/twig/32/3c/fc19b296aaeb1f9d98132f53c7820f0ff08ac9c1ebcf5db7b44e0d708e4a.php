@@ -101,7 +101,7 @@ class __TwigTemplate_323cfc19b296aaeb1f9d98132f53c7820f0ff08ac9c1ebcf5db7b44e0d7
         echo "\">Accueil</a></li>
                             <li id=\"rechercheAvancee\" class=\"liensNavbar\"><a href=\"";
         // line 28
-        echo $this->env->getExtension('routing')->getPath("suh_gestion_homepage");
+        echo $this->env->getExtension('routing')->getPath("suh_gestion_rechercheAvancee");
         echo "\">Recherche avancée</a></li>
                             <li class=\"liensNavbar\"><a href=\"";
         // line 29

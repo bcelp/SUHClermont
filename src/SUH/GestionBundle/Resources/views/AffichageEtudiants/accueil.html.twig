@@ -40,6 +40,11 @@
                 {% if userVue is defined and userVue == true %}
                     {% include 'SUHGestionBundle:AffichageEtudiants:userVue.html.twig' %}
                 {% endif %}
+                
+                <!-- On affiche la vue de la recherche avancée si on a demandé la page avec rechercheAvancee == true -->
+                {% if rechercheAvancee is defined and rechercheAvancee == true %}
+                    {% include 'SUHGestionBundle:AffichageEtudiants:rechercheAvancee.html.twig' %}
+                {% endif %}
                 </div>
                 
             </div>

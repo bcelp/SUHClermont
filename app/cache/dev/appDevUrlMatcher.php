@@ -146,6 +146,19 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'SUH\\GestionBundle\\Controller\\AffichageController::AfficherAccueilEtudiantRechercheNomOuPrenomAction',  '_route' => 'suh_get_etudiant_nomEtPrenom',);
         }
 
+        if (0 === strpos($pathinfo, '/re')) {
+            // suh_gestion_rechercheAvancee
+            if ($pathinfo === '/rechercheAvancee') {
+                return array (  '_controller' => 'SUH\\GestionBundle\\Controller\\AffichageController::AfficherRechercheAvanceeAction',  '_route' => 'suh_gestion_rechercheAvancee',);
+            }
+
+            // suh_gestion_resultatAvancee
+            if ($pathinfo === '/resultatAvancee') {
+                return array (  '_controller' => 'SUH\\GestionBundle\\Controller\\AffichageController::AfficherResultatRechercheAction',  '_route' => 'suh_gestion_resultatAvancee',);
+            }
+
+        }
+
         if (0 === strpos($pathinfo, '/importEx')) {
             // suh_import_export_page
             if ($pathinfo === '/importExportExcel') {

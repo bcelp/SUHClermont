@@ -12,6 +12,15 @@ suh_get_etudiant_nomEtPrenom:
     path:   /by
     defaults: { _controller: SUHGestionBundle:Affichage:AfficherAccueilEtudiantRechercheNomOuPrenom }
 
+#recherche avancée
+suh_gestion_rechercheAvancee:
+    path:     /rechercheAvancee
+    defaults: { _controller: SUHGestionBundle:Affichage:AfficherRechercheAvancee }
+
+suh_gestion_resultatAvancee:
+    path: /resultatAvancee
+    defaults: { _controller: SUHGestionBundle:Affichage:AfficherResultatRecherche }
+
 
 #Gestion des importations et exportations excel
 suh_import_export_page:

@@ -975,7 +975,6 @@ class GestionEtudiantController extends Controller
         $entityManager = $this->getDoctrine()->getManager();
         
         $etudiantRepository = $entityManager->getRepository('SUHGestionBundle:Etudiant');
-        $etudiantHandicapeRepository = $entityManager->getRepository('SUHGestionBundle:EtudiantHandicape');
         
         $etudiant = $etudiantRepository->find($id);
         
@@ -983,7 +982,7 @@ class GestionEtudiantController extends Controller
         $entityManager->flush();
         
         return $this->render('SUHGestionBundle:AffichageEtudiants:accueil.html.twig',array(
-              'listeEtudiantsHandicapes'=>$etudiantHandicapeRepository->getAllIdNameSurname()
+              'listeEtudiantsHandicapes'=>$etudiantRepository->getAllIdNameSurname()
         ));
     }
 }

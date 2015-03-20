@@ -39,12 +39,19 @@ class __TwigTemplate_ebb1a4f91599fe4eb79a350711ee7e168f805c0e3378a04f38af219ee08
         <p class=\"alert-danger\">
              /\\ Attention /\\ <br/>
             1) Le fichier excel doit comporter les 32 colonnes suivantes dans l'ordre :
-                //colonnes ici
             <br/>
-            2) L'importation effacera l'ancienne BDD, exportez l'ancienne si vous souhaitez la garder
+                nom/prenom/n°etudiant/date naissance/age/n°qhandi/mail/n°telephone/adresse familiale/adresse etudiante/
+                universite ou ecole/ufr/diplome/annee/filiere/cycle/handicap/amenagement examen/temps majore/
+                autres mesures/amenagements epreuves/delocalisation examens/date de validite/dureee avis medical/
+                amenagements etudes/reconnaissance mdph/departement mdph/taux invalidite/rqth/
+                notifications savs/suivi/date mise à jour
+                <br/>
+                <br/>
+                Par ailleurs les dates doivent être dans des champs \"date\" d'Excel, et au format jj/mm/aaaa ou jj-mm-aaaa
+            <br/>
         </p>
         <form method=\"POST\" action=\"";
-        // line 28
+        // line 35
         echo $this->env->getExtension('routing')->getPath("suh_import_page");
         echo "\" enctype=\"multipart/form-data\" 
               onsubmit=\"return confirmationImport();\">
@@ -76,7 +83,7 @@ class __TwigTemplate_ebb1a4f91599fe4eb79a350711ee7e168f805c0e3378a04f38af219ee08
     <div id=\"exportExcel\" class=\"spoiler\" style=\"display:none\"> 
         <br/>Vous pouvez exporter un fichier excel <br/>
         <form method=\"POST\" action=\"";
-        // line 57
+        // line 64
         echo $this->env->getExtension('routing')->getPath("suh_export_page");
         echo "\" enctype=\"multipart/form-data\" 
               onsubmit=\"return confirmationExport();\">
@@ -100,6 +107,6 @@ class __TwigTemplate_ebb1a4f91599fe4eb79a350711ee7e168f805c0e3378a04f38af219ee08
 
     public function getDebugInfo()
     {
-        return array (  80 => 57,  48 => 28,  19 => 1,);
+        return array (  87 => 64,  55 => 35,  19 => 1,);
     }
 }

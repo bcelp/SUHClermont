@@ -12,6 +12,24 @@ use Doctrine\ORM\EntityRepository;
  */
 class EtudiantRepository extends EntityRepository
 {
+    
+    /**
+     * retourne tous les id, noms et prénoms des étudiants handicapés de la BDD 
+     * (utilisé pour l'affichage de la liste
+     * @return type
+     */
+    public function getAllIdNameSurname()
+    {
+        return $this->_em->createQueryBuilder()
+                ->select('e.id','e.nomEtudiant','e.prenomEtudiant')
+                ->from($this->_entityName,'e')
+                ->orderBy('e.nomEtudiant')
+                ->addOrderBy('e.prenomEtudiant')
+                ->getQuery()
+                ->getResult();       
+    }
+    
+    
     /**
      * Récupère la liste des étudiants par nom ou prenom
      * (utilisé lors de la recherche)
@@ -32,6 +50,5 @@ class EtudiantRepository extends EntityRepository
                 ->addOrderBy('e.prenomEtudiant')
                 ->getQuery()
                 ->getResult();       
-    }
-    
+    }    
 }

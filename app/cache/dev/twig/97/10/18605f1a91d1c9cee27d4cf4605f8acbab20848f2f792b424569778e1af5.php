@@ -109,6 +109,18 @@ class __TwigTemplate_971018605f1a91d1c9cee27d4cf4605f8acbab20848f2f792b424569778
             echo "                ";
         }
         // line 43
+        echo "                
+                <!-- On affiche la vue de la recherche avancée si on a demandé la page avec rechercheAvancee == true -->
+                ";
+        // line 45
+        if ((array_key_exists("rechercheAvancee", $context) && ((isset($context["rechercheAvancee"]) ? $context["rechercheAvancee"] : $this->getContext($context, "rechercheAvancee")) == true))) {
+            // line 46
+            echo "                    ";
+            $this->env->loadTemplate("SUHGestionBundle:AffichageEtudiants:rechercheAvancee.html.twig")->display($context);
+            // line 47
+            echo "                ";
+        }
+        // line 48
         echo "                </div>
                 
             </div>
@@ -116,9 +128,9 @@ class __TwigTemplate_971018605f1a91d1c9cee27d4cf4605f8acbab20848f2f792b424569778
         <br/><br/>
     </body>
     ";
-        // line 49
+        // line 54
         if (array_key_exists("tab", $context)) {
-            // line 50
+            // line 55
             echo "       ";
             echo $this->env->getExtension('dump')->dump($this->env, $context, (isset($context["tab"]) ? $context["tab"] : $this->getContext($context, "tab")));
             echo "
@@ -138,6 +150,6 @@ class __TwigTemplate_971018605f1a91d1c9cee27d4cf4605f8acbab20848f2f792b424569778
 
     public function getDebugInfo()
     {
-        return array (  122 => 50,  120 => 49,  112 => 43,  109 => 42,  106 => 41,  104 => 40,  100 => 38,  97 => 37,  94 => 36,  92 => 35,  81 => 27,  78 => 26,  75 => 25,  72 => 24,  70 => 23,  56 => 12,  48 => 6,  45 => 5,  37 => 3,  11 => 1,);
+        return array (  134 => 55,  132 => 54,  124 => 48,  121 => 47,  118 => 46,  116 => 45,  112 => 43,  109 => 42,  106 => 41,  104 => 40,  100 => 38,  97 => 37,  94 => 36,  92 => 35,  81 => 27,  78 => 26,  75 => 25,  72 => 24,  70 => 23,  56 => 12,  48 => 6,  45 => 5,  37 => 3,  11 => 1,);
     }
 }

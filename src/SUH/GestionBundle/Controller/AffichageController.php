@@ -91,20 +91,18 @@ class AffichageController extends Controller
      */
     public function getListeEtudiants($chaine)
     {      
+        $etudiantRepository = $this->getDoctrine()
+                ->getManager()
+                ->getRepository('SUHGestionBundle:Etudiant');
         //Si $chaine est null tous les étudiants sont récupérés
+        
         if(empty($chaine))
         {
-            $etudiantHandicapeRepository = $this->getDoctrine()
-                ->getManager()
-                ->getRepository('SUHGestionBundle:EtudiantHandicape');
-            return $etudiantHandicapeRepository->getAllIdNameSurname();
+            return $etudiantRepository->getAllIdNameSurname();
         }
         //Si la $chaine n'est pas vide la recherche est faite avec cette chaine (WHERE)
         else
         {
-            $etudiantRepository = $this->getDoctrine()
-                ->getManager()
-                ->getRepository('SUHGestionBundle:Etudiant');
             return $etudiantRepository->getListeEtudiantsParNomOuPrenom($chaine);
         }        
     }
@@ -134,6 +132,49 @@ class AffichageController extends Controller
         ));
     }  
     
+    public function AfficherRechercheAvanceeAction()
+    {
+        return $this->render('SUHGestionBundle:AffichageEtudiants:accueil.html.twig',array(
+            'listeEtudiantsHandicapes'=>$this->getListeEtudiants(null),
+            'rechercheAvancee'=>true
+        ));
+    }
+    
+    public function AfficherResultatRechercheAction(){
+        $array = [];
+        for($i=0;$i<32;$i++){
+            if(!empty($_POST['InfoEcrite'.$i]) && isset($_POST['InfoEcrite'.$i])){
+                if(!empty($_POST['InfoSelect'.$i]) && isset($_POST['InfoSelect'.$i])){ 
+                    $array[$_POST['InfoSelect'.$i]] = $_POST['InfoEcrite'.$i];
+                }
+            }
+        }
+        $etudiantHandicapeRepository = $this->getDoctrine()
+                ->getManager()
+                ->getRepository('SUHGestionBundle:EtudiantHandicape');
+        $resultat=$etudiantHandicapeRepository->getEtudiantwithCondition($array);
+        
+        $i=0;
+        foreach($resultat as $key => $value){
+            $listFiltreeEtudiant[$i]["id"] = $resultat[$key]->getId();
+            $listFiltreeEtudiant[$i]["nomEtudiant"] = $resultat[$key]->getEtudiant()->getNomEtudiant();
+            $listFiltreeEtudiant[$i]["prenomEtudiant"] = $resultat[$key]->getEtudiant()->getPrenomEtudiant();
+            $i=$i+1;
+        }
+        if($i>=1){
+            return $this->render('SUHGestionBundle:AffichageEtudiants:accueil.html.twig',array(
+                'listeEtudiantsHandicapes'=>$listFiltreeEtudiant
+            ));
+        }
+        else{
+            $listFiltreeEtudiant[$i]["id"] = 0;
+            $listFiltreeEtudiant[$i]["nomEtudiant"] = "Pas de résultat";
+            $listFiltreeEtudiant[$i]["prenomEtudiant"] = " ";
+               return $this->render('SUHGestionBundle:AffichageEtudiants:accueil.html.twig',array(
+                'listeEtudiantsHandicapes'=>$listFiltreeEtudiant
+            ));
+        }
+    }
     
     
 }
