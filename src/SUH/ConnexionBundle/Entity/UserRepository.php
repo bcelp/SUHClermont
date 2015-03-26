@@ -12,4 +12,12 @@ use Doctrine\ORM\EntityRepository;
  */
 class UserRepository extends EntityRepository
 {
+    public function getNbUser()
+    {
+        $qb = $this->_em->createQueryBuilder()
+                ->select('count(user.id)')
+                ->from('SUHConnexionBundle:User','user');
+        
+        return $qb->getQuery()->getSingleScalarResult();
+    }
 }

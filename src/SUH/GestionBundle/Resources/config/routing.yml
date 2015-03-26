@@ -93,21 +93,25 @@ suh_gestion_addEtudiant_Etape4:
     path: /add4
     defaults: { _controller: SUHGestionBundle:GestionEtudiant:addInfosEtudiantEtape4 }
     
+suh_gestion_addEtudiant_Etape4bis:
+    path: /add4bis
+    defaults: { _controller: SUHGestionBundle:GestionEtudiant:addInfosEtudiantEtape4bis }
+ 
+suh_gestion_addEtudiant_addInfosEtudiantIntermediaire:
+    path: /addIntermediaire
+    defaults: { _controller: SUHGestionBundle:GestionEtudiant:addInfosEtudiantIntermediaire }
+    
 suh_gestion_addEtudiant_Etape5:
     path: /add5
     defaults: { _controller: SUHGestionBundle:GestionEtudiant:addInfosEtudiantEtape5 }
- 
-suh_gestion_addEtudiant_Etape5bis:
-    path: /add5bis
-    defaults: { _controller: SUHGestionBundle:GestionEtudiant:addInfosEtudiantEtape5bis }
-    
+   
 suh_gestion_addEtudiant_Etape6:
     path: /add6
     defaults: { _controller: SUHGestionBundle:GestionEtudiant:addInfosEtudiantEtape6 }
-   
-suh_gestion_addEtudiant_Etape7:
-    path: /add7
-    defaults: { _controller: SUHGestionBundle:GestionEtudiant:addInfosEtudiantEtape7 }
+    
+suh_gestion_addEtudiant_Etape6bis:
+    path: /add6bis
+    defaults: { _controller: SUHGestionBundle:GestionEtudiant:addInfosEtudiantEtape6bis }
     
 suh_gestion_BackStep1:
     path: /backStep1
@@ -163,6 +167,14 @@ suh_gestion_modifEtudiant_AddNewFormation:
 suh_gestion_addNewFormation_Etape2:
     path: /AddNewFormation2
     defaults: { _controller: SUHGestionBundle:GestionEtudiant:addNewFormationEtape2 }
+    
+suh_gestion_modifEtudiant_AddNewAideExamen:
+    path: /AddNewAideExamen
+    defaults: { _controller: SUHGestionBundle:GestionEtudiant:addNewAideExamen }
+
+suh_gestion_modifEtudiant_AddNewAideExamenEtape2:
+    path: /AddNewAideExamen2
+    defaults: { _controller: SUHGestionBundle:GestionEtudiant:addNewAideExamenEtape2 }
     
 #routes suppression handicap/formation/aideexamen
 

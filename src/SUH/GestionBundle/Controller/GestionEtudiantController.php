@@ -16,6 +16,7 @@ use SUH\GestionBundle\Entity\Handicap;
 
 class GestionEtudiantController extends Controller
 {    
+    
     /**
      * Permet la suppression d'un handicap de l'étudiant (suppression avec la croix rouge à gauche de l'handicap)
      * @param type $id
@@ -71,6 +72,9 @@ class GestionEtudiantController extends Controller
     }
 
     //======================================================================================
+
+    
+    //======================================================================================
     
     public function addInfosEtudiantAction(Request $request){
         
@@ -121,40 +125,8 @@ class GestionEtudiantController extends Controller
         $formation = new Formation(null,null,null,null,null,null);
 
         $form = $this->createFormBuilder($formation)
-                ->add('etablissement', 'choice', array(
-                        'choices' => array(
-                            'Blaise Pascal' => 'Blaise Pascal',
-                            'Université d\'Auvergne' => 'Université d\'Auvergne',
-                            'IFMA' => 'IFMA',
-                            'Vet Agro SUP' => 'Vet Agro SUP',
-                            'ENSCCF' => 'ENSCCF'
-                        )))
-                
-                
-             
-                ->add('diplome','choice', array(
-                        
-                        'choices' => array(
-                            'Licence' => 'Licence',
-                            'DEUST' => 'DEUST',
-                            'BTS' => 'BTS',
-                            'Licence Professionnelle' => 'Licence Professionnelle',
-                            'Master' => 'Master',
-                            'Doctorat' => 'Doctorat',
-                            'Thèse' => 'Thèse',
-                            'Ingénieur' => 'Ingénieur',
-                            'PACES' => 'PACES',
-                            'APEMK' => 'APEMK',
-                            'Autre concours' => 'Autre concours',
-                            'Préparation concours' => 'Préparation concours',
-                            'Professionnels de santé' => 'Professionnels de santé',
-                            'DU' => 'DU',
-                            'DUT' => 'DUT',
-                            'Capacité' => 'Capacité',
-                            'Remise à niveau / équivalence' => 'Remise à niveau / équivalence',
-                            'Formation permanente' => 'Formation permanente'
-                             )
-                ))
+                ->add('etablissement', 'text')
+                ->add('diplome','text')
                 ->add('composante','text')
                 ->add('filiere','text')
                 ->add('cycle', 'choice', array(
@@ -177,15 +149,12 @@ class GestionEtudiantController extends Controller
                             '8' => '8ème année',
                             '9' => '9ème année',
                 )))
-                ->add('Valider','submit')
-               
+                ->add('Valider','submit')               
                 ->getForm();
 
         $form->handleRequest($request);
         
         if($form->isValid()){
-            
-            
             
             $em=$this->getDoctrine()->getManager();
             $em->persist($formation);
@@ -207,8 +176,6 @@ class GestionEtudiantController extends Controller
         return $this->render('SUHGestionBundle:AffichageEtudiants:addEtudiant.html.twig', array(
             
             'f' => $form->createView(),
-            'nom' => $etudiant->getNomEtudiant(),
-            'prenom' => $etudiant->getPrenomEtudiant(),
             'etape' => '2'     
             
         ));
@@ -224,27 +191,9 @@ class GestionEtudiantController extends Controller
         $formation = $FormationRepository->find($_SESSION['idFormation']);
         
         $ef = new EtudiantFormation($etudiant, null, $formation);
-        
-        $date = Date('Y')-2;
-        $date .= "-";
-        $date .= Date('Y')-1;
-        
-        $date2 = Date('Y')-1;
-        $date2 .= "-";
-        $date2 .= Date('Y');
-        
-        $date3 = Date('Y');
-        $date3 .= "-";
-        $date3 .= Date('Y')+1;
-        
-        
+                
         $form = $this->createFormBuilder($ef)
-        ->add('anneeScolaire', 'choice', array(
-                        'choices' => array(
-                                $date => $date,
-                                $date2 => $date2,
-                                $date3 => $date3
-                    )))
+        ->add('anneeScolaire', 'text')
         ->add('Valider','submit')
         ->getForm();   
         
@@ -264,10 +213,9 @@ class GestionEtudiantController extends Controller
         return $this->render('SUHGestionBundle:AffichageEtudiants:addEtudiant.html.twig', array(
             
             'f' => $form->createView(),
-            'etape' => '9'     
+            'etape' => '2'     
             
         ));
-
         
     }
     
@@ -306,7 +254,7 @@ class GestionEtudiantController extends Controller
         $AideExamen = new AideExamen(null,null,null,null,null,null);
    
         $form = $this->createFormBuilder($AideExamen)
-                ->add('amenagementExamens','text') 
+                ->add('amenagementExamens','textarea') 
                 
                 ->add('tempsMajore','choice', array(
                         'choices' => array(
@@ -321,7 +269,8 @@ class GestionEtudiantController extends Controller
                         )
                     ))
                 ->add('delocalisationExamen','text')
-                ->add('dateValidite','date')
+                ->add('dateValidite','date', array(
+    'years' => range(date('Y-m-d') -10, date('Y-m-d') + 20)))
                 ->add('dureeAvisMedical','text')
                 ->add('Valider','submit')
                 ->getForm();
@@ -334,6 +283,7 @@ class GestionEtudiantController extends Controller
             $em->persist($AideExamen);
             $em->flush();
             
+            
             $_SESSION['idExamen'] = $AideExamen->getId();
             $_SESSION['examen'] = $AideExamen; 
                
@@ -342,7 +292,6 @@ class GestionEtudiantController extends Controller
        
         return $this->render('SUHGestionBundle:AffichageEtudiants:addEtudiant.html.twig', array(
             'f' => $form->createView(),
-  
             'etape' => '3'
         )); 
                 
@@ -354,7 +303,7 @@ class GestionEtudiantController extends Controller
         )); 
     }
     
-    public function addInfosEtudiantEtape5Action(Request $request){
+    public function addInfosEtudiantEtape4bisAction(Request $request){
 
         $Mdph = new Mdph(1,null);
 
@@ -374,7 +323,7 @@ class GestionEtudiantController extends Controller
             $em->persist($Mdph);
             $em->flush();
             $_SESSION['idMdph'] = $Mdph;
-            return $this->redirect($this->generateUrl('suh_gestion_addEtudiant_Etape6'));         
+            return $this->redirect($this->generateUrl('suh_gestion_addEtudiant_Etape5'));         
         }
        
         return $this->render('SUHGestionBundle:AffichageEtudiants:addEtudiant.html.twig', array(
@@ -384,7 +333,7 @@ class GestionEtudiantController extends Controller
                 
     }
     
-    public function addInfosEtudiantEtape5bisAction(Request $request){
+    public function addInfosEtudiantIntermediaireAction(Request $request){
     
         $mdph = new Mdph(0,null);
         
@@ -394,7 +343,7 @@ class GestionEtudiantController extends Controller
         $_SESSION['idMdph'] = $mdph;
         return $this->redirect($this->generateUrl('suh_gestion_addEtudiant_Etape6')); 
     }
-    public function addInfosEtudiantEtape6Action(Request $request){
+    public function addInfosEtudiantEtape5Action(Request $request){
 
         $Handicap = new Handicap(null);
         
@@ -419,18 +368,19 @@ class GestionEtudiantController extends Controller
             $ez=$this->getDoctrine()->getManager();
             $ez->flush();
             
-            return $this->redirect($this->generateUrl('suh_gestion_addEtudiant_Etape7'));         
+            return $this->redirect($this->generateUrl('suh_gestion_addEtudiant_Etape6'));         
         }
        
         return $this->render('SUHGestionBundle:AffichageEtudiants:addEtudiant.html.twig', array(
-            'f' => $form->createView(),
-            
+            'f' => $form->createView(),            
             'etape' => '6'
         )); 
                 
     }
     
-    public function addInfosEtudiantEtape7Action(Request $request){
+    
+    
+    public function addInfosEtudiantEtape6Action(Request $request){
         
                 
         $etudiantRepository = $this->getDoctrine()->getManager()->getRepository('SUHGestionBundle:Etudiant');
@@ -452,12 +402,11 @@ class GestionEtudiantController extends Controller
                             '0' => 'Oui',
                             '1' => 'Non',
                         )))
-                ->add('amenagementEtude','text')
-                ->add('tauxInvalidite','text')
+                ->add('amenagementEtude','textarea')
+                ->add('tauxInvalidite','textarea')
                 ->add('suivi','text')
                 ->add('qhandi','text')
-                ->add('dateMaj','date')
-                ->add('descriptifComplementaire','text')
+                ->add('descriptifComplementaire','textarea')
                 ->add('Valider','submit')
                 ->getForm();
         
@@ -480,20 +429,42 @@ class GestionEtudiantController extends Controller
            $em2->persist($DatesAideExamen);
            $em2->flush();
             
-            return $this->redirect($this->generateUrl('suh_gestion_homepage'));         
+           $_SESSION['DatesAideExamen'] = $DatesAideExamen;
+            return $this->redirect($this->generateUrl('suh_gestion_addEtudiant_Etape6bis'));         
         }
        
 
         
         return $this->render('SUHGestionBundle:AffichageEtudiants:addEtudiant.html.twig', array(
             'f' => $form->createView(),
-            'etape' => '7'
+            'etape' => '6'
         )); 
         
+    }
+    
+    public function addInfosEtudiantEtape6bisAction(Request $request) {
         
+        $DatesAideExamen = $_SESSION['DatesAideExamen'];
         
-          
-       
+        $form = $this->createFormBuilder($DatesAideExamen)
+                ->add('dateDebut','date', array(
+    'years' => range(date('Y-m-d') -20, date('Y-m-d')+5)))
+                ->add('Valider','submit')
+                ->getForm();
+                
+        $form->handleRequest($request);
+        
+        if($form->isValid()){
+           $em=$this->getDoctrine()->getManager();
+           $em->flush();
+           
+           return $this->redirect($this->generateUrl('suh_gestion_homepage'));  
+        }        
+        
+        return $this->render('SUHGestionBundle:AffichageEtudiants:addEtudiant.html.twig', array(
+            'f' => $form->createView(),
+            'etape' => '6'
+        )); 
     }
     
    
@@ -566,9 +537,27 @@ class GestionEtudiantController extends Controller
                 ->add('diplome','text')
                 ->add('composante','text')
                 ->add('filiere','text')
-                ->add('cycle', 'text')
-                ->add('anneeEtude','text')
-                ->add('Valider','submit')
+                ->add('cycle', 'choice', array(
+                        'choices' => array(
+                            '1' => '1er cycle ',
+                            '2' => '2ème cycle',
+                            '3' => '3ème cycle'
+                        ),
+                        'empty_value' => 'Choisissez le cycle',
+                        'empty_data'  => null))
+                ->add('anneeEtude','choice', array(
+                        'choices' => array(
+                            '1' => '1ère année',
+                            '2' => '2ème année',
+                            '3' => '3ème année',
+                            '4' => '4ème année',
+                            '5' => '5ème année',
+                            '6' => '6ème année',
+                            '7' => '7ème année',
+                            '8' => '8ème année',
+                            '9' => '9ème année',
+                )))
+                ->add('Valider','submit')  
                
                 ->getForm();
 
@@ -591,8 +580,6 @@ class GestionEtudiantController extends Controller
         )); 
     }
     
-    
-
     
     public function modifAnneeScolaireAction(Request $request){
         $repository = $this->getDoctrine()
@@ -644,12 +631,12 @@ class GestionEtudiantController extends Controller
                             '1' => 'Oui',
                         )
                     ))
-                ->add('amenagementEtude','text')
+                ->add('amenagementEtude','textarea')
                 ->add('tauxInvalidite','text')
                 ->add('suivi','text')
                 ->add('qhandi','text')
                 ->add('dateMaj','date')
-                ->add('descriptifComplementaire','text')
+                ->add('descriptifComplementaire','textarea')
                 ->add('Valider','submit')
                 ->getForm();
                
@@ -680,7 +667,10 @@ class GestionEtudiantController extends Controller
    
 
     $form = $this->createFormBuilder($DatesAideExamen)
-                ->add('dateDebut','date')
+                ->add('dateDebut','date', array(
+    'years' => range(date('Y-m-d') -20, date('Y-m-d')+5)))
+                ->add('dateFin','date',array(
+    'years' => range(date('Y-m-d') -20, date('Y-m-d')+20)))
                 ->add('Valider','submit')
                 ->getForm();
                
@@ -696,7 +686,7 @@ class GestionEtudiantController extends Controller
     }
     return $this->render('SUHGestionBundle:AffichageEtudiants:modifEtudiant.html.twig', array(
             'f' => $form->createView(),
-            'modif' => 'on'
+            'modif' => '3'
             
         ));     
         
@@ -728,7 +718,8 @@ class GestionEtudiantController extends Controller
                         )
                     ))
                 ->add('delocalisationExamen','text')
-                ->add('dateValidite','date')
+                ->add('dateValidite','date', array(
+    'years' => range(date('Y-m-d') -10, date('Y-m-d') + 20)))
                 ->add('dureeAvisMedical','text')
                 ->add('Valider','submit')
                 ->getForm();
@@ -744,7 +735,7 @@ class GestionEtudiantController extends Controller
         
     return $this->render('SUHGestionBundle:AffichageEtudiants:modifEtudiant.html.twig', array(
             'f' => $form->createView(),
-            'modif' => 'on'
+            'modif' => '3'
         ));   
     }
     
@@ -827,16 +818,20 @@ class GestionEtudiantController extends Controller
         $handicap = $EtudiantHandicape->getHandicap();
         
         $Handicap2 = new Handicap(null);
-                        
+        
+        $nbAreaArray = count($handicap); 
+                
         $form = $this->createFormBuilder($Handicap2)
                 ->add('nomHandicap','text') 
                 ->add('Valider','submit')
                 ->getForm();
         
+        
         $form->handleRequest($request);
         
         if($form->isValid()){
             
+                     
             $em=$this->getDoctrine()->getManager();
             $em->persist($Handicap2);
             $em->flush();
@@ -927,8 +922,7 @@ class GestionEtudiantController extends Controller
      
             $em=$this->getDoctrine()->getManager();
             $em->persist($formation);
-           // $em->flush();
-            
+                        
             $_SESSION['formation'] = $formation;
             
             return $this->redirect($this->generateUrl('suh_gestion_addNewFormation_Etape2'));   
@@ -958,9 +952,58 @@ class GestionEtudiantController extends Controller
         $form->handleRequest($request);
         
         if($form->isValid()){
+            
             $ez=$this->getDoctrine()->getManager();
             $ez->persist($EtudiantFormation);
             $ez->flush();
+            
+            return $this->render('SUHGestionBundle:AffichageEtudiants:modifEtudiant.html.twig');
+        }
+        
+        return $this->render('SUHGestionBundle:AffichageEtudiants:modifEtudiant.html.twig', array(
+            'f' => $form->createView(),
+            'modif' => 'on'
+            
+        )); 
+    }
+        
+    public function addNewAideExamenAction(Request $request){
+        
+        $AideExamen = new AideExamen(null,null,null,null,null,null);
+        
+        $form = $this->createFormBuilder($AideExamen)
+                ->add('amenagementExamens','text') 
+                
+                ->add('tempsMajore','choice', array(
+                        'choices' => array(
+                            '0' => 'Non',
+                            '1' => 'Oui',
+                        )
+                    ))
+                ->add('autresMesures','choice', array(
+                        'choices' => array(
+                            '0' => 'Non',
+                            '1' => 'Oui',
+                        )
+                    ))
+                ->add('delocalisationExamen','text')
+                ->add('dateValidite','date', array(
+    'years' => range(date('Y-m-d') -10, date('Y-m-d') + 20)))
+                ->add('dureeAvisMedical','text')
+                ->add('Valider','submit')
+                ->getForm();
+        
+        $form->handleRequest($request);
+        
+        if($form->isValid()){
+                        
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($AideExamen);
+            $em->flush();
+            
+            $_SESSION['examen'] = $AideExamen->getId(); 
+               
+            return $this->redirect($this->generateUrl('suh_gestion_modifEtudiant_AddNewAideExamenEtape2'));         
         }
         
         return $this->render('SUHGestionBundle:AffichageEtudiants:modifEtudiant.html.twig', array(
@@ -970,11 +1013,48 @@ class GestionEtudiantController extends Controller
         )); 
     }
     
+    public function addNewAideExamenEtape2Action(Request $request){
+        
+        $repository = $this->getDoctrine()
+        ->getRepository('SUHGestionBundle:EtudiantHandicape');
+
+        $EtudiantHandicape = $repository->findOneBy(array('etudiant' => $_SESSION['idModif']));
+
+        $aideExamen = $this->getDoctrine()
+        ->getRepository('SUHGestionBundle:AideExamen')
+        ->find($_SESSION['examen']);
+        
+        $datesExamen = new DatesAideExamen($EtudiantHandicape, $aideExamen,null,null);
+
+        $form = $this->createFormBuilder($datesExamen)
+                ->add('dateDebut','date',array(
+    'years' => range(date('Y-m-d') -20, date('Y-m-d')+5)))
+                ->add('Valider','submit')
+                ->getForm();
+                
+        $form->handleRequest($request);
+        
+        if($form->isValid()){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($datesExamen);
+            $em->flush();
+            
+            return $this->render('SUHGestionBundle:AffichageEtudiants:modifEtudiant.html.twig');
+        }
+        
+        return $this->render('SUHGestionBundle:AffichageEtudiants:modifEtudiant.html.twig', array(
+            'f' => $form->createView(),
+            'modif' => 'on'
+            
+        )); 
+    }    
+    
     public function suppressionEtudiantAction($id)
     {
         $entityManager = $this->getDoctrine()->getManager();
         
         $etudiantRepository = $entityManager->getRepository('SUHGestionBundle:Etudiant');
+        $etudiantHandicapeRepository = $entityManager->getRepository('SUHGestionBundle:EtudiantHandicape');
         
         $etudiant = $etudiantRepository->find($id);
         
@@ -982,7 +1062,10 @@ class GestionEtudiantController extends Controller
         $entityManager->flush();
         
         return $this->render('SUHGestionBundle:AffichageEtudiants:accueil.html.twig',array(
-              'listeEtudiantsHandicapes'=>$etudiantRepository->getAllIdNameSurname()
+              'listeEtudiantsHandicapes'=>$etudiantHandicapeRepository->getAllIdNameSurname()
         ));
     }
+    
+    
 }
+

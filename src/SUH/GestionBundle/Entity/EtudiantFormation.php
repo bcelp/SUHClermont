@@ -21,7 +21,7 @@ class EtudiantFormation
 
     /**
      * @ORM\Id
-     * @ORM\Column(name="anneeScolaire", type="string", length=4)
+     * @ORM\Column(name="anneeScolaire", type="string", length=9)
      */
     private $anneeScolaire;
 

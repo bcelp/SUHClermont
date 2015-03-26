@@ -132,6 +132,10 @@ class AffichageController extends Controller
         ));
     }  
     
+    /**
+     * Affiche la page de recherche avancée
+     * @return type
+     */
     public function AfficherRechercheAvanceeAction()
     {
         return $this->render('SUHGestionBundle:AffichageEtudiants:accueil.html.twig',array(
@@ -140,6 +144,11 @@ class AffichageController extends Controller
         ));
     }
     
+    /**
+     * Récupère les données du formulaire de recherche avancée et appelle une requête DQL
+     * Transforme la liste récupérée lors d'une recherche avancée en liste d'étudiants
+     * @return type
+     */
     public function AfficherResultatRechercheAction(){
         $array = [];
         for($i=0;$i<32;$i++){

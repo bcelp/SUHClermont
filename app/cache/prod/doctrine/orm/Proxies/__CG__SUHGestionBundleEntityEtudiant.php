@@ -64,10 +64,10 @@ class Etudiant extends \SUH\GestionBundle\Entity\Etudiant implements \Doctrine\O
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'SUH\\GestionBundle\\Entity\\Etudiant' . "\0" . 'id', '' . "\0" . 'SUH\\GestionBundle\\Entity\\Etudiant' . "\0" . 'nomEtudiant', '' . "\0" . 'SUH\\GestionBundle\\Entity\\Etudiant' . "\0" . 'prenomEtudiant', '' . "\0" . 'SUH\\GestionBundle\\Entity\\Etudiant' . "\0" . 'dateNaissance', '' . "\0" . 'SUH\\GestionBundle\\Entity\\Etudiant' . "\0" . 'mail', '' . "\0" . 'SUH\\GestionBundle\\Entity\\Etudiant' . "\0" . 'adresseEtudiante', '' . "\0" . 'SUH\\GestionBundle\\Entity\\Etudiant' . "\0" . 'adresseFamiliale', '' . "\0" . 'SUH\\GestionBundle\\Entity\\Etudiant' . "\0" . 'telephone', '' . "\0" . 'SUH\\GestionBundle\\Entity\\Etudiant' . "\0" . 'listEtudiantFormation');
+            return array('__isInitialized__', '' . "\0" . 'SUH\\GestionBundle\\Entity\\Etudiant' . "\0" . 'id', '' . "\0" . 'SUH\\GestionBundle\\Entity\\Etudiant' . "\0" . 'etudiantSpecialise', '' . "\0" . 'SUH\\GestionBundle\\Entity\\Etudiant' . "\0" . 'nomEtudiant', '' . "\0" . 'SUH\\GestionBundle\\Entity\\Etudiant' . "\0" . 'prenomEtudiant', '' . "\0" . 'SUH\\GestionBundle\\Entity\\Etudiant' . "\0" . 'dateNaissance', '' . "\0" . 'SUH\\GestionBundle\\Entity\\Etudiant' . "\0" . 'mail', '' . "\0" . 'SUH\\GestionBundle\\Entity\\Etudiant' . "\0" . 'adresseEtudiante', '' . "\0" . 'SUH\\GestionBundle\\Entity\\Etudiant' . "\0" . 'adresseFamiliale', '' . "\0" . 'SUH\\GestionBundle\\Entity\\Etudiant' . "\0" . 'telephone', '' . "\0" . 'SUH\\GestionBundle\\Entity\\Etudiant' . "\0" . 'listEtudiantFormation');
         }
 
-        return array('__isInitialized__', '' . "\0" . 'SUH\\GestionBundle\\Entity\\Etudiant' . "\0" . 'id', '' . "\0" . 'SUH\\GestionBundle\\Entity\\Etudiant' . "\0" . 'nomEtudiant', '' . "\0" . 'SUH\\GestionBundle\\Entity\\Etudiant' . "\0" . 'prenomEtudiant', '' . "\0" . 'SUH\\GestionBundle\\Entity\\Etudiant' . "\0" . 'dateNaissance', '' . "\0" . 'SUH\\GestionBundle\\Entity\\Etudiant' . "\0" . 'mail', '' . "\0" . 'SUH\\GestionBundle\\Entity\\Etudiant' . "\0" . 'adresseEtudiante', '' . "\0" . 'SUH\\GestionBundle\\Entity\\Etudiant' . "\0" . 'adresseFamiliale', '' . "\0" . 'SUH\\GestionBundle\\Entity\\Etudiant' . "\0" . 'telephone', '' . "\0" . 'SUH\\GestionBundle\\Entity\\Etudiant' . "\0" . 'listEtudiantFormation');
+        return array('__isInitialized__', '' . "\0" . 'SUH\\GestionBundle\\Entity\\Etudiant' . "\0" . 'id', '' . "\0" . 'SUH\\GestionBundle\\Entity\\Etudiant' . "\0" . 'etudiantSpecialise', '' . "\0" . 'SUH\\GestionBundle\\Entity\\Etudiant' . "\0" . 'nomEtudiant', '' . "\0" . 'SUH\\GestionBundle\\Entity\\Etudiant' . "\0" . 'prenomEtudiant', '' . "\0" . 'SUH\\GestionBundle\\Entity\\Etudiant' . "\0" . 'dateNaissance', '' . "\0" . 'SUH\\GestionBundle\\Entity\\Etudiant' . "\0" . 'mail', '' . "\0" . 'SUH\\GestionBundle\\Entity\\Etudiant' . "\0" . 'adresseEtudiante', '' . "\0" . 'SUH\\GestionBundle\\Entity\\Etudiant' . "\0" . 'adresseFamiliale', '' . "\0" . 'SUH\\GestionBundle\\Entity\\Etudiant' . "\0" . 'telephone', '' . "\0" . 'SUH\\GestionBundle\\Entity\\Etudiant' . "\0" . 'listEtudiantFormation');
     }
 
     /**
@@ -173,6 +173,39 @@ class Etudiant extends \SUH\GestionBundle\Entity\Etudiant implements \Doctrine\O
     }
 
     
+    /**
+     * {@inheritDoc}
+     */
+    public function getAge()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAge', array());
+
+        return parent::getAge();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setEtudiantSpecialise($etudiantSpecialise)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEtudiantSpecialise', array($etudiantSpecialise));
+
+        return parent::setEtudiantSpecialise($etudiantSpecialise);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getEtudaintSpecialise()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEtudaintSpecialise', array());
+
+        return parent::getEtudaintSpecialise();
+    }
+
     /**
      * {@inheritDoc}
      */

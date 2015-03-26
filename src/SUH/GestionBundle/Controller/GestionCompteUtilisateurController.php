@@ -65,6 +65,12 @@ class GestionCompteUtilisateurController extends Controller {
             return new Response('Identifiant ou mot de passe incorrect');
         }
         
+        //Si il y a moins d'un utilisateur on ne peut pas le supprimer
+        if($userRepository->getNbUser() <= 1)
+        {
+            return new Response("Suppression impossible, il ne reste qu'un utilisateur");
+        }
+        
         $user=$arrayUser[0];
         //hash du mot de passe pour le comparer
         $encoder = new \Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder('sha512', true, 5000);
