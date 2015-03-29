@@ -83,6 +83,7 @@
   'SUHGestionBundle:AffichageEtudiants:base.html.twig' => 'C:\\wamp\\www\\suhSymfony\\src\\SUH\\GestionBundle/Resources/views/AffichageEtudiants/base.html.twig',
   'SUHGestionBundle:AffichageEtudiants:liste.html.twig' => 'C:\\wamp\\www\\suhSymfony\\src\\SUH\\GestionBundle/Resources/views/AffichageEtudiants/liste.html.twig',
   'SUHGestionBundle:AffichageEtudiants:modifEtudiant.html.twig' => 'C:\\wamp\\www\\suhSymfony\\src\\SUH\\GestionBundle/Resources/views/AffichageEtudiants/modifEtudiant.html.twig',
+  'SUHGestionBundle:AffichageEtudiants:rechercheAvancee.html.twig' => 'C:\\wamp\\www\\suhSymfony\\src\\SUH\\GestionBundle/Resources/views/AffichageEtudiants/rechercheAvancee.html.twig',
   'SUHGestionBundle:AffichageEtudiants:spoiler.html.twig' => 'C:\\wamp\\www\\suhSymfony\\src\\SUH\\GestionBundle/Resources/views/AffichageEtudiants/spoiler.html.twig',
   'SUHGestionBundle:AffichageEtudiants:test.html.twig' => 'C:\\wamp\\www\\suhSymfony\\src\\SUH\\GestionBundle/Resources/views/AffichageEtudiants/test.html.twig',
   'SUHGestionBundle:AffichageEtudiants:userVue.html.twig' => 'C:\\wamp\\www\\suhSymfony\\src\\SUH\\GestionBundle/Resources/views/AffichageEtudiants/userVue.html.twig',

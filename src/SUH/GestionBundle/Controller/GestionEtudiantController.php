@@ -73,7 +73,9 @@ class GestionEtudiantController extends Controller
 
     //======================================================================================
 
-    
+    // addxxx concerve les fonctions d'ajout d'informations lors de la création d'un étudiant
+    // modifxxx concerne les fonctions de modifications des informations des étudiants
+    // backxxx concerne les fonctions permettant en retour en arrière d'une étape d'ajout d'une information
     //======================================================================================
     
     public function addInfosEtudiantAction(Request $request){
@@ -856,40 +858,8 @@ class GestionEtudiantController extends Controller
         $formation = new Formation(null,null,null,null,null,null);
 
         $form = $this->createFormBuilder($formation)
-                ->add('etablissement', 'choice', array(
-                        'choices' => array(
-                            'Blaise Pascal' => 'Blaise Pascal',
-                            'Université d\'Auvergne' => 'Université d\'Auvergne',
-                            'IFMA' => 'IFMA',
-                            'Vet Agro SUP' => 'Vet Agro SUP',
-                            'ENSCCF' => 'ENSCCF'
-                        )))
-                
-                
-             
-                ->add('diplome','choice', array(
-                        
-                        'choices' => array(
-                            'Licence' => 'Licence',
-                            'DEUST' => 'DEUST',
-                            'BTS' => 'BTS',
-                            'Licence Professionnelle' => 'Licence Professionnelle',
-                            'Master' => 'Master',
-                            'Doctorat' => 'Doctorat',
-                            'Thèse' => 'Thèse',
-                            'Ingénieur' => 'Ingénieur',
-                            'PACES' => 'PACES',
-                            'APEMK' => 'APEMK',
-                            'Autre concours' => 'Autre concours',
-                            'Préparation concours' => 'Préparation concours',
-                            'Professionnels de santé' => 'Professionnels de santé',
-                            'DU' => 'DU',
-                            'DUT' => 'DUT',
-                            'Capacité' => 'Capacité',
-                            'Remise à niveau / équivalence' => 'Remise à niveau / équivalence',
-                            'Formation permanente' => 'Formation permanente'
-                             )
-                ))
+                ->add('etablissement', 'text'   )
+                ->add('diplome','text')
                 ->add('composante','text')
                 ->add('filiere','text')
                 ->add('cycle', 'choice', array(
@@ -1054,7 +1024,6 @@ class GestionEtudiantController extends Controller
         $entityManager = $this->getDoctrine()->getManager();
         
         $etudiantRepository = $entityManager->getRepository('SUHGestionBundle:Etudiant');
-        $etudiantHandicapeRepository = $entityManager->getRepository('SUHGestionBundle:EtudiantHandicape');
         
         $etudiant = $etudiantRepository->find($id);
         
@@ -1062,7 +1031,7 @@ class GestionEtudiantController extends Controller
         $entityManager->flush();
         
         return $this->render('SUHGestionBundle:AffichageEtudiants:accueil.html.twig',array(
-              'listeEtudiantsHandicapes'=>$etudiantHandicapeRepository->getAllIdNameSurname()
+              'listeEtudiantsHandicapes'=>$etudiantRepository->getAllIdNameSurname()
         ));
     }
     

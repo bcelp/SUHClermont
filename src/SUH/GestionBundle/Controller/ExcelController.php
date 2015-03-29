@@ -16,8 +16,8 @@ class ExcelController extends Controller
      */
         public function exportExcelAction()
     { 
-        //nombre d'étudiants
-        $j=1;
+        //compteur démarrant à 2 car la première ligne concerne les noms des colonnes
+        $j=2;
         //vérifie si l'étudiant a plus d'une formation/handicap/aideExamen (si la boucle foreach de chaque a déjà eu lieu
         //à la fin de la première itération le boolean passe à true
         //si une nouvelle boucle a lieu, une condition vérifiant le booleen à true incrémente j
@@ -44,6 +44,43 @@ class ExcelController extends Controller
                 ->setCategory("Test result file");
         
         
+        $phpExcelObject
+                ->setActiveSheetIndex(0)
+                ->setCellValue('A1', 'Nom')
+                ->setCellValue('B1', 'Prenom')
+                ->setCellValue('C1', 'Numéro étudiant')
+                ->setCellValue('D1', 'Date de naissance')
+                ->setCellValue('E1', 'age')                      
+                ->setCellValue('F1', 'mail')
+                ->setCellValue('G1', 'téléphone')
+                ->setCellValue('H1', 'adresse familiale')
+                ->setCellValue('I1', 'adresse étudiante')
+                ->setCellValue('J1', 'qhandi')
+                ->setCellValue('K1', 'rqth')
+                ->setCellValue('L1', 'notification savs')
+                ->setCellValue('M1', 'aménagement étude')                      
+                ->setCellValue('N1', 'taux invalidité')
+                ->setCellValue('O1', 'suivi')
+                ->setCellValue('P1', 'date dernière mise à jour')
+                ->setCellValue('Q1', 'descriptif complémentaire')
+                ->setCellValue('R1', 'reconnaissance mdph')
+                ->setCellValue('S1', 'département mdph')
+                ->setCellValue('T1', 'année scolaire')
+                ->setCellValue('U1', 'établissement')                    
+                ->setCellValue('V1', 'composante')
+                ->setCellValue('W1', 'diplome')
+                ->setCellValue('X1', 'annee d\'étude')
+                ->setCellValue('Y1', 'filiere')
+                ->setCellValue('Z1', 'cycle')
+                ->setCellValue('AA1', 'handicap')                      
+                ->setCellValue('AB1', 'date début aide examen')
+                ->setCellValue('AC1', 'date fin aide examen')
+                ->setCellValue('AD1', 'aménagement examen')
+                ->setCellValue('AE1', 'temps majoré')
+                ->setCellValue('AF1', 'autres mesures')
+                ->setCellValue('AG1', 'délocalisation examen')
+                ->setCellValue('AH1', 'date validité')
+                ->setCellValue('AI1', 'durée avis médical');
         
         for($indexEtudiantCourant=0;$indexEtudiantCourant<count($listeEtudiants);$indexEtudiantCourant++)
         {
@@ -55,29 +92,29 @@ class ExcelController extends Controller
                 ->setCellValue('C'.$j, $listeEtudiants[$indexEtudiantCourant]->getEtudiant()->getId())
                 ->setCellValue('D'.$j, $listeEtudiants[$indexEtudiantCourant]->getEtudiant()->getDateNaissance()->format('d/m/Y'))
                 ->setCellValue('E'.$j, $listeEtudiants[$indexEtudiantCourant]->getEtudiant()->getAge())                      
-                ->setCellValue('G'.$j, $listeEtudiants[$indexEtudiantCourant]->getEtudiant()->getMail())
-                ->setCellValue('H'.$j, 'n°'.$listeEtudiants[$indexEtudiantCourant]->getEtudiant()->getTelephone())
-                ->setCellValue('I'.$j, $listeEtudiants[$indexEtudiantCourant]->getEtudiant()->getAdresseFamiliale())
-                ->setCellValue('J'.$j, $listeEtudiants[$indexEtudiantCourant]->getEtudiant()->getAdresseEtudiante());
+                ->setCellValue('F'.$j, $listeEtudiants[$indexEtudiantCourant]->getEtudiant()->getMail())
+                ->setCellValue('G'.$j, 'n°'.$listeEtudiants[$indexEtudiantCourant]->getEtudiant()->getTelephone())
+                ->setCellValue('H'.$j, $listeEtudiants[$indexEtudiantCourant]->getEtudiant()->getAdresseFamiliale())
+                ->setCellValue('I'.$j, $listeEtudiants[$indexEtudiantCourant]->getEtudiant()->getAdresseEtudiante());
             
             //informations étudiant en situation de handicap
             $phpExcelObject
                 ->setActiveSheetIndex(0)
-                ->setCellValue('K'.$j, $listeEtudiants[$indexEtudiantCourant]->getQhandi())
-                ->setCellValue('L'.$j, $listeEtudiants[$indexEtudiantCourant]->getRqth())
-                ->setCellValue('M'.$j, $listeEtudiants[$indexEtudiantCourant]->getNotificationSavs())
-                ->setCellValue('N'.$j, $listeEtudiants[$indexEtudiantCourant]->getAmenagementEtude())
-                ->setCellValue('O'.$j, $listeEtudiants[$indexEtudiantCourant]->getTauxInvalidite())
-                ->setCellValue('P'.$j, $listeEtudiants[$indexEtudiantCourant]->getSuivi())
-                ->setCellValue('Q'.$j, $listeEtudiants[$indexEtudiantCourant]->getDateMaj()->format('d/m/Y'))
-                ->setCellValue('R'.$j, $listeEtudiants[$indexEtudiantCourant]->getDescriptifComplementaire());
+                ->setCellValue('J'.$j, $listeEtudiants[$indexEtudiantCourant]->getQhandi())
+                ->setCellValue('K'.$j, $listeEtudiants[$indexEtudiantCourant]->getRqth())
+                ->setCellValue('L'.$j, $listeEtudiants[$indexEtudiantCourant]->getNotificationSavs())
+                ->setCellValue('M'.$j, $listeEtudiants[$indexEtudiantCourant]->getAmenagementEtude())
+                ->setCellValue('N'.$j, $listeEtudiants[$indexEtudiantCourant]->getTauxInvalidite())
+                ->setCellValue('O'.$j, $listeEtudiants[$indexEtudiantCourant]->getSuivi())
+                ->setCellValue('P'.$j, $listeEtudiants[$indexEtudiantCourant]->getDateMaj()->format('d/m/Y'))
+                ->setCellValue('Q'.$j, $listeEtudiants[$indexEtudiantCourant]->getDescriptifComplementaire());
             
             //informations mdph
             $phpExcelObject
                 ->setActiveSheetIndex(0)
-                ->setCellValue('S'.$j, $listeEtudiants[$indexEtudiantCourant]->getMdph()->getReconnaissanceMdph())
-                ->setCellValue('T'.$j, $listeEtudiants[$indexEtudiantCourant]->getMdph()->getDepartementMdph());
-            
+                ->setCellValue('R'.$j, $listeEtudiants[$indexEtudiantCourant]->getMdph()->getReconnaissanceMdph())
+                ->setCellValue('S'.$j, $listeEtudiants[$indexEtudiantCourant]->getMdph()->getDepartementMdph());
+           
             //informations formation étudiant        
             foreach($listeEtudiants[$indexEtudiantCourant]->getEtudiant()->getListEtudiantFormation() as $etudiantFormation)
             {
@@ -88,13 +125,13 @@ class ExcelController extends Controller
                    
                     $phpExcelObject
                         ->setActiveSheetIndex(0)
-                        ->setCellValue('U'.$j, $etudiantFormation->getAnneeScolaire())
-                        ->setCellValue('V'.$j, $etudiantFormation->getFormation()->getEtablissement())
-                        ->setCellValue('W'.$j, $etudiantFormation->getFormation()->getComposante())
-                        ->setCellValue('X'.$j, $etudiantFormation->getFormation()->getDiplome())
-                        ->setCellValue('Y'.$j, $etudiantFormation->getFormation()->getAnneeEtude())
-                        ->setCellValue('Z'.$j, $etudiantFormation->getFormation()->getFiliere())  
-                        ->setCellValue('AA'.$j, $etudiantFormation->getFormation()->getCycle());
+                        ->setCellValue('T'.$j, $etudiantFormation->getAnneeScolaire())
+                        ->setCellValue('U'.$j, $etudiantFormation->getFormation()->getEtablissement())
+                        ->setCellValue('V'.$j, $etudiantFormation->getFormation()->getComposante())
+                        ->setCellValue('W'.$j, $etudiantFormation->getFormation()->getDiplome())
+                        ->setCellValue('X'.$j, $etudiantFormation->getFormation()->getAnneeEtude())
+                        ->setCellValue('Y'.$j, $etudiantFormation->getFormation()->getFiliere())  
+                        ->setCellValue('Z'.$j, $etudiantFormation->getFormation()->getCycle());
                    
             }
             $bool=false;
@@ -109,7 +146,7 @@ class ExcelController extends Controller
                    
                     $phpExcelObject
                         ->setActiveSheetIndex(0)
-                        ->setCellValue('AB'.$j, $handicap->getNomHandicap());
+                        ->setCellValue('AA'.$j, $handicap->getNomHandicap());
             }
             $bool=false;
             
@@ -121,24 +158,28 @@ class ExcelController extends Controller
                 if($bool==true){ $j++; }
                 else{ $bool=true;}
                    
-                if(!empty($datesAideExamen->getDateFin()))
-                {
+                if(!empty($datesAideExamen->getDateFin())){
                     $dateFin = $datesAideExamen->getDateFin()->format('d/m/Y');
                 }
-                else
-                {
+                else{
                     $dateFin = "";
+                }
+                if(!empty($datesAideExamen->getAideExamen()->getDateValidite())){
+                    $dateValidite = $datesAideExamen->getAideExamen()->getDateValidite()->format('d/m/Y');
+                }
+                else{
+                    $dateValidite = "";
                 }
                     $phpExcelObject
                         ->setActiveSheetIndex(0)
-                        ->setCellValue('AC'.$j, $datesAideExamen->getDateDebut()->format('d/m/Y'))
-                        ->setCellValue('AD'.$j, $dateFin)
-                        ->setCellValue('AE'.$j, $datesAideExamen->getAideExamen()->getAmenagementExamens())
-                        ->setCellValue('AF'.$j, $datesAideExamen->getAideExamen()->getTempsMajore())
-                        ->setCellValue('AG'.$j, $datesAideExamen->getAideExamen()->getAutresMesures())
-                        ->setCellValue('AH'.$j, $datesAideExamen->getAideExamen()->getDelocalisationExamen())
-                        ->setCellValue('AI'.$j, $datesAideExamen->getAideExamen()->getDateValidite()->format('d/m/Y'))
-                        ->setCellValue('AJ'.$j, $datesAideExamen->getAideExamen()->getDureeAvisMedical());
+                        ->setCellValue('AB'.$j, $datesAideExamen->getDateDebut()->format('d/m/Y'))
+                        ->setCellValue('AC'.$j, $dateFin)
+                        ->setCellValue('AD'.$j, $datesAideExamen->getAideExamen()->getAmenagementExamens())
+                        ->setCellValue('AE'.$j, $datesAideExamen->getAideExamen()->getTempsMajore())
+                        ->setCellValue('AF'.$j, $datesAideExamen->getAideExamen()->getAutresMesures())
+                        ->setCellValue('AG'.$j, $datesAideExamen->getAideExamen()->getDelocalisationExamen())
+                        ->setCellValue('AH'.$j, $dateValidite)
+                        ->setCellValue('AI'.$j, $datesAideExamen->getAideExamen()->getDureeAvisMedical());
                    
             }
             $bool=false;

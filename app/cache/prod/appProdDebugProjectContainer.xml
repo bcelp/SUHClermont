@@ -25,7 +25,7 @@
     <parameter key="database_driver">pdo_mysql</parameter>
     <parameter key="database_host">127.0.0.1</parameter>
     <parameter key="database_port">null</parameter>
-    <parameter key="database_name">suh1</parameter>
+    <parameter key="database_name">suh</parameter>
     <parameter key="database_user">root</parameter>
     <parameter key="database_password">null</parameter>
     <parameter key="mailer_transport">smtp</parameter>
@@ -1477,7 +1477,7 @@
       <argument type="collection">
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>55094205a58e9</argument>
+            <argument>5516b047e8b02</argument>
           </service>
         </argument>
         <argument type="service">
@@ -1640,7 +1640,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>55094205a58e9</argument>
+            <argument>5516b047e8b02</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -2069,7 +2069,7 @@
         <argument key="driver">pdo_mysql</argument>
         <argument key="host">127.0.0.1</argument>
         <argument key="port">null</argument>
-        <argument key="dbname">suh1</argument>
+        <argument key="dbname">suh</argument>
         <argument key="user">root</argument>
         <argument key="password">null</argument>
         <argument key="charset">UTF8</argument>

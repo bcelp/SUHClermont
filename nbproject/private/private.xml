@@ -3,9 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/suhSymfony/src/SUH/GestionBundle/Entity/EtudiantRepository.php</file>
-            <file>file:/C:/wamp/www/suhSymfony/src/SUH/GestionBundle/Controller/GestionCompteUtilisateurController.php</file>
-            <file>file:/C:/wamp/www/suhSymfony/src/SUH/ConnexionBundle/Entity/UserRepository.php</file>
+            <file>file:/C:/wamp/www/suhSymfony/src/SUH/GestionBundle/Controller/ExcelController.php</file>
+            <file>file:/C:/wamp/www/suhSymfony/src/SUH/GestionBundle/Controller/GestionEtudiantController.php</file>
+            <file>file:/C:/wamp/www/suhSymfony/src/SUH/GestionBundle/Resources/views/AffichageEtudiants/modifEtudiant.html.twig</file>
         </group>
     </open-files>
 </project-private>
