@@ -150,7 +150,7 @@ class AffichageController extends Controller
      * @return type
      */
     public function AfficherResultatRechercheAction(){
-        $array = [];
+        $array = array();
         for($i=0;$i<32;$i++){
             if(!empty($_POST['InfoEcrite'.$i]) && isset($_POST['InfoEcrite'.$i])){
                 if(!empty($_POST['InfoSelect'.$i]) && isset($_POST['InfoSelect'.$i])){ 

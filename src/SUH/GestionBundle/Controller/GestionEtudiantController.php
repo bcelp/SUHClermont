@@ -343,8 +343,9 @@ class GestionEtudiantController extends Controller
             $em->persist($mdph);
             $em->flush();
         $_SESSION['idMdph'] = $mdph;
-        return $this->redirect($this->generateUrl('suh_gestion_addEtudiant_Etape6')); 
+        return $this->redirect($this->generateUrl('suh_gestion_addEtudiant_Etape5')); 
     }
+    
     public function addInfosEtudiantEtape5Action(Request $request){
 
         $Handicap = new Handicap(null);
